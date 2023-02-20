@@ -3,23 +3,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { TypeThemes } from "@/utils/Interfaces/UI";
 
-const ApplicationLogo: React.FC<{ theme?: TypeThemes; className?: string; href: string; iconOnly?: boolean }> = ({
+const ApplicationLogo: React.FC<{ theme?: TypeThemes; className?: string; href?: string; iconOnly?: boolean }> = ({
     theme = "light",
     className,
     href,
     iconOnly = false,
 }): JSX.Element => {
-    return (
+    return href ? (
         <Link href={href}>
             <a className={className}>
                 <Image
-                    src={`/images/PayStage-logo-for-${theme}${iconOnly ? "" : "-icon"}.svg`}
+                    src={`/images/app-logo-for-${theme}${iconOnly ? "-icon" : ""}.svg`}
                     width={iconOnly ? 120 : 29}
                     height={29}
                     alt="PayStage"
                 />
             </a>
         </Link>
+    ) : (
+        <Image
+            src={`/images/app-logo-for-${theme}${iconOnly ? "-icon" : ""}.svg`}
+            width={iconOnly ? 120 : 29}
+            height={29}
+            alt="PayStage"
+        />
     );
 };
 

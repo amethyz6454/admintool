@@ -4,7 +4,8 @@ import Link from "next/link";
 import GuestLayout, { GuestSliderItem } from "@/components/layout/GuestLayout";
 import Button from "@/components/buttons/Button";
 import { InputField } from "@/components/form/InputField";
-import { Grid } from "@/components/ui/Grid";
+import { GridCol } from "@/components/ui/Grid";
+import Composition from "@/components/ui/Composition";
 
 const login: NextPage = (): JSX.Element => {
     return (
@@ -15,29 +16,31 @@ const login: NextPage = (): JSX.Element => {
                 <GuestSliderItem
                     title="Access to Diverse Markets"
                     message="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    image="/images/login-photo.png"
                 />
             }
+            enableGrid
         >
-            <div className="flex flex-col pt-6 pb-12">
-                <form>
-                    <Grid>
-                        <InputField id="emailAddress" name="emailAddress" placeholder="Email Address" endIcon="User" />
-                        <InputField type="password" id="password" name="password" placeholder="Password" />
-                        <div className="pt-4">
-                            <Button length="block">Login</Button>
-                        </div>
-                    </Grid>
-                </form>
-            </div>
-            <div className="text-center">
-                <p>
-                    Don&apos;t have an account? Register <Link href="/register">here</Link>.
-                </p>
-                <p>
-                    Back to <Link href="http://paystage.net">PayStage.net</Link>
-                </p>
-            </div>
+            <InputField id="emailAddress" name="emailAddress" placeholder="Email Address" endIcon="User" />
+            <InputField type="password" id="password" name="password" placeholder="Password" />
+            <Button length="block">Login</Button>
+            <GridCol>
+                <Composition
+                    primary={
+                        <React.Fragment>
+                            Don&apos;t have an account? Register <Link href="/register">here</Link>.
+                        </React.Fragment>
+                    }
+                    textAlign="center"
+                />
+                <Composition
+                    primary={
+                        <React.Fragment>
+                            Back to <Link href="/">Login</Link>
+                        </React.Fragment>
+                    }
+                    textAlign="center"
+                />
+            </GridCol>
         </GuestLayout>
     );
 };

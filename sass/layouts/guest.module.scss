@@ -1,0 +1,27 @@
+@tailwind components;
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+@import "../extend/scrollbar-remove";
+
+@layer components {
+    .main {
+        @apply flex grow items-center justify-center;
+        background-color: var(--mono-001);
+    }
+
+    .panel {
+        @apply flex w-full max-w-5xl p-4;
+        border-radius: var(--global-radius);
+        background-color: var(--mono-000);
+        box-shadow: var(--ui-box-shadow);
+    }
+
+    .side {
+        @apply min-w-[33.333333%] basis-1/3;
+    }
+
+    .form {
+        @apply min-w-[66.666666%] basis-2/3 p-12;
+    }
+}

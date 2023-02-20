@@ -1,18 +1,18 @@
 import React from "react";
-import Image from "next/image";
-import StyleGuest from "@/styles/layout/Guest.module.css";
+import classNames from "classnames";
+import ApplicationLogo from "@/components/ui/ApplicationLogo";
+import Composition from "@/components/ui/Composition";
+import StyleGuest from "@/sass/layouts/guest.module.scss";
+import StyleGrid from "@/sass/components/grid.module.scss";
+import { TypeGaps } from "@/utils/Interfaces/UI";
 
-export const GuestSliderItem: React.FC<{ title: string; image: string; message?: string }> = ({
-    title,
-    image,
-    message,
-}) => {
+export const GuestSliderItem: React.FC<{ title: string; message?: string }> = ({ title, message }) => {
     return (
         <div className={StyleGuest.item}>
-            <Image src={image} width={200} height={200} alt={`PayStage - ${title}`} />
+            <ApplicationLogo />
             <div className={StyleGuest.caption}>
-                <h5>{title}</h5>
-                <p>{message}</p>
+                <Composition wrapper="h5" primary={title} />
+                <Composition primary={message} />
             </div>
         </div>
     );
@@ -23,40 +23,29 @@ export const GuestLayout: React.FC<{
     subtext: string;
     children: React.ReactNode;
     slides: React.ReactNode;
-}> = ({ title, subtext, children, slides }) => {
+    enableGrid?: Boolean;
+    gap?: TypeGaps;
+}> = ({ title, subtext, children, slides, enableGrid = false, gap = 24 }) => {
     return (
-        <div className={StyleGuest.fullBox}>
-            <div className={StyleGuest.guestMainBox}>
-                <div className={StyleGuest.guestContentBox}>
+        <div className={StyleGuest.main}>
+            <div className={StyleGuest.panel}>
+                <div className={StyleGuest.side}>
                     <div className={StyleGuest.logo}>
-                        <Image src={"/images/paystage-logo.svg"} width={120} height={29} alt={`PayStage - ${title}`} />
-                    </div>
-                    <div className={StyleGuest.slider}>
-                        {slides}
-                        <div className={StyleGuest.abstracts}>
-                            <div className={`${StyleGuest.abstracts} ${StyleGuest.a}`} />
-                            <div className={`${StyleGuest.abstracts} ${StyleGuest.b}`} />
-                            <div className={`${StyleGuest.abstracts} ${StyleGuest.c}`} />
-                            <div className={`${StyleGuest.abstracts} ${StyleGuest.d}`} />
-                        </div>
-                    </div>
-                    <div className={`${StyleGuest.patterns} ${StyleGuest.bottom}`}>
-                        <div className={`${StyleGuest.pattern} ${StyleGuest.a}`} />
-                        <div className={`${StyleGuest.pattern} ${StyleGuest.b}`} />
-                        <div className={`${StyleGuest.pattern} ${StyleGuest.c}`} />
-                        <div className={`${StyleGuest.pattern} ${StyleGuest.d}`} />
-                        <div className={`${StyleGuest.pattern} ${StyleGuest.e}`} />
-                        <div className={`${StyleGuest.pattern} ${StyleGuest.f}`} />
-                        <div className={`${StyleGuest.pattern} ${StyleGuest.g}`} />
-                        <div className={`${StyleGuest.pattern} ${StyleGuest.h}`} />
+                        <ApplicationLogo />
+                        <div className={StyleGuest.slides}>{slides}</div>
                     </div>
                 </div>
-                <div className={StyleGuest.composition}>
-                    <div className="text-center">
-                        <h4 className={StyleGuest.title}>{title}</h4>
-                        <p className={StyleGuest.subtext}>{subtext}</p>
+                <div className={StyleGuest.form}>
+                    <div className={StyleGuest.head}>
+                        <Composition wrapper="h4" fontWeight="lite" primary={title} />
+                        <Composition primary={subtext} />
                     </div>
-                    <div>{children}</div>
+                    <div
+                        className={classNames(StyleGuest.body, { [StyleGrid.grid]: enableGrid })}
+                        data-grid-gap={enableGrid ? gap : null}
+                    >
+                        {children}
+                    </div>
                 </div>
             </div>
         </div>

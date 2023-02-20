@@ -11,10 +11,9 @@ const Authenticated: React.FC<{
     children: React.ReactNode;
     title: string;
     subTitle?: string;
-    tabNavigation?: React.ReactNode;
     actions?: React.ReactNode;
     layout?: "fill" | "contain";
-}> = ({ children, title, subTitle, tabNavigation, actions, layout = "fill" }): JSX.Element => {
+}> = ({ children, title, subTitle, actions, layout = "fill" }): JSX.Element => {
     const { isExpanded, setIsExpanded } = useDrawerToggle();
 
     return (

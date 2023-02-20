@@ -7,25 +7,25 @@ $white: white !default;
 
 // =========================================== monochrome colors settings
 $mono-000: #ffffff !default;
-$mono-001: #f7f8fb !default;
-$mono-002: #f1f4f8 !default;
-$mono-003: #cbd7e7 !default;
-$mono-004: #a5bbd5 !default;
-$mono-005: #6e8faf !default;
-$mono-006: #5985b1 !default;
-$mono-007: #436b8e !default;
-$mono-008: #314f68 !default;
-$mono-009: #1f3342 !default;
-$mono-010: #0d161c !default;
+$mono-001: #f5f6f7 !default;
+$mono-002: #f4f7f8 !default;
+$mono-003: #dbe4e8 !default;
+$mono-004: #c2d1d9 !default;
+$mono-005: #a9bec9 !default;
+$mono-006: #90abb9 !default;
+$mono-007: #7798aa !default;
+$mono-008: #5f8598 !default;
+$mono-009: #506f7f !default;
+$mono-010: #405966 !default;
 
 // =========================================== brand colors settings
-$blue-color: #004ea1 !default;
-$red-color: #db1616 !default;
-$green-color: #91c024 !default;
-$orange-color: #ff7e00 !default;
-$yellow-color: #f5db30 !default;
-$cyan-color: #15bfcb !default;
-$default-color: #7e7e7e !default;
+$blue-color: #0062ca !default;
+$red-color: #cc3131 !default;
+$green-color: #2aaa24 !default;
+$orange-color: #ff9600 !default;
+$yellow-color: #ffdd00 !default;
+$cyan-color: #3399cc !default;
+$default-color: $mono-003 !default;
 
 $brand-color-primary: $blue-color !default;
 $brand-color-secondary: $mono-009 !default;

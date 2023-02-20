@@ -12,11 +12,11 @@ const Home: NextPage = (): JSX.Element => {
 
     return (
         <Authenticated
-            title="Balances"
-            subTitle="Account Number"
+            title="Expandable Table Row"
+            subTitle="Subtitle Here"
             actions={
                 <Button size="sm" color="secondary">
-                    Export
+                    Action
                 </Button>
             }
         >

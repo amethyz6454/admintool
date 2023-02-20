@@ -12,7 +12,7 @@ const Pagination: React.FC = (): JSX.Element => {
             <Button color="secondary" shape="square">
                 <Icon name="ChevronDoubleLeft" size={16} />
             </Button>
-            <Button color="success" shape="square">
+            <Button color="primary" shape="square">
                 {1}
             </Button>
             <Button color="secondary" shape="square">

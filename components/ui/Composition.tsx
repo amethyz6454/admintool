@@ -63,7 +63,7 @@ const Composition: React.FC<CompositionBaseProps & CompositionProps> = ({
                 StyleComposition[ComponentWrapper[wrapper]],
                 StyleComposition[color],
                 StyleComposition[fontWeight],
-                StyleComposition["align-" + textAlign],
+                StyleComposition[textAlign],
                 { [StyleComposition.gutterBottom]: gutterBottom, [StyleComposition.gutterTop]: gutterTop },
                 className
             )}
