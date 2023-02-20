@@ -1,0 +1,58 @@
+﻿// SCSS File
+// spacers.scss
+
+// spacers variables
+// =========================================== spacing base
+$sb: 1rem;
+
+// =========================================== spacer by 2
+$spacer-4: $sb * 0.25; // 4px
+$spacer-8: $sb * 0.5; // 8px
+$spacer-10: $sb * 0.625; // 10px
+$spacer-12: $sb * 0.75; // 12px
+$spacer-14: $sb * 0.875; // 14px
+$spacer-16: $sb; // 16px
+$spacer-18: $sb * 1.125; // 18px
+$spacer-20: $sb * 1.25; // 20px
+$spacer-22: $sb * 1.375; // 22px
+$spacer-24: $sb * 1.5; // 24px
+$spacer-26: $sb * 1.625; // 26px
+$spacer-28: $sb * 1.75; // 28px
+$spacer-30: $sb * 1.875; // 30px
+$spacer-32: $sb * 2; // 32px
+$spacer-34: $sb * 2.125; // 34px
+$spacer-36: $sb * 2.25; // 36px
+$spacer-38: $sb * 2.375; // 38px
+$spacer-40: $sb * 2.5; // 40px
+$spacer-42: $sb * 2.625; // 42px
+$spacer-44: $sb * 2.75; // 42px
+$spacer-46: $sb * 2.875; // 46px
+$spacer-48: $sb * 3; // 48px
+$spacer-50: $sb * 3.125; // 50px
+$spacer-52: $sb * 3.25; // 50px
+$spacer-56: $sb * 3.5; // 56px
+$spacer-60: $sb * 3.75; // 60px
+$spacer-64: $sb * 4; // 64px
+$spacer-70: $sb * 4.375; // 70px
+$spacer-72: $sb * 4.5; // 72px
+$spacer-80: $sb * 5; // 80px
+$spacer-88: $sb * 5.5; // 88px
+$spacer-90: $sb * 5.625; // 90px
+$spacer-96: $sb * 6; // 96px
+$spacer-100: $sb * 6.25; // 100px
+
+$spacers: () !default;
+$spacers: map-merge(
+    (
+        0: 0,
+        1: $spacer-4,
+        2: $spacer-8,
+        3: $spacer-10,
+        4: $spacer-12,
+        5: $spacer-16,
+        6: $spacer-32,
+    ),
+    $spacers
+);
+
+$icon-size: $spacer-24;

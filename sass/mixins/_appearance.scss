@@ -1,0 +1,9 @@
+﻿// mixins
+// appearance.scss
+
+
+// appearance mixin
+@mixin appearance($val: none) {
+	-webkit-appearance: $val;
+	   -moz-appearance: $val;
+}

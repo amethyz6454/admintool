@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #004ea1;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="i-round-minus" class="cls-1" d="M224,648a8,8,0,1,1,8-8A8,8,0,0,1,224,648Zm0-14a6,6,0,1,0,6,6A6,6,0,0,0,224,634Zm3,7h-6a1,1,0,0,1,0-2h6A1,1,0,0,1,227,641Z" transform="translate(-216 -632)"/>
+</svg>

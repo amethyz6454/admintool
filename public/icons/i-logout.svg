@@ -1,0 +1,29 @@
+<svg id="i-logout" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #004ea1;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-1, .cls-3 {
+        opacity: 0.1;
+      }
+
+      .cls-2 {
+        fill: #5e5f60;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #91c024;
+      }
+    </style>
+  </defs>
+  <path id="door-bg" class="cls-1" d="M1880,26V38h9v5h-12V21h12v5h-9Z" transform="translate(-1876 -20)"/>
+  <path id="door" class="cls-2" d="M1889,38a1,1,0,0,1,1,1v4a1,1,0,0,1-1,1h-12a1,1,0,0,1-1-1V21a1,1,0,0,1,1-1h12a1,1,0,0,1,1,1v4a1,1,0,1,1-2,0V22h-10V42h10V39A1,1,0,0,1,1889,38Z" transform="translate(-1876 -20)"/>
+  <path id="arrow-bg" class="cls-3" d="M1883,29v6h10v3l6-6-6-6v3h-10Z" transform="translate(-1876 -20)"/>
+  <path id="arrow" class="cls-4" d="M1900,32a1,1,0,0,1-.29.707h0l-6,6h0A1,1,0,0,1,1892,38V36h-9a1,1,0,0,1-1-1V29a1,1,0,0,1,1-1h9V26a1,1,0,0,1,1.71-.707h0l6,6h0A1,1,0,0,1,1900,32Zm-6-3.586V30h-10v4h10v1.586L1897.59,32Z" transform="translate(-1876 -20)"/>
+</svg>

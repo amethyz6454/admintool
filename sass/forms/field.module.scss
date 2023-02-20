@@ -1,0 +1,198 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/aria-extend";
+
+@layer components {
+    .wrapper {
+        position: relative;
+    }
+
+    .note {
+        color: var(--mono-003);
+    }
+
+    .control {
+        @include apply-input-defaults();
+        width: $input-width;
+        height: $input-height;
+        padding: $input-padding;
+        line-height: $input-line-height;
+        color-scheme: var(--base-theme);
+
+        &[readonly] {
+            background-color: var(--form-input-readonly-bg);
+            border-color: var(--form-input-readonly-bg);
+        }
+
+        @include input-placeholder() {
+            color: var(--form-input-placeholder-color);
+        }
+
+        &::-ms-expand {
+            @apply border-0 bg-transparent;
+        }
+
+        @each $state, $color in $state-colors {
+            &.#{$state} {
+                background-color: var(--color-#{$state}-bg);
+                border-color: var(--color-#{$state}-border);
+                color: var(--color-#{$state}-text);
+
+                @include input-placeholder() {
+                    color: var(--color-#{$state}-text);
+                    opacity: 0.65;
+                }
+            }
+        }
+
+        @at-root label#{&} {
+            font-size: $input-font-size;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        @at-root textarea#{&} {
+            padding-top: $input-padding-x;
+            padding-bottom: $input-padding-x;
+            height: $spacer-16 * 10;
+        }
+
+        @at-root select#{&}[size],
+            select#{&}[multiple] {
+            height: auto;
+        }
+
+        @at-root select#{&} {
+            cursor: pointer;
+
+            &:not([size]):not([multiple]) {
+                background-image: var(--form-icon-select);
+                background-repeat: no-repeat;
+                background-position: right $spacer-16 center;
+                background-size: $spacer-16;
+                padding-right: $input-height;
+
+                &.sm {
+                    padding-right: $input-height-sm;
+                    background-position: right $spacer-8 center;
+                }
+
+                &.xs {
+                    padding-right: $input-height-xs;
+                    background-position: right $spacer-8 center;
+                }
+            }
+
+            &::-ms-expand {
+                display: none;
+            }
+        }
+
+        &.sm {
+            padding: $input-padding-sm;
+            height: $input-height-sm;
+        }
+
+        &.xs {
+            padding: $input-padding-xs;
+            height: $input-height-xs;
+        }
+
+        &.hasIconStart {
+            padding-left: $input-height + ($input-padding-x / 4);
+
+            &.sm {
+                padding-left: $input-height-sm + ($input-padding-x-sm / 4);
+            }
+
+            &.xs {
+                padding-left: $input-height-xs + ($input-padding-x-xs / 4);
+            }
+        }
+
+        &.hasIconEnd {
+            padding-right: $input-height + ($input-padding-x / 4);
+
+            &.sm {
+                padding-right: $input-height-sm + ($input-padding-x-sm / 4);
+            }
+
+            &.xs {
+                padding-right: $input-height-xs + ($input-padding-x-xs / 4);
+            }
+        }
+
+        &[type="password"] {
+            &::-ms-clear,
+            &::-ms-reveal {
+                @apply hidden;
+            }
+        }
+    }
+
+    .icon {
+        @apply absolute top-0 grid place-items-center;
+        height: $input-height;
+        width: $input-height;
+        // color: $input-text-color;
+
+        &.sm {
+            height: $input-height-sm;
+            width: $input-height-sm;
+        }
+
+        &.xs {
+            height: $input-height-xs;
+            width: $input-height-xs;
+        }
+    }
+
+    .startIcon {
+        left: 0;
+    }
+
+    .endIcon {
+        right: 0;
+    }
+
+    .file {
+        @apply relative m-0 block w-full cursor-pointer bg-no-repeat;
+        border: 2px dashed var(--mono-003);
+        border-radius: $round-sm;
+        min-height: var(--form-file-height);
+        background-position: center top var(--form-file-img-pos);
+        background-size: var(--form-file-bg-size);
+
+        .image {
+            @apply absolute left-1/2 translate-x-1/2;
+            @include size(var(--form-file-img-size));
+            top: var(--form-file-img-pos);
+        }
+
+        &::before,
+        &::after {
+            position: absolute;
+            left: 10%;
+            width: 80%;
+            text-align: center;
+            height: var(--form-file-text-height);
+        }
+
+        &::before {
+            content: attr(data-label);
+            color: var(--color-primary);
+            font-weight: 600;
+            top: var(--form-file-text-pos-1);
+        }
+
+        &::after {
+            content: attr(data-sub-label);
+            font-size: $font-size-12;
+            top: var(--form-file-text-pos-2);
+        }
+    }
+}

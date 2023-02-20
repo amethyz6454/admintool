@@ -1,0 +1,121 @@
+@import "../cores/variables";
+@import "../cores/mixins";
+
+.grid {
+    @each $i, $gap in $grid-gaps {
+        &[data-grid-gap="#{$i}"] {
+            --grid-gap: #{$gap};
+        }
+    }
+
+    @each $i, $size in $grid-cols {
+        --grid-#{$i}: calc(#{$size} - var(--grid-gap));
+    }
+
+    --grid-specify: 12rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(var(--grid-gap) * -1);
+    margin-top: calc(var(--grid-gap) * -1);
+
+    > * {
+        margin-left: var(--grid-gap);
+        margin-top: var(--grid-gap);
+        flex-basis: 100%;
+        flex-grow: 1;
+    }
+
+    &.center > * {
+        display: flex;
+        align-items: center;
+    }
+
+    &.space-between > * {
+        display: flex;
+        align-items: space-between;
+    }
+
+    &.flex-end > * {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    > br {
+        content: "";
+    }
+
+    > br.grid-break {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    > .grid-auto {
+        width: auto;
+        max-width: 100%;
+        flex: 0 0 auto;
+    }
+
+    > br.grid-spacer,
+    > .grid-flex {
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+    }
+
+    .default {
+        color: inherit;
+    }
+
+    @for $i from 2 through 10 {
+        > .grid-#{$i} {
+            flex-basis: var(--grid-#{$i});
+            max-width: var(--grid-#{$i});
+        }
+    }
+
+    > .specify_1a {
+        flex-basis: calc(var(--grid-specify) - var(--grid-gap));
+        max-width: calc(var(--grid-specify) - var(--grid-gap));
+    }
+
+    > .specify_1b {
+        flex-basis: calc(100% - var(--grid-gap) - var(--grid-specify));
+        max-width: calc(100% - var(--grid-gap) - var(--grid-specify));
+    }
+
+    @include media-breakpoint-down(md) {
+        > .grid-3,
+        > .grid-4 {
+            flex-basis: var(--grid-6);
+            max-width: var(--grid-6);
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        > *,
+        > .grid-2,
+        > .grid-3,
+        > .grid-4,
+        > .grid-5,
+        > .grid-6,
+        > .grid-7,
+        > .grid-8,
+        > .grid-9,
+        > .grid-10,
+        > .grid-auto {
+            flex-grow: 0;
+            flex-basis: auto;
+            max-width: calc(100% - var(--grid-gap));
+        }
+
+        br.grid-break,
+        br.grid-spacer {
+            display: none;
+        }
+    }
+}

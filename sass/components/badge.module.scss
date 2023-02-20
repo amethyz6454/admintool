@@ -1,0 +1,53 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+
+@layer components {
+    $badge-circles: () !default;
+    $badge-circles: map-merge(
+        (
+            "8": $spacer-8,
+            "16": $spacer-16,
+            "24": $spacer-24,
+            "32": $spacer-32,
+            "48": $spacer-48,
+        ),
+        $badge-circles
+    );
+
+    .badge {
+        @apply rounded-full text-xs font-medium;
+        padding: $spacer-4 $spacer-8;
+        color: var(--mono-000);
+        box-shadow: 0 3px 6px 0 hsla(var(--mono-010-hsl), 0.05), inset 0 -2px 3px 0 hsla(var(--mono-010-hsl), 0.15);
+
+        @each $data, $value in $badge-circles {
+            &[data-badge-size="#{$data}"] {
+                --badge-size: #{$value};
+            }
+        }
+
+        &[data-badge-size="16"] {
+            font-size: $font-size-10;
+        }
+    }
+
+    @each $name, $value in $theme-colors {
+        .#{$name} {
+            background-color: $value;
+        }
+    }
+
+    .white {
+        color: var(--mono-010);
+    }
+
+    .circle {
+        @apply flex items-center justify-center p-0;
+
+        height: var(--badge-size);
+        width: var(--badge-size);
+    }
+}

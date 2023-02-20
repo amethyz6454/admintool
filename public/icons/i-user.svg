@@ -1,0 +1,29 @@
+<svg id="i-user" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #004ea1;
+      }
+
+      .cls-1, .cls-2, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-1, .cls-3 {
+        opacity: 0.1;
+      }
+
+      .cls-2 {
+        fill: #5e5f60;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #91c024;
+      }
+    </style>
+  </defs>
+  <path id="body-bg" class="cls-1" d="M1629,35h6a6,6,0,0,1,6,6h-18A6,6,0,0,1,1629,35Z" transform="translate(-1620 -20)"/>
+  <path id="body" class="cls-2" d="M1641,42h-18a1,1,0,0,1-1-1,7,7,0,0,1,7-7h6a6.994,6.994,0,0,1,6.92,6H1642v2h-1Zm-6-6h-6a5,5,0,0,0-4.9,4h15.8A5,5,0,0,0,1635,36Z" transform="translate(-1620 -20)"/>
+  <circle id="head-bg" class="cls-3" cx="12" cy="7" r="4"/>
+  <path id="head" class="cls-4" d="M1632,32a5,5,0,1,1,5-5A5,5,0,0,1,1632,32Zm0-8a3,3,0,1,0,3,3A3,3,0,0,0,1632,24Z" transform="translate(-1620 -20)"/>
+</svg>

@@ -1,0 +1,167 @@
+@tailwind components;
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+@import "../extend/scrollbar-remove";
+
+@layer components {
+    .wrapper {
+        @apply sticky top-0 left-0 z-10 flex h-screen w-full flex-col;
+        flex: 0 0 auto;
+        background-color: var(--mono-000);
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        color: var(--body-color);
+        max-width: var(--layout-drawer-width);
+        @extend %extend-animate;
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            white-space: nowrap;
+
+            @include hover {
+                text-decoration: none;
+            }
+        }
+
+        &.hide {
+            --layout-drawer-width: #{$spacer-64};
+
+            .head {
+                @apply items-center justify-center;
+            }
+
+            .link {
+                @apply items-center justify-center p-0;
+                width: var(--layout-drawer-width);
+                height: var(--layout-drawer-width);
+            }
+
+            .text,
+            .subIcon,
+            .sub,
+            .foot .content {
+                display: none;
+            }
+        }
+
+        &.show {
+            --layout-drawer-width: 16rem;
+        }
+    }
+
+    .logo {
+        @apply flex;
+    }
+
+    .drawer {
+        @apply absolute left-0 top-0 flex h-full shrink grow flex-col;
+        width: var(--layout-drawer-width);
+    }
+
+    .head,
+    .foot {
+        @apply flex grow-0 items-center justify-between;
+        min-height: $spacer-64;
+        @extend %extend-animate;
+    }
+
+    .head {
+        padding: $spacer-8;
+    }
+
+    .body {
+        @apply grow overflow-y-auto overflow-x-visible;
+        scrollbar-color: var(--mono-010) transparent;
+        @extend %extend-scrollbar-thin;
+    }
+
+    .foot {
+        .content {
+            padding: $spacer-8;
+        }
+
+        .action {
+            @apply relative flex items-center justify-center;
+            height: $spacer-64;
+            width: $spacer-64;
+        }
+    }
+
+    .nav {
+        @apply flex flex-col;
+        font-size: $font-size-14;
+    }
+
+    .item {
+        @apply relative flex flex-wrap;
+        border-bottom: 1px solid var(--mono-002);
+    }
+
+    .link {
+        @apply flex shrink grow cursor-pointer font-medium no-underline;
+        gap: var(--gap);
+        padding: $spacer-16;
+        @extend %extend-animate;
+
+        > .text {
+            @apply flex basis-full items-center;
+            padding-left: $spacer-8;
+        }
+
+        > .icon {
+            --icon-size: #{$spacer-24};
+        }
+
+        &.active {
+            background-color: var(--mono-002);
+            color: var(--color-primary);
+        }
+
+        @include hover {
+            text-decoration: none;
+            background-color: var(--mono-002);
+            color: var(--color-primary);
+        }
+    }
+
+    .icon {
+        height: $spacer-24;
+        width: $spacer-24;
+        min-width: $spacer-24;
+        flex-basis: $spacer-24;
+    }
+
+    .sub {
+        @apply pointer-events-none left-full h-0 basis-full overflow-hidden;
+        @extend %extend-animate;
+    }
+
+    .active {
+        @apply pointer-events-auto h-auto overflow-visible;
+        padding-bottom: $spacer-16;
+    }
+
+    .subItem {
+        display: flex;
+    }
+
+    .subLink {
+        @apply relative basis-full no-underline;
+        padding-top: $spacer-12;
+        padding-bottom: $spacer-12;
+        padding-left: $spacer-56;
+        @extend %extend-animate;
+
+        &.active {
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+
+        @include hover {
+            background-color: var(--mono-002);
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+    }
+}

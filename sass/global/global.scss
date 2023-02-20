@@ -1,0 +1,120 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+@import "../extend/scrollbar-remove";
+
+@layer components {
+    html,
+    body {
+        @apply h-full;
+    }
+
+    html {
+        @extend %extend-scrollbar-thin;
+    }
+
+    body {
+        @apply flex flex-col;
+        font-size: $font-size-14;
+
+        > div#__next {
+            @apply flex h-full flex-col;
+            background-color: var(--mono-000);
+            color: var(--body-text);
+        }
+
+        @include media-breakpoint-down(xs) {
+            @apply leading-normal;
+        }
+    }
+
+    label,
+    legend {
+        @apply mb-2 text-sm font-medium;
+        color: var(--mono-009);
+    }
+
+    label {
+        @apply inline-block;
+    }
+
+    legend {
+        @apply w-full max-w-full whitespace-normal p-0;
+    }
+
+    a {
+        @apply cursor-pointer no-underline;
+        color: var(--color-primary);
+
+        &:hover {
+            @apply underline;
+        }
+    }
+
+    %extend-checkbox-radio {
+        @apply m-0 h-5 w-5 cursor-pointer;
+        @include apply-input-defaults();
+
+        &:checked {
+            background-color: var(--form-checkbox-bg);
+        }
+    }
+
+    input[type="checkbox"] {
+        @apply rounded;
+        @extend %extend-checkbox-radio;
+
+        &:checked {
+            background-image: var(--form-icon-checkbox);
+        }
+    }
+
+    input[type="radio"] {
+        @apply rounded-full;
+        @extend %extend-checkbox-radio;
+
+        &:checked {
+            background-image: var(--form-icon-radio);
+        }
+    }
+
+    .column-list {
+        @apply relative columns-2 gap-0 pl-0;
+
+        &[data-column-count="3"] {
+            @apply columns-3;
+        }
+
+        &[data-column-count="4"] {
+            @apply columns-4;
+        }
+
+        li {
+            @apply relative;
+        }
+
+        @include media-breakpoint-down(sm) {
+            &[data-column-count="3"],
+            &[data-column-count="4"] {
+                @apply columns-1;
+            }
+        }
+    }
+
+    .is-hidden {
+        @apply pointer-events-none invisible absolute h-0 w-0 overflow-hidden;
+        padding: 0 !important;
+    }
+
+    [disabled],
+    :disabled,
+    .disabled {
+        @apply pointer-events-none cursor-default opacity-40;
+
+        * {
+            @apply cursor-default;
+        }
+    }
+}

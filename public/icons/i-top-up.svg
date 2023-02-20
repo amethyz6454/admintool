@@ -1,0 +1,29 @@
+<svg id="i-top-up" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #004ea1;
+      }
+
+      .cls-1, .cls-2, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-1, .cls-3 {
+        opacity: 0.1;
+      }
+
+      .cls-2 {
+        fill: #5e5f60;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #91c024;
+      }
+    </style>
+  </defs>
+  <path id="wallet-bg" class="cls-1" d="M57,588H56.168a6,6,0,1,0-10.336,0H39a2,2,0,0,1-2-2V574a2,2,0,0,1,2-2H58v4H57a2,2,0,0,1,2,2v8A2,2,0,0,1,57,588Z" transform="translate(-36 -569.5)"/>
+  <path id="wallet" class="cls-2" d="M57,589H55.443a5.972,5.972,0,0,0,1.19-2H57a1,1,0,0,0,1-1v-8a1,1,0,0,0-1-1H39a2.964,2.964,0,0,1-1-.184V586a1,1,0,0,0,1,1h6.367a5.97,5.97,0,0,0,1.19,2H39a3,3,0,0,1-3-3V574a3,3,0,0,1,3-3H57a1,1,0,1,1,0,2H39a1,1,0,0,0,0,2H57a3,3,0,0,1,3,3v8A3,3,0,0,1,57,589Z" transform="translate(-36 -569.5)"/>
+  <circle id="arrow-up-bg" class="cls-3" cx="15" cy="15.5" r="6"/>
+  <path id="arrow-up" class="cls-4" d="M51,592a7,7,0,1,1,7-7A7,7,0,0,1,51,592Zm0-12a5,5,0,1,0,5,5A5,5,0,0,0,51,580Zm3,4a1,1,0,0,1-1,1H52v3a1,1,0,0,1-2,0v-3H49a1,1,0,0,1-.707-1.707h0l2-2h0a1,1,0,0,1,1.414,0h0l2,2h0A1,1,0,0,1,54,584Z" transform="translate(-36 -569.5)"/>
+</svg>

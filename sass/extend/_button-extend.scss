@@ -1,0 +1,112 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/aria-extend";
+
+$sizes: (("sm", $btn-padding-x-sm) ("xs", $btn-padding-x-xs));
+
+@layer components {
+    %extend-btn {
+        @apply relative inline-flex select-none items-center justify-center overflow-hidden whitespace-nowrap text-center align-middle;
+        background-color: var(--btn-bg);
+        border: $btn-border-width solid var(--btn-border);
+        box-shadow: $btn-shadow;
+        color: var(--btn-text);
+        font-weight: $btn-font-weight;
+        gap: $btn-gap;
+        letter-spacing: $btn-letter-spacing;
+        text-transform: $btn-text-transform;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out;
+    }
+
+    %extend-btn-states {
+        @include hover {
+            @apply no-underline;
+        }
+
+        &:active {
+            top: 2px;
+        }
+
+        &:focus {
+            box-shadow: $btn-focus-shadow;
+        }
+
+        &:not(:disabled):not(.disabled):active,
+        &:not(:disabled):not(.disabled).is-active {
+            &:focus {
+                box-shadow: $btn-focus-shadow;
+            }
+        }
+
+        &.process {
+            color: $btn-process-color !important;
+        }
+
+        @include media-breakpoint-down(xs) {
+            @apply ml-0 w-full whitespace-normal;
+        }
+    }
+
+    %extend-btn-pseudo-active {
+        &::after {
+            @apply pointer-events-none absolute top-0 left-0 block bg-no-repeat opacity-0;
+            @include size($btn-pseudo-size);
+            background-image: $btn-pseudo-bg-image;
+            background-position: $btn-pseudo-bg-pos;
+            transform: scale(10);
+            transition: $btn-pseudo-transition;
+            content: "";
+        }
+
+        &:active::after {
+            opacity: $btn-pseudo-active-opacity;
+            transform: scale(0);
+            transition: 0s;
+        }
+    }
+
+    %extend-btn-icon-placements {
+        .icon {
+            position: absolute;
+        }
+
+        &.startIcon {
+            padding-left: calc(var(--icon-size) + #{$btn-padding-x});
+
+            .icon {
+                left: #{$btn-padding-x / 2};
+            }
+
+            @each $name, $value in $sizes {
+                &.#{$name} {
+                    padding-left: calc(var(--icon-size) + #{$value});
+
+                    .icon {
+                        left: #{$value / 2};
+                    }
+                }
+            }
+        }
+
+        &.endIcon {
+            padding-right: calc(var(--icon-size) + #{$btn-padding-x});
+
+            .icon {
+                right: #{$btn-padding-x / 2};
+            }
+
+            @each $name, $value in $sizes {
+                &.#{$name} {
+                    padding-right: calc(var(--icon-size) + #{$value});
+
+                    .icon {
+                        right: #{$value / 2};
+                    }
+                }
+            }
+        }
+    }
+}

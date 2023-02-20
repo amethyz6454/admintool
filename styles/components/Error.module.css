@@ -1,0 +1,27 @@
+@tailwind components;
+
+@layer components {
+    .fullErrorBox {
+		@apply basis-full flex flex-col items-center justify-center m-auto grow;
+	}
+
+    .ErrorCenteredBox {
+		@apply min-w-[240px] relative flex flex-col items-center;
+	}
+
+    .ErrorTopImg {
+        @apply max-w-[240px];
+    }
+
+    .title {
+		@apply text-8xl text-center uppercase font-light text-gray-600;
+	}
+
+    .subtitle {
+		@apply text-xl text-center font-medium text-green-800 mt-2;
+	}
+
+    .ErrorFooter {
+        @apply max-w-[240px];
+    }
+}

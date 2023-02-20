@@ -1,0 +1,29 @@
+﻿$yiq-text-dark: var(--mono-010) !default;
+$yiq-text-light: var(--mono-000) !default;
+$yiq-contrasted-threshold: 150 !default;
+
+$theme-color-interval: 8% !default;
+$emphasized-link-hover-darken-percentage: 75% !default;
+
+$build-apply-border: 1px solid $border-color !default;
+$build-apply-divider: 1px solid $divider-color !default;
+
+$build-apply-shadow: 0 0 3px 0 $build-shadow !default;
+$build-apply-dark-shadow: 0 0 3px 3px $build-shadow-dark !default;
+$build-input-inset-shadow: inset 0 0 3px 5px hsla(var(--mono-010-hsl), var(--global-opacity)) !default;
+$build-input-shadow-color: hsla(var(--mono-010-hsl), var(--global-opacity)) !default;
+$build-valid-shadow: var(--input-focus-box-shadow-param) hsla(var(--color-success-hsl), var(--global-opacity)) !default;
+$build-invalid-shadow: var(--input-focus-box-shadow-param) hsla(var(--color-danger-hsl), var(--global-opacity)) !default;
+
+$build-backdrop-bg: hsla(var(--mono-010-hsl), 0.75) !default;
+
+$build-default-opacity: 0.65 !default;
+
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
+$positions: static, relative, absolute, fixed, sticky !default;
+
+$transition-fade: opacity 0.15s linear !default;
+$transition-collapse: height 0.35s ease !default;
+
+$flow-direction: row, row-reverse, column, column-reverse;
+$justification: center, space-between, flex-end, flex-start;

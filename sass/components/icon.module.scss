@@ -1,0 +1,23 @@
+@import "../cores/variables";
+@import "../cores/mixins";
+
+%extend-icon-size {
+    height: var(--icon-size);
+    width: var(--icon-size);
+}
+
+$pi-size-2: 6.25%;
+$pi-size-8: 25%;
+$pi-size-16: 50%;
+
+.icon {
+    --set-size: var(--icon-size);
+    height: var(--set-size);
+    width: var(--set-size);
+
+    @each $size, $value in $icon-sizes {
+        &[data-icon-size="#{$size}"] {
+            --set-size: #{$value};
+        }
+    }
+}

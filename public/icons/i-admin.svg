@@ -1,0 +1,29 @@
+<svg id="i-admin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #004ea1;
+      }
+
+      .cls-1, .cls-2 {
+        opacity: 0.1;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #91c024;
+      }
+
+      .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-4 {
+        fill: #5e5f60;
+      }
+    </style>
+  </defs>
+  <path id="body-bg" class="cls-1" d="M8,15h8a7,7,0,0,1,7,7v0a1,1,0,0,1-1,1H2a1,1,0,0,1-1-1v0A7,7,0,0,1,8,15Z"/>
+  <circle id="head-bg" class="cls-2" cx="12" cy="6" r="5"/>
+  <path id="head" class="cls-3" d="M48,763a6,6,0,1,1-6,6A6,6,0,0,1,48,763Zm0,2a4,4,0,1,1-4,4A4,4,0,0,1,48,765Zm3.707,13.707h0L49,781.414V787H47v-5.586l-2.707-2.707h0A1,1,0,0,1,45,777h6A1,1,0,0,1,51.707,778.707Z" transform="translate(-36 -763)"/>
+  <path id="body" class="cls-4" d="M58,787H38a2,2,0,0,1-2-2,8,8,0,0,1,8-8h8a8,8,0,0,1,8,8A2,2,0,0,1,58,787Zm-6-8H44a6,6,0,0,0-6,6H58A6,6,0,0,0,52,779Zm0,2h2a1,1,0,0,1,0,2H52A1,1,0,0,1,52,781Z" transform="translate(-36 -763)"/>
+</svg>

@@ -1,0 +1,27 @@
+@tailwind components;
+
+@layer components {
+    .masonry {
+        gap: 0.5rem;
+        column-count: 2;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: -0.5rem;
+    }
+
+    .masonry[data-item="3"] {
+        column-count: 3;
+    }
+
+    .masonry[data-item="4"] {
+        column-count: 4;
+    }
+
+    .masonry > *,
+    .masonry > .item {
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 0.5rem;
+    }
+}

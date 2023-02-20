@@ -1,0 +1,29 @@
+<svg id="i-dashboard" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #004ea1;
+      }
+
+      .cls-1, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-1, .cls-2 {
+        opacity: 0.1;
+      }
+
+      .cls-2, .cls-4 {
+        fill: #91c024;
+      }
+
+      .cls-3 {
+        fill: #5e5f60;
+      }
+    </style>
+  </defs>
+  <path id="dash-boxes-bg" class="cls-1" d="M51,113v-8h8v8H51Zm0-20h8v8H51V93ZM39,105h8v8H39v-8Z" transform="translate(-37 -91)"/>
+  <rect id="dash-box-bg" class="cls-2" x="2" y="2" width="8" height="8"/>
+  <path id="dash-boxes" class="cls-3" d="M58,102H52a2,2,0,0,1-2-2V94a2,2,0,0,1,2-2h6a2,2,0,0,1,2,2v6A2,2,0,0,1,58,102Zm0-8H52v6h6V94Zm0,20H52a2,2,0,0,1-2-2v-6a2,2,0,0,1,2-2h6a2,2,0,0,1,2,2v6A2,2,0,0,1,58,114Zm0-8H52v6h6v-6Zm-12,8H40a2,2,0,0,1-2-2v-6a2,2,0,0,1,2-2h6a2,2,0,0,1,2,2v6A2,2,0,0,1,46,114Zm0-8H40v6h6v-6Z" transform="translate(-37 -91)"/>
+  <path id="dash-box" class="cls-4" d="M46,102H40a2,2,0,0,1-2-2V94a2,2,0,0,1,2-2h6a2,2,0,0,1,2,2v6A2,2,0,0,1,46,102Zm0-8H40v6h6V94Z" transform="translate(-37 -91)"/>
+</svg>

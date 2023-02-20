@@ -1,0 +1,55 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+
+@layer components {
+    .tooltip {
+        @apply fixed text-xs;
+        padding: 8px;
+        background-color: var(--mono-010);
+        max-width: $spacer-24 * 10;
+        border-radius: $round-sm;
+        z-index: 9999;
+    }
+
+    .wrapper {
+        color: var(--mono-000);
+    }
+
+    .arrow {
+        @apply pointer-events-none absolute block border-solid;
+        height: var(--tooltip-arrow-size);
+        width: var(--tooltip-arrow-size);
+        border-width: calc(var(--tooltip-arrow-size) / 2);
+
+        &.top {
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-color: var(--mono-010) transparent transparent transparent;
+        }
+
+        &.right {
+            top: 50%;
+            right: 100%;
+            transform: translateY(-50%);
+            border-color: transparent var(--mono-010) transparent transparent;
+        }
+
+        &.bottom {
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-color: transparent transparent var(--mono-010) transparent;
+        }
+
+        &.left {
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+            border-color: transparent transparent transparent var(--mono-010);
+        }
+    }
+}

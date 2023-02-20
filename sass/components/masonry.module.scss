@@ -1,0 +1,34 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+@import "../extend/scrollbar-remove";
+
+@layer components {
+    .masonry {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        gap: var(--grid-list-gap);
+
+        > *,
+        > .item {
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: var(--grid-list-gap);
+        }
+
+        @each $i, $gap in $grid-gaps {
+            &[data-grid-gap="#{$i}"] {
+                --grid-list-gap: #{$gap};
+            }
+        }
+
+        @for $i from 2 through 4 {
+            &[data-item="#{$i}"] {
+                column-count: $i;
+            }
+        }
+    }
+}

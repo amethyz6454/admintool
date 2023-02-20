@@ -1,0 +1,29 @@
+<svg id="i-document" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #004ea1;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-1, .cls-3 {
+        opacity: 0.1;
+      }
+
+      .cls-2 {
+        fill: #5e5f60;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #91c024;
+      }
+    </style>
+  </defs>
+  <path id="paper-bg" class="cls-1" d="M1825,28h7V43h-16V21h9v7Z" transform="translate(-1812 -20)"/>
+  <path id="paper" class="cls-2" d="M1832,44h-16a1,1,0,0,1-1-1V21a1,1,0,0,1,1-1h9v2h-8V42h14V28h2V43A1,1,0,0,1,1832,44Zm-4-6h-8a1,1,0,1,1,0-2h8A1,1,0,1,1,1828,38Zm0-4h-8a1,1,0,1,1,0-2h8A1,1,0,1,1,1828,34Z" transform="translate(-1812 -20)"/>
+  <path id="fold-bg" class="cls-3" d="M1825,21l7,7h-7V21Z" transform="translate(-1812 -20)"/>
+  <path id="fold" class="cls-4" d="M1833,28a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1V21a1,1,0,0,1,1.71-.707h0l7,7h0A1,1,0,0,1,1833,28Zm-7-4.586V27h3.59Z" transform="translate(-1812 -20)"/>
+</svg>

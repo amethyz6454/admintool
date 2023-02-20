@@ -1,0 +1,10 @@
+﻿// SCSS File
+// round.scss
+
+// round variables
+$round: var(--global-radius) !default;
+$round-sm: var(--global-radius-sm) !default;
+$round-lg: var(--global-radius-lg) !default;
+
+// border-radius
+$border-radius: $round-sm;

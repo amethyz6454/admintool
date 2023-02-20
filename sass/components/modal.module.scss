@@ -1,0 +1,186 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+
+$modal-sizes: () !default;
+$modal-sizes: map-merge(
+    (
+        "xs": 20rem,
+        "sm": 30rem,
+        "md": 40rem,
+        "lg": 60rem,
+    ),
+    $modal-sizes
+);
+
+@layer components {
+    .modal {
+        @apply pointer-events-none fixed left-0 top-0 z-50 flex h-full w-full scale-0;
+        @extend %extend-animate;
+
+        @each $name, $size in $modal-sizes {
+            &.#{$name} .content {
+                max-width: $size;
+            }
+        }
+
+        &.active {
+            @apply scale-100;
+        }
+    }
+
+    .dialog {
+        @apply pointer-events-none relative flex grow items-center justify-center;
+    }
+
+    .content {
+        @apply pointer-events-auto relative m-8 flex w-full flex-col gap-8 rounded-2xl;
+        max-height: calc(100% - #{$spacer-64});
+        background-color: var(--mono-000);
+
+        &::before {
+            @apply pointer-events-none absolute top-0 left-0 right-0 bottom-0 z-50 rounded-2xl;
+            box-shadow: var(--ui-box-shadow), 0 10px 20px -5px hsla(var(--mono-009-hsl), 0.75);
+            content: "";
+        }
+    }
+
+    .head,
+    .foot {
+        @apply shrink-0 grow-0 basis-auto p-8;
+        background-color: var(--mono-002);
+    }
+
+    .head {
+        @apply relative flex items-center justify-between gap-4 rounded-t-2xl pb-4;
+    }
+
+    .title {
+        @apply mb-0;
+    }
+
+    .close {
+        @apply absolute -top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full;
+        background-color: var(--mono-000);
+        box-shadow: var(--ui-box-shadow);
+    }
+
+    .design {
+        @apply block;
+    }
+
+    .body {
+        @apply mx-6 h-full shrink basis-full overflow-y-auto overflow-x-visible px-2;
+        scrollbar-width: thin;
+        scrollbar-color: rgb(57 58 59 / var(--tw-bg-opacity)) transparent;
+
+        &::-webkit-scrollbar {
+            @apply h-2 w-1;
+        }
+
+        &::-webkit-scrollbar-track {
+            @apply border-2 border-transparent;
+            background-color: var(--mono-003);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            @apply rounded;
+            background-color: var(--mono-010);
+        }
+    }
+
+    .bodyInner {
+        @apply block;
+    }
+
+    .spacing {
+        @apply flex;
+    }
+
+    .foot {
+        @apply flex justify-between rounded-b-2xl pt-4;
+        gap: var(--gap-lg);
+
+        .xs &,
+        .sm & {
+            > * {
+                flex: 1 1 100%;
+            }
+        }
+    }
+
+    .xs {
+        .content {
+            @apply gap-4;
+        }
+
+        .head {
+            @apply pt-4;
+        }
+
+        .head,
+        .body,
+        .foot {
+            @apply px-4;
+        }
+
+        .body {
+            @apply mx-4 px-0;
+        }
+
+        .foot {
+            @apply pb-4;
+        }
+    }
+
+    .alert {
+        .body,
+        .foot {
+            @apply pt-8 text-center;
+        }
+
+        .icon {
+            @apply absolute left-1/2 -top-8 grid h-16 w-16 -translate-x-1/2 place-items-center rounded-full;
+            background-color: var(--mono-002);
+
+            &::before {
+                content: "";
+                @apply absolute top-0 left-0 h-full w-full rotate-45 rounded-full;
+                border: 1px solid var(--mono-003);
+                border-bottom-color: var(--mono-002);
+                border-right-color: var(--mono-002);
+            }
+        }
+
+        .body {
+            @apply pb-12;
+        }
+
+        .foot {
+            @apply relative pt-12;
+            border: 1px solid var(--mono-003);
+        }
+
+        @each $variant, $color in $theme-colors {
+            &.#{$variant} {
+                .icon {
+                    color: var(--color-#{$variant});
+                }
+            }
+        }
+    }
+
+    .backdrop {
+        @apply pointer-events-none fixed top-0 bottom-0 left-0 right-0 z-40 opacity-0;
+        background-color: rgba(black, 0.8);
+        backdrop-filter: blur(0rem);
+        @extend %extend-animate;
+
+        &.active {
+            @apply pointer-events-auto opacity-100;
+            backdrop-filter: blur(2rem);
+        }
+    }
+}

@@ -1,0 +1,18 @@
+%extend-scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(57 58 59 / var(--tw-bg-opacity)) transparent;
+
+    &::-webkit-scrollbar {
+        @apply h-2 w-1;
+    }
+
+    &::-webkit-scrollbar-track {
+        @apply border-2 border-transparent;
+        background-color: var(--mono-000);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        @apply rounded;
+        background-color: var(--mono-010);
+    }
+}

@@ -1,0 +1,26 @@
+﻿@mixin aria-hide() {
+    &[aria-hidden="true"] {
+        @content;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+@mixin aria-show($display: block) {
+    &[aria-hidden="false"] {
+        @content;
+        visibility: visible;
+        overflow: visible;
+        pointer-events: auto;
+
+        @if $display == flex {
+            display: flex;
+        } @else if $display == inline-flex {
+            display: inline-flex;
+        } @else if $display == inline-block {
+            display: inline-block;
+        } @else {
+            display: $display;
+        }
+    }
+}

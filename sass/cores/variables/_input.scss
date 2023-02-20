@@ -1,0 +1,83 @@
+﻿$input-width: 100%;
+$input-font-family: null;
+$input-font-weight: 500 !default;
+$input-border-width: var(--form-input-border-width) !default;
+$input-border-color: var(--form-input-border) !default;
+$input-border: $input-border-width solid $input-border-color !default;
+$input-text-color: var(--form-input-text) !default;
+$input-bg: var(--form-input-bg) !default;
+$input-border-height: calc(#{$input-border-width} * 2) !default;
+$input-shadow: var(--form-input-shadow);
+$input-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
+
+$input-focus-color: null !default;
+$input-focus-bg: var(--form-input-focus-bg) !default;
+$input-focus-border-color: $build-input-border !default;
+$input-focus-shadow: var(--form-input-focus-shadow) !default;
+
+$input-font-size: $font-size-14 !default;
+$input-border-radius: $round-sm !default;
+$input-line-height: $spacer-20 !default;
+$input-padding-y: 0 !default;
+$input-padding-x: $spacer-16 !default;
+
+$input-padding: null;
+@if ($input-padding-y == $input-padding-x) {
+    $input-padding: $input-padding-y !default;
+} @else {
+    $input-padding: $input-padding-y $input-padding-x !default;
+}
+
+$input-height-inner: $input-font-size + ($input-padding-y * 2) !default;
+$input-height: $spacer-48 !default;
+
+$input-border-radius-sm: $round-sm !default;
+$input-line-height-sm: 1 !default;
+$input-padding-y-sm: 0 !default;
+$input-padding-x-sm: $input-padding-x !default;
+
+$input-padding-sm: null;
+@if ($input-padding-y-sm == $input-padding-x-sm) {
+    $input-padding-sm: $input-padding-y-sm !default;
+} @else {
+    $input-padding-sm: $input-padding-y-sm $input-padding-x-sm !default;
+}
+
+$input-height-inner-sm: $input-font-size + ($input-padding-y-sm * 2) !default;
+$input-height-sm: $spacer-32 !default;
+
+$input-line-height-xs: 1 !default;
+$input-height-xs: $spacer-28 !default;
+$input-padding-y-xs: 0 !default;
+$input-padding-x-xs: $spacer-8 !default;
+
+$input-padding-xs: null;
+@if ($input-padding-y-xs == $input-padding-x-xs) {
+    $input-padding-xs: $input-padding-y-xs !default;
+} @else {
+    $input-padding-xs: $input-padding-y-xs $input-padding-x-xs !default;
+}
+
+$input-font-size-lg: $font-size-16 !default;
+$input-border-radius-lg: $round-lg !default;
+$input-line-height-lg: $spacer-24 !default;
+$input-padding-y-lg: $spacer-16 !default;
+$input-padding-x-lg: $spacer-16 !default;
+
+$input-padding-lg: null;
+@if ($input-padding-y-lg == $input-padding-x-lg) {
+    $input-padding-lg: $input-padding-y-lg !default;
+} @else {
+    $input-padding-lg: $input-padding-y-lg $input-padding-x-lg !default;
+}
+
+$input-height-inner-lg: $input-font-size + ($input-padding-y-lg * 2) !default;
+$input-height-lg: null !default;
+
+$input-group-addon-color: $text-color !default;
+$input-group-addon-bg: var(--mono-002) !default;
+$input-group-addon-border-color: $input-border-color !default;
+
+$custom-select-padding-y: $input-padding-y !default;
+$custom-select-padding-x: $input-padding-x !default;
+$custom-select-indicator-padding: $spacer-16 !default;

@@ -1,0 +1,19 @@
+@tailwind components;
+
+@layer components {
+    .card {
+        @apply basis-full rounded;
+    }
+
+    .solid {
+        @apply bg-white shadow-[0_3px_6px_0_rgba(50,70,91,0.05),inset_0_-2px_3px_0_rgba(50,70,91,0.15)];
+    }
+
+    .transparent {
+        @apply bg-transparent shadow-none;
+    }
+
+    .border {
+        @apply border-solid border-grey-400;
+    }
+}

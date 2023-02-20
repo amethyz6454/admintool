@@ -1,0 +1,29 @@
+<svg id="i-accounts" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #91c024;
+      }
+
+      .cls-1, .cls-2, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-1, .cls-3 {
+        opacity: 0.1;
+      }
+
+      .cls-3 {
+        fill: #004ea1;
+      }
+
+      .cls-4 {
+        fill: #5e5f60;
+      }
+    </style>
+  </defs>
+  <path id="account-back-bg" class="cls-1" d="M41,302H54v4H37V289h4v13Z" transform="translate(-36 -283)"/>
+  <path id="account-back" class="cls-2" d="M54,307H37a1,1,0,0,1-1-1V289a1,1,0,0,1,1-1h4v2H38v15H53v-3h2v4A1,1,0,0,1,54,307Z" transform="translate(-36 -283)"/>
+  <rect id="account-fore-bg" class="cls-3" x="5" y="1" width="18" height="18"/>
+  <path id="account-fore" class="cls-4" d="M59,303H41a1,1,0,0,1-1-1V284a1,1,0,0,1,1-1H59a1,1,0,0,1,1,1v18A1,1,0,0,1,59,303Zm-17-2H58V285H42v16Zm9-5H49a2,2,0,0,0-2,2H45a4,4,0,0,1,4-4h2a4,4,0,0,1,4,4H53A2,2,0,0,0,51,296Zm-1-3a3,3,0,1,1,3-3A3,3,0,0,1,50,293Zm0-4a1,1,0,1,0,1,1A1,1,0,0,0,50,289Z" transform="translate(-36 -283)"/>
+</svg>

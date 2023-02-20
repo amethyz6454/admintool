@@ -1,0 +1,29 @@
+<svg id="i-transactions" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #91c024;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-1, .cls-3 {
+        opacity: 0.1;
+      }
+
+      .cls-3 {
+        fill: #004ea1;
+      }
+
+      .cls-4 {
+        fill: #5e5f60;
+      }
+    </style>
+  </defs>
+  <path id="arrow-right-bg" class="cls-1" d="M54,498v-2H44v-6H54v-2l5,5Z" transform="translate(-36 -475)"/>
+  <path id="arrow-right" class="cls-2" d="M44,489h9v-1a1,1,0,0,1,1.707-.707h0l5,5h0a1,1,0,0,1,0,1.414h0l-5,5h0a1,1,0,0,1-1.414-1.414h0L53.586,497H44a1,1,0,0,1-1-1v-6A1,1,0,0,1,44,489Zm11,6v0.586L57.586,493,55,490.414V491H45v4H55Z" transform="translate(-36 -475)"/>
+  <path id="arrow-left-bg" class="cls-3" d="M42,486v-2H52v-6H42v-2l-5,5Z" transform="translate(-36 -475)"/>
+  <path id="arrow-left" class="cls-4" d="M52,485H43v1a1,1,0,0,1-1.707.707l-5-5a1,1,0,0,1,0-1.414l5-5A1,1,0,0,1,43,476h0v1h9a1,1,0,0,1,1,1v6A1,1,0,0,1,52,485Zm-1-6H41v-0.586L38.414,481,41,483.586V483H51v-4Z" transform="translate(-36 -475)"/>
+</svg>

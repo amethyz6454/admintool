@@ -1,0 +1,128 @@
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/aria-extend";
+@import "../extend/animate";
+
+.switch {
+    gap: var(--gap-lg);
+
+    .control {
+        &.xs {
+            --switch-handle-size: 16px;
+        }
+
+        &.sm {
+            --switch-handle-size: 20px;
+        }
+
+        &.lg {
+            --switch-handle-size: 32px;
+        }
+
+        --form-icon-checkbox: none;
+        --switch-handle-size: 24px;
+        --switch-shadow-color: var(--form-input-bg);
+        --switch-shadow: calc(var(--switch-handle-size) * -1) 0 0 2px var(--switch-shadow-color) inset,
+            0 0 0 2px var(--switch-shadow-color) inset;
+        --switch-bg: var(--mono-004);
+        box-shadow: var(--switch-shadow);
+        background-color: var(--switch-bg);
+        border-color: var(--switch-bg);
+        height: var(--switch-handle-size);
+        width: calc(var(--switch-handle-size) * 2);
+        border: $input-border;
+        border-radius: 999rem;
+        appearance: none;
+        cursor: pointer;
+        flex-shrink: 0;
+        @extend %extend-animate;
+
+        &:checked {
+            background-color: var(--color-primary);
+            border-color: var(--mono-004);
+            box-shadow: var(--switch-handle-size) 0 0 2px var(--switch-shadow-color) inset,
+                0 0 0 2px var(--switch-shadow-color) inset;
+        }
+    }
+
+    .label {
+        margin-bottom: 0;
+        cursor: pointer;
+    }
+}
+
+.switch-word {
+    .control {
+        position: absolute;
+        height: 0;
+        width: 0;
+        opacity: 0;
+
+        + .optionSwitch {
+            --option-switch-color: var(--mono-004);
+            position: relative;
+            display: inline-flex;
+            flex-shrink: 0;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 999rem;
+            border: $input-border;
+            background-color: $input-bg;
+            color: var(--option-switch-color);
+            box-shadow: 0 0 0 1px var(--option-switch-color);
+            margin: 0;
+            padding: 0;
+            @extend %extend-animate;
+
+            &::before,
+            &::after {
+                @extend %extend-animate;
+            }
+
+            &::before {
+                content: attr(data-text-false);
+                position: relative;
+                padding-top: $spacer-4;
+                padding-bottom: $spacer-4;
+                padding-left: $spacer-26;
+                padding-right: $spacer-12;
+                font-size: $font-size-12;
+                line-height: $spacer-16;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: $spacer-4 / 2;
+                left: $spacer-4 / 2;
+                height: $spacer-20;
+                width: $spacer-20;
+                border-radius: 999rem;
+                border: $input-border;
+                background-color: var(--option-switch-color);
+            }
+        }
+
+        &:checked + .optionSwitch {
+            --option-switch-color: var(--color-primary);
+
+            &::before {
+                content: attr(data-text-true);
+                padding-left: $spacer-12;
+                padding-right: $spacer-26;
+                color: var(--option-switch-color);
+            }
+
+            &::after {
+                left: calc(100% - #{$spacer-22});
+                background-color: var(--option-switch-color);
+                border-color: var(--option-switch-color);
+            }
+        }
+
+        ~ div .label {
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+    }
+}

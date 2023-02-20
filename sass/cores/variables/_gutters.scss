@@ -1,0 +1,23 @@
+﻿// SCSS File
+// gutters.scss
+
+// gutters variables
+$gutter-sm-size: $spacer-16 !default; // 16px
+$gutter-md-size: $spacer-24 !default; // 24px
+$gutter-lg-size: $spacer-32 !default; // 32px
+$gutter-sm-half-size: $gutter-sm-size * 0.5 !default; // 8px
+$gutter-md-half-size: $gutter-md-size * 0.5 !default; // 12px
+$gutter-lg-half-size: $gutter-lg-size * 0.5 !default; // 16px
+$form-gutter-width: $gutter-lg-size !default; // 32px
+$list-gutter-width: $gutter-md-size !default; // 24px
+
+$grid-gutter-width-half: $gutter-lg-size * 0.5 !default;
+$grid-gutter-width-sm-half: $gutter-md-size * 0.5 !default;
+
+$stack-gutter: $gutter-lg-size !default;
+
+$masonry-gutter-width: $gutter-lg-size !default;
+
+// grid & gutter
+$grid-gutter-width: $spacer-32 !default;
+$grid-columns: 12;

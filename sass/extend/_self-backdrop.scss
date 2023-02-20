@@ -1,0 +1,17 @@
+%extend-self-backdrop {
+    @include media-breakpoint-down(lg) {
+        &::before {
+            content: "";
+            z-index: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: var(--backdrop);
+            position: fixed;
+            transition: background-color 0.4s cubic-bezier(0.58, 0.43, 0.05, 1);
+        }
+    }
+}

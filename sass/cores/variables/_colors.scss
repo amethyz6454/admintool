@@ -1,0 +1,117 @@
+// mode
+$theme-mode: light;
+
+// colors
+$black: black !default;
+$white: white !default;
+
+// =========================================== monochrome colors settings
+$mono-000: #ffffff !default;
+$mono-001: #f7f8fb !default;
+$mono-002: #f1f4f8 !default;
+$mono-003: #cbd7e7 !default;
+$mono-004: #a5bbd5 !default;
+$mono-005: #6e8faf !default;
+$mono-006: #5985b1 !default;
+$mono-007: #436b8e !default;
+$mono-008: #314f68 !default;
+$mono-009: #1f3342 !default;
+$mono-010: #0d161c !default;
+
+// =========================================== brand colors settings
+$blue-color: #004ea1 !default;
+$red-color: #db1616 !default;
+$green-color: #91c024 !default;
+$orange-color: #ff7e00 !default;
+$yellow-color: #f5db30 !default;
+$cyan-color: #15bfcb !default;
+$default-color: #7e7e7e !default;
+
+$brand-color-primary: $blue-color !default;
+$brand-color-secondary: $mono-009 !default;
+$brand-color-quaternary: $yellow-color !default;
+
+$brand-color-gradient: linear-gradient(300deg, $blue-color 0%, $cyan-color 100%) !default;
+
+$build-primary: $brand-color-primary !default;
+$build-secondary: $brand-color-secondary !default;
+$build-success: $green-color !default;
+$build-info: $cyan-color !default;
+$build-warning: $orange-color !default;
+$build-danger: $red-color !default;
+$build-white: $white !default;
+$build-black: $black !default;
+$build-default: $mono-006 !default;
+
+$theme-colors: (
+    ("primary", $build-primary),
+    ("secondary", $build-secondary),
+    ("danger", $build-danger),
+    ("success", $build-success),
+    ("info", $build-info),
+    ("warning", $build-warning),
+    ("default", $build-default)
+);
+$theme-secondary-colors: (
+    ("primary", $build-primary),
+    ("secondary", $mono-005),
+    ("danger", $build-danger),
+    ("success", $build-success),
+    ("info", $build-info),
+    ("warning", $build-warning),
+    ("default", $build-default)
+);
+$light-mode: (
+    (0, $mono-000),
+    (1, $mono-001),
+    (2, $mono-002),
+    (3, $mono-003),
+    (4, $mono-004),
+    (5, $mono-005),
+    (6, $mono-006),
+    (7, $mono-007),
+    (8, $mono-008),
+    (9, $mono-009),
+    (10, $mono-010)
+);
+$dark-mode: (
+    (0, $mono-010),
+    (1, $mono-009),
+    (2, $mono-008),
+    (3, $mono-007),
+    (4, $mono-006),
+    (5, $mono-005),
+    (6, $mono-004),
+    (7, $mono-003),
+    (8, $mono-002),
+    (9, $mono-001),
+    (10, $mono-000)
+);
+
+$state-colors: (("valid", $build-success), ("invalid", $build-danger));
+
+$border-color: var(--mono-008) !default;
+$divider-color: var(--mono-002) !default;
+$text-color: var(--layout-text) !default;
+$accent-color: var(--color-primary) !default;
+$heading-color: null !default;
+$shadow-color: var(--mono-009) !default;
+$build-shadow: hsla(var(--mono-002-hsl), 0.4) !default;
+$build-shadow-dark: hsla(var(--mono-010-hsl), 0.25) !default;
+
+$text-muted: var(--mono-005) !default;
+
+$highlight-color: var(--mono-002) !default;
+$highlight-bg: var(--mono-001) !default;
+$highlight-border: $border-color !default;
+
+$link-color: var(--link-color) !default;
+
+$build-input-bg: var(--mono-000) !default;
+$build-input-border: var(--form-input-focus-border) !default;
+$build-input-focus: var(--form-input-focus-color) !default;
+
+$body-bg: var(--layout-bg);
+$body-color: $text-color;
+
+$loading-span-bg: var(--mono-000);

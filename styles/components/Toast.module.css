@@ -1,0 +1,63 @@
+@tailwind components;
+
+@layer components {
+    .notification {
+        @apply fixed flex self-center items-center z-50 bg-slate-200 rounded-full drop-shadow-md my-8 p-0;
+        animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 500ms both;
+    }
+
+    .notificationAnimate {
+        @apply flex self-center items-center rounded-full p-1 hover:animate-none bg-slate-100;
+        animation: blink 1.2s infinite both;
+    }
+
+    .notificationStyle {
+        @apply flex self-center items-center bg-slate-800 text-white rounded-full p-2;
+    }
+
+    .content {
+        @apply text-base px-3;
+    }
+
+    .close {
+        @apply bg-slate-900 rounded-full p-1 cursor-pointer;
+    }
+
+    @keyframes blink {
+        0%,
+        50%,
+        100% {
+            background-color: #f87171;
+        }
+        25%,
+        75% {
+            background-color: #ffffff;
+        }
+    }
+
+    @keyframes slide-in-top {
+        0% {
+            -webkit-transform: translateY(-1000px);
+                    transform: translateY(-1000px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slide-out-top {
+        0% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: translateY(-1000px);
+                    transform: translateY(-1000px);
+            opacity: 0;
+        }
+    }
+}

@@ -1,0 +1,475 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/aria-extend";
+
+$strengths: (
+    ("weak", 25%, var(--color-primary)),
+    ("poor", 50%, var(--color-warning)),
+    ("fair", 75%, var(--color-success-bg)),
+    ("good", 100%, var(--color-success))
+);
+
+@layer components {
+    .group {
+        &.default {
+            @apply relative;
+        }
+
+        &.inline {
+            @apply flex items-center;
+            gap: var(--gap);
+
+            .numberField {
+                @apply flex items-center;
+            }
+
+            > .legend,
+            > .label {
+                margin-bottom: 0;
+                max-width: unset;
+            }
+
+            @include media-breakpoint-down(xs) {
+                display: block;
+            }
+        }
+
+        &.valid,
+        &.invalid {
+            .label,
+            .legend {
+                color: inherit;
+            }
+        }
+
+        &.invalid,
+        &.invalid .feedback {
+            color: var(--color-invalid-text);
+        }
+    }
+
+    .strength {
+        @apply absolute left-0 w-full rounded-sm;
+        height: $spacer-4;
+        border-radius: $spacer-4;
+        top: $input-height + $spacer-4;
+        background-color: var(--mono-000);
+
+        &::before {
+            content: "";
+            @apply absolute top-0 left-0 h-full w-0 rounded-sm bg-transparent transition-all;
+        }
+
+        span {
+            @apply absolute top-full z-10 -translate-x-1/2 translate-y-2 rounded-sm px-1 font-medium uppercase text-white opacity-0 transition-all;
+            font-size: 10px;
+
+            &::before {
+                content: "";
+                @apply absolute bottom-full left-1/2 -translate-x-1/2 border-4 border-solid border-transparent;
+            }
+        }
+
+        @each $name, $size, $color in $strengths {
+            &.#{$name} {
+                &::before {
+                    width: $size;
+                    background-color: $color;
+                }
+
+                span {
+                    left: $size;
+                    background-color: $color;
+
+                    &::before {
+                        border-bottom-color: $color;
+                    }
+                }
+            }
+        }
+    }
+
+    .control:hover ~ .strength span {
+        opacity: 1;
+    }
+
+    .feedback {
+        text-align: left;
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        white-space: pre-line;
+        margin-top: $spacer-4;
+
+        @include media-breakpoint-down(sm) {
+            white-space: initial;
+        }
+    }
+
+    .addon {
+        position: relative;
+        display: flex;
+
+        > .icon {
+            left: $input-padding-x;
+            top: 50%;
+            translate: 0 -50%;
+            line-height: $input-padding-x;
+            @include size($spacer-24);
+            @extend %extend-addon-props;
+
+            &.default {
+                color: inherit;
+            }
+
+            &.green {
+                color: var(--color-success);
+            }
+
+            &.red {
+                color: var(--color-primary);
+            }
+
+            &.right {
+                left: auto;
+                right: $input-padding-x;
+                @extend %extend-addon-right-props;
+            }
+
+            + .icon ~ .control {
+                @extend %extend-addon-left-right-props;
+            }
+
+            + .btn ~ .control {
+                @extend %extend-addon-left-right-props;
+            }
+        }
+
+        > .btn {
+            flex: 0 0 auto;
+            border-radius: $input-border-radius;
+            top: 2px;
+            left: 2px;
+            padding: 0 $spacer-8;
+            min-width: $spacer-48;
+            height: calc(#{$input-height} - #{$spacer-4});
+            @extend %extend-addon-props;
+
+            .icon {
+                margin: 0;
+            }
+
+            &.right {
+                left: auto;
+                right: 2px;
+                @extend %extend-addon-right-props;
+            }
+
+            + .btn ~ .control {
+                @extend %extend-addon-left-right-props;
+            }
+
+            + .icon ~ .control {
+                @extend %extend-addon-left-right-props;
+            }
+
+            @include media-breakpoint-down(sm) {
+                width: auto;
+            }
+        }
+    }
+
+    .fields {
+        display: flex;
+        align-items: center;
+        gap: var(--gap);
+
+        > *:not(span) {
+            flex: 1 1 100%;
+        }
+
+        > button {
+            flex: 0 0 auto;
+        }
+
+        @include media-breakpoint-down(xs) {
+            flex-direction: column;
+            align-items: initial;
+        }
+    }
+
+    .buttonOptions,
+    .options {
+        --opts-cols: 1;
+        display: grid;
+        gap: var(--gap);
+        grid-template-columns: repeat(var(--opts-cols), 1fr);
+
+        @for $i from 1 through 4 {
+            &[data-columns="#{$i}"] {
+                --opts-cols: #{$i};
+            }
+        }
+    }
+
+    .buttonOptions {
+        .option {
+            @apply mb-0 cursor-pointer flex-wrap items-center;
+            @include apply-input-defaults(flex);
+            gap: var(--gap-lg);
+            height: $input-height;
+            padding: $input-padding;
+
+            .wordedSwitch {
+                margin: 0;
+            }
+
+            .label {
+                margin: 0;
+
+                &::before {
+                    content: "";
+                    cursor: pointer;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    z-index: 0;
+                }
+            }
+
+            .switch {
+                &:checked {
+                    --form-checkbox-bg: var(--mono-000);
+
+                    ~ div .label {
+                        &::before {
+                            background-color: hsla(var(--mono-005-hsl), 0.25);
+                            border-radius: $input-border-radius;
+                        }
+                    }
+                }
+            }
+
+            input {
+                --form-checkbox-bg: var(--mono-003);
+                --form-input-bg: var(--form-checkbox-bg);
+                --form-input-border: var(--form-checkbox-bg);
+
+                margin: 0;
+                z-index: 1;
+
+                @each $state, $color in $state-colors {
+                    &.#{$state} {
+                        background-color: var(--color-#{$state}-bg);
+                        border-color: var(--color-#{$state}-border);
+
+                        & ~ .label {
+                            color: $color;
+                        }
+                    }
+                }
+
+                // @each $state, $color in $state-colors {
+                //     &[type="checkbox"].#{$state}:checked {
+                //         background-image: var(--form-icon-checkbox-#{$color});
+                //     }
+                // }
+
+                // @each $state, $color in $state-colors {
+                //     &[type="radio"].#{$state}:checked {
+                //         background-image: var(--form-icon-radio-#{$color});
+                //     }
+                // }
+            }
+
+            .icon {
+                margin: -2px 0;
+                margin-right: $spacer-10;
+                color: var(--mono-010);
+            }
+
+            @each $state, $color in $state-colors {
+                &.#{$state} ~ .label {
+                    background-color: var(--color-#{$state}-bg);
+                    border-color: var(--color-#{$state}-border);
+                    color: var(--color-#{$state}-text);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(xs) {
+            --opts-cols: 1;
+
+            .option .label {
+                font-size: $font-size-16;
+            }
+        }
+    }
+
+    .options {
+        .label {
+            margin: 0;
+            padding: 2px 0;
+            position: relative;
+        }
+
+        .form-switch input[type] {
+            top: 0;
+            margin-top: 0;
+        }
+
+        @include media-breakpoint-down(xs) {
+            --opts-cols: 1;
+        }
+    }
+
+    .option {
+        @apply relative flex items-center;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        gap: var(--gap-md);
+
+        .label {
+            @include text-truncate();
+            margin: 0;
+        }
+
+        @each $direction in $flow-direction {
+            &.#{$direction} {
+                flex-direction: $direction;
+            }
+        }
+
+        @each $justify in $justification {
+            &.#{$justify} {
+                justify-content: $justify;
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: var(--gap-lg);
+        justify-content: space-between;
+
+        &.end {
+            align-items: flex-end;
+        }
+
+        &.middle {
+            align-items: center;
+        }
+
+        @include media-breakpoint-down(xs) {
+            flex-direction: column;
+            text-align: center;
+            gap: var(--gap);
+        }
+    }
+
+    %extend-addon-props {
+        position: absolute;
+
+        ~ .control {
+            padding-left: $spacer-24 + ($input-padding-x * 2);
+        }
+    }
+
+    %extend-addon-right-props {
+        ~ .control {
+            padding-left: $input-padding-x;
+            padding-right: $spacer-24 + ($input-padding-x * 2);
+        }
+    }
+
+    %extend-addon-left-right-props {
+        padding-left: $spacer-24 + ($input-padding-x * 2);
+        padding-right: $spacer-24 + ($input-padding-x * 2);
+    }
+
+    .btnGroup {
+        display: flex;
+
+        > * {
+            border-radius: 0;
+
+            &:first-child {
+                border-top-left-radius: var(--btn-group-radius);
+                border-bottom-left-radius: var(--btn-group-radius);
+            }
+
+            &:last-child {
+                border-top-right-radius: var(--btn-group-radius);
+                border-bottom-right-radius: var(--btn-group-radius);
+            }
+        }
+
+        &.sm {
+            > :first-child {
+                border-top-left-radius: var(--btn-sm-group-radius);
+                border-bottom-left-radius: var(--btn-sm-group-radius);
+            }
+
+            > :last-child {
+                border-top-right-radius: var(--btn-sm-group-radius);
+                border-bottom-right-radius: var(--btn-sm-group-radius);
+            }
+        }
+
+        &.lg {
+            > :first-child {
+                border-top-left-radius: var(--btn-lg-group-radius);
+                border-bottom-left-radius: var(--btn-lg-group-radius);
+            }
+
+            > :last-child {
+                border-top-right-radius: var(--btn-lg-group-radius);
+                border-bottom-right-radius: var(--btn-lg-group-radius);
+            }
+        }
+
+        @include media-breakpoint-down(xs) {
+            justify-content: center;
+            align-items: center;
+
+            > * {
+                width: auto;
+            }
+        }
+    }
+
+    .consent {
+        line-height: 1.5;
+        text-align: left;
+        border-radius: $round-sm;
+
+        ul,
+        ol {
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            li + li {
+                margin-top: $spacer-10;
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            max-height: $spacer-32 * 10;
+            padding: $spacer-10;
+            margin-bottom: $spacer-24;
+            border-radius: $round-sm;
+            border: 1px solid $border-color;
+            background-color: var(--mono-000);
+            -webkit-overflow-scrolling: touch;
+            overflow: visible;
+            overflow-y: auto;
+        }
+    }
+}

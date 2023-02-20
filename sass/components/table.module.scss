@@ -1,0 +1,448 @@
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+
+$table-gaps: () !default;
+$table-gaps: map-merge(
+    (
+        "0": "0",
+        "8": var(--gap),
+        "12": var(--gap-md),
+    ),
+    $table-gaps
+);
+
+.table {
+    width: 100%;
+    vertical-align: middle;
+    color: var(--layout-text);
+    font-size: $font-size-12;
+    line-height: $spacer-16;
+
+    &.bordered {
+        --table-border: var(--table-border-width) solid var(--mono-004);
+        border: var(--table-border);
+
+        .row .cell {
+            border-bottom: var(--table-border);
+        }
+
+        .head .row:last-child .cell {
+            // --table-border-width: 2px;
+        }
+
+        .foot .cell {
+            border-top-width: 4px;
+        }
+
+        @extend %extend-border-striped;
+    }
+
+    &.borderless {
+        .row,
+        .cell,
+        .head .cell,
+        .body + .body {
+            border: 0 !important;
+        }
+    }
+
+    &.striped {
+        .body .row:nth-of-type(odd) {
+            background-color: hsla(var(--mono-003-hsl), 0.1);
+        }
+
+        @extend %extend-border-striped;
+    }
+
+    &.hover .body .row {
+        @include hover {
+            color: var(--layout-text);
+            background-color: hsla(var(--mono-002-hsl), 0.25);
+        }
+    }
+
+    @each $i, $gap in $table-gaps {
+        &[data-cell-gap="#{$i}"] {
+            --cell-gap: #{$gap};
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+        @apply block;
+    }
+}
+
+.head {
+    z-index: 10;
+    font-weight: 700;
+
+    &.isSticky {
+        position: sticky;
+        top: var(--sticky-pos);
+        z-index: 1;
+    }
+
+    > .row {
+        background-color: var(--mono-002);
+
+        &:last-child .cell {
+            border-bottom-width: calc(var(--table-border-width) * 2);
+            border-bottom-color: var(--mono-004);
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+        display: none;
+    }
+}
+
+.body {
+    th.cell {
+        text-align: left;
+    }
+
+    + .body {
+        border-top: var(--table-border);
+    }
+
+    > .row {
+        border-bottom: 1px solid var(--mono-003);
+
+        &:hover {
+            background-color: var(--mono-000);
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        @include media-breakpoint-down(xs) {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            border-bottom: 2px solid var(--mono-003);
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+        display: block;
+    }
+}
+
+.foot {
+    > .row {
+        background-color: var(--mono-002);
+        border-top: calc(var(--table-border-width) * 2) solid var(--mono-004);
+    }
+
+    .cell {
+        border-top: calc(var(--table-border-width) * 2);
+    }
+}
+
+.row,
+.rowExpandable {
+    @extend %extend-animate;
+}
+
+.cell {
+    padding-top: $spacer-20;
+    padding-bottom: $spacer-20;
+    text-align: left;
+    vertical-align: middle;
+    border-top: 0;
+
+    > *:not(.cellInner) {
+        margin: 0;
+
+        a {
+            font-weight: 700;
+        }
+    }
+
+    .cellInner {
+        overflow: visible;
+    }
+
+    &:first-child {
+        padding-left: 0;
+
+        &:not(.action) {
+            padding-left: $spacer-16;
+        }
+    }
+
+    &:last-child {
+        padding-right: 0;
+
+        &:not(.action) {
+            padding-right: $spacer-16;
+        }
+    }
+
+    &.cellExpandable {
+        padding: 0;
+    }
+
+    &.sort {
+        cursor: pointer;
+        position: relative;
+        @extend %extend-animate;
+
+        .cellInner {
+            padding-right: $spacer-32;
+        }
+
+        &:hover {
+            background-color: var(--mono-001);
+        }
+
+        .icon {
+            translate: 0 -50%;
+            position: absolute;
+            top: 50%;
+            right: $spacer-16;
+        }
+    }
+
+    &.highlight {
+        font-weight: 700;
+    }
+
+    @include media-breakpoint-down(xs) {
+        display: flex;
+        gap: var(--gap-sm);
+
+        &.fill {
+            flex-wrap: wrap;
+
+            > * {
+                flex-grow: 1;
+                flex-basis: 100%;
+                min-width: 100%;
+            }
+        }
+
+        &.evenly {
+            > * {
+                flex-grow: 1;
+                flex-basis: 100%;
+            }
+
+            &::before {
+                flex-basis: 100%;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        &.sticky {
+            position: sticky;
+            top: var(--sticky-pos);
+            background-color: var(--mono-000);
+            z-index: 2;
+        }
+
+        &.space-between {
+            justify-content: space-between;
+        }
+
+        &.center {
+            justify-content: center;
+        }
+
+        &.action {
+            order: 999;
+        }
+
+        &:not(th)::before {
+            content: attr(data-title);
+            flex-grow: 1;
+        }
+    }
+}
+
+@each $name, $color in $theme-colors {
+    .#{$name} {
+        color: $color;
+    }
+}
+
+.cellExpandable {
+    padding: 0;
+}
+
+.expandContent {
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+    position: relative;
+    flex-grow: 1;
+    min-width: 100%;
+    padding: 0;
+    gap: 0;
+    @extend %extend-animate;
+
+    &.active {
+        padding: $spacer-16;
+        height: auto;
+        overflow: visible;
+        pointer-events: auto;
+        visibility: visible;
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap);
+    }
+
+    hr {
+        margin-top: $spacer-4;
+        margin-bottom: $spacer-12;
+    }
+
+    > span:has(.image) {
+        position: unset !important;
+    }
+
+    .image {
+        object-fit: contain;
+        width: 100% !important;
+        position: relative !important;
+        height: unset !important;
+    }
+}
+
+.card {
+    position: relative;
+    flex: 1 1 100%;
+    border-radius: $btn-border-radius;
+    padding: $spacer-16;
+    padding-left: $spacer-24;
+    background-color: var(--mono-001);
+    border: 1px solid var(--mono-002);
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: $spacer-4;
+        border-radius: $round;
+        pointer-events: none;
+        left: $spacer-8;
+        top: $spacer-8;
+        height: calc(100% - $spacer-16);
+        @extend %extend-animate;
+    }
+
+    &:hover {
+        background-color: var(--mono-002);
+        border-color: var(--mono-003);
+
+        &::before {
+            background-color: var(--color-green);
+        }
+    }
+
+    .action {
+        height: $spacer-48;
+        width: $spacer-48;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.cardBody {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-xl);
+}
+
+.cardBodyContent {
+    flex-grow: 1;
+    display: flex;
+}
+
+.extend {
+    display: flex;
+    flex-wrap: wrap;
+    height: 0;
+    min-width: 100%;
+    gap: var(--gap);
+    padding-top: 0;
+    overflow: hidden;
+    pointer-events: none;
+    flex-basis: 100%;
+    @extend %extend-animate;
+
+    &.active {
+        height: auto;
+        padding-top: $spacer-8;
+        overflow: visible;
+        pointer-events: auto;
+    }
+
+    > .card {
+        background-color: white;
+
+        &:hover {
+            background-color: white;
+        }
+    }
+}
+
+.action {
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    z-index: 0;
+    width: $spacer-64;
+
+    svg {
+        display: inline-block;
+    }
+}
+
+.icon {
+    color: var(--color-blue);
+}
+
+.tabTable {
+    width: 100%;
+    text-align: left;
+
+    .cell {
+        position: relative;
+        padding: $spacer-12;
+        overflow: hidden;
+        border: 1px solid var(--mono-004);
+    }
+
+    .head,
+    .foot {
+        .cell {
+            background-color: var(--mono-002);
+        }
+    }
+
+    .striped .body tr:nth-child(odd) td,
+    .striped .body tr:nth-child(odd) th {
+        background-color: var(--mono-003);
+    }
+}
+
+%extend-border-striped {
+    .row .cell {
+        &:first-child {
+            padding-left: var(--table-pad-flc);
+        }
+
+        &:last-child {
+            padding-right: var(--table-pad-flc);
+        }
+    }
+}

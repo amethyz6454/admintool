@@ -1,0 +1,75 @@
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+
+.header {
+    position: sticky;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 20;
+    background-color: var(--mono-000);
+
+    &::before {
+        content: "";
+        height: $spacer-8;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        pointer-events: none;
+        background-image: linear-gradient(0deg, hsla(var(--mono-000-hsl), 0) 0%, hsla(var(--mono-010-hsl), 0.05) 100%);
+    }
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: $spacer-16;
+
+    .logo {
+        display: none;
+    }
+}
+
+.chip {
+    display: flex;
+    height: $spacer-32;
+    width: $spacer-32;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999rem;
+    border: 2px solid var(--mono-007);
+}
+
+.navItem {
+    display: flex;
+    border-left: 1px solid var(--mono-002);
+}
+
+.navLink {
+    display: flex;
+    height: $spacer-64;
+    min-width: $spacer-64;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-lg);
+    padding-left: $spacer-16;
+    padding-right: $spacer-16;
+    font-size: $font-size-12;
+    color: var(--mono-007);
+    text-decoration: none;
+    @extend %extend-animate;
+
+    @include hover {
+        text-decoration: none;
+        background-color: var(--mono-002);
+        color: var(--color-primary);
+    }
+}

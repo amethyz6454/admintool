@@ -1,0 +1,18 @@
+﻿// mixins
+// input-placeholder.scss
+
+
+// input-placeholder mixin
+@mixin input-placeholder() {
+	&::-webkit-input-placeholder {
+		@content;
+	}
+
+	&:-ms-input-placeholder {
+		@content;
+	}
+	
+	&::placeholder {
+		@content;
+	}
+}

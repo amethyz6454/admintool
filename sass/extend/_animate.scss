@@ -1,0 +1,5 @@
+%extend-animate {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.58, 0.43, 0.05, 1);
+    transition-duration: 200ms;
+}

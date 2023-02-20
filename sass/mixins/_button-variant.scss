@@ -1,0 +1,53 @@
+@mixin button-variant($color, $variant) {
+    @if ($variant == "secondary") {
+        --btn-text: var(--mono-000);
+    } @else {
+        --btn-text: white;
+    }
+    --btn-bg: var(--color-#{$variant});
+    --btn-border: var(--color-#{$variant});
+    --input-focus-box-shadow-color: hsla(var(--color-#{$variant}-hsl), 0.25);
+
+    @include hover {
+        --btn-bg: var(--color-#{$variant}-highlight);
+        @if ($variant == "secondary") {
+            --btn-text: var(--mono-000);
+        }
+    }
+
+    &:not(:disabled):not(.disabled):active {
+        --btn-bg: var(--color-#{$variant}-highlight);
+    }
+}
+
+@mixin button-outline-variant($color, $variant) {
+    &.outline {
+        --btn-text: var(--color-#{$variant});
+
+        @include hover {
+            --btn-text: white;
+            --btn-bg: #{$color};
+        }
+
+        &:not(:disabled):not(.disabled):active {
+            --btn-text: white;
+            --btn-bg: #{$color};
+        }
+    }
+}
+
+@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $color-border-radius, $height, $width: null) {
+    @if $padding-y == 0 and $padding-x == 0 {
+    } @else {
+        @if $padding-y == $padding-x {
+            padding: $padding-y;
+        } @else {
+            padding: $padding-y $padding-x;
+        }
+    }
+    font-size: $font-size;
+    line-height: $line-height;
+    border-radius: $color-border-radius;
+    min-height: $height;
+    width: $width;
+}

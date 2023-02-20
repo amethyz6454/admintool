@@ -1,0 +1,163 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+
+@layer components {
+    .list {
+        @apply relative flex;
+        gap: var(--grid-list-gap);
+
+        @each $i, $gap in $grid-gaps {
+            &[data-grid-gap="#{$i}"] {
+                --grid-list-gap: #{$gap};
+            }
+        }
+
+        &.hover .item:hover {
+            @apply bg-grey-100;
+        }
+
+        &.bordered .item {
+            border-bottom: 1px solid var(--mono-003);
+        }
+
+        &.flexFill .item > * {
+            flex: 1 1 100%;
+        }
+
+        @each $direction in $flow-direction {
+            &.#{$direction} {
+                flex-direction: $direction;
+            }
+        }
+
+        @each $justify in $justification {
+            &.#{$justify} {
+                justify-content: $justify;
+            }
+        }
+
+        @each $direction in $flow-direction {
+            &.item-#{$direction} {
+                .item {
+                    flex-direction: $direction;
+                }
+            }
+        }
+
+        @each $justify in $justification {
+            &.item-#{$justify} {
+                .item {
+                    justify-content: $justify;
+                }
+            }
+        }
+    }
+
+    @each $name, $color in $theme-colors {
+        .#{$name} {
+            color: $color;
+        }
+    }
+
+    .label {
+        font-weight: 400;
+        white-space: nowrap;
+    }
+
+    .value {
+        white-space: nowrap;
+        font-weight: 700;
+    }
+
+    .item {
+        @apply relative flex shrink grow basis-full;
+        padding-top: $spacer-4;
+        padding-bottom: $spacer-4;
+        gap: var(--grid-list-gap);
+        @extend %extend-animate;
+
+        @each $i, $gap in $grid-gaps {
+            &[data-grid-gap="#{$i}"] {
+                --grid-list-gap: #{$gap};
+            }
+        }
+
+        @each $direction in $flow-direction {
+            &.#{$direction} {
+                flex-direction: $direction;
+            }
+        }
+
+        @each $justify in $justification {
+            &.#{$justify} {
+                justify-content: $justify;
+            }
+        }
+
+        &.highlight,
+        .bordered & {
+            &.highlight {
+                border-bottom-width: 3px;
+            }
+        }
+    }
+
+    .graphics {
+        flex: 1 1 100%;
+        display: flex;
+        align-items: center;
+        gap: var(--gap);
+
+        .icon {
+            @each $name, $color in $theme-colors {
+                &.#{$name} {
+                    color: $color;
+                }
+            }
+        }
+    }
+
+    .card {
+        margin-bottom: $spacer-8;
+        padding: $spacer-16;
+        border-radius: $round;
+        border: 1px solid var(--mono-004);
+
+        &:hover {
+            @apply bg-grey-100;
+        }
+    }
+
+    .card,
+    .data {
+        --grid-count: 1;
+        @apply grid;
+        grid-template-columns: repeat(var(--grid-count), minmax(0, 1fr));
+        gap: var(--gap);
+        @extend %extend-animate;
+
+        &:last-child {
+            @apply mb-0;
+        }
+
+        @for $i from 2 through 6 {
+            &[data-grid="#{$i}"] {
+                --grid-count: #{$i};
+            }
+        }
+    }
+
+    .line {
+        @apply basis-full;
+        margin-bottom: $spacer-8;
+        border-bottom: 1px solid var(--mono-004);
+        padding-bottom: $spacer-8;
+
+        &:last-child {
+            @apply mb-0 border-b-0 pb-0;
+        }
+    }
+}

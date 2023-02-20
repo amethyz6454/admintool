@@ -1,0 +1,210 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+@import "../extend/button-extend";
+
+@layer components {
+    $parent-appearance: button, line, solid;
+    $alignments: center, flex-end, flex-start, space-between;
+    $pos: $spacer-8;
+    $placements: (
+        ("bottom-end", null, $pos, $pos, null),
+        ("bottom-start", null, null, $pos, $pos),
+        ("bottom", null, null, $pos, 50%),
+        ("left-end", null, null, $pos, $pos),
+        ("left-start", $pos, null, null, $pos),
+        ("left", 50%, null, null, $pos),
+        ("right-end", null, $pos, $pos, null),
+        ("right-start", $pos, $pos, null, null),
+        ("right", 50%, $pos, null, null),
+        ("top-end", $pos, $pos, null, null),
+        ("top-start", $pos, null, null, $pos),
+        ("top", $pos, null, null, 50%)
+    );
+
+    .wrapper {
+        @apply flex;
+
+        @each $alignment in $alignments {
+            &.ai-#{$alignment} {
+                align-items: $alignment;
+            }
+        }
+
+        @each $alignment in $alignments {
+            &.jc-#{$alignment} {
+                justify-content: $alignment;
+            }
+        }
+    }
+
+    .list {
+        @apply flex;
+
+        @each $alignment in $alignments {
+            &.ai-#{$alignment} {
+                align-items: $alignment;
+            }
+        }
+
+        @each $alignment in $alignments {
+            &.jc-#{$alignment} {
+                justify-content: $alignment;
+            }
+        }
+
+        &.line {
+            gap: var(--gap-lg);
+
+            .item {
+                &::before {
+                    @apply absolute scale-0 rounded-full;
+                    @extend %extend-animate;
+                    content: "";
+                }
+
+                &.active {
+                    &::before {
+                        @apply scale-100;
+                        background-color: var(--color-success);
+                    }
+                }
+            }
+
+            &.horizontal {
+                .item {
+                    @apply pb-2;
+
+                    &::before {
+                        @apply bottom-0 left-0 h-1 w-full;
+                    }
+                }
+            }
+
+            &.vertical {
+                @apply flex-1 flex-col;
+
+                .item {
+                    @apply grow pr-2;
+
+                    &::before {
+                        @apply bottom-0 right-0 h-full w-1;
+                    }
+                }
+
+                .link {
+                    @apply block py-1;
+                }
+            }
+        }
+
+        &.icon,
+        &.button {
+            gap: var(--gap);
+
+            .item {
+                .link {
+                    @extend %extend-btn;
+                    @extend %extend-btn-pseudo-active;
+                    @extend %extend-btn-states;
+                }
+            }
+        }
+
+        &.button {
+            .item {
+                .link {
+                    @include button-size(
+                        $btn-padding-y-sm,
+                        $btn-padding-x-sm,
+                        $btn-font-size-sm,
+                        $btn-line-height-sm,
+                        $btn-border-radius,
+                        $btn-height-sm,
+                        100%
+                    );
+                }
+
+                &.active .link {
+                    --btn-bg: var(--color-success);
+                    --btn-border: var(--color-success);
+                    --btn-text: white;
+                }
+            }
+
+            &.vertical {
+                @apply flex-col;
+            }
+        }
+
+        &.icon {
+            --form-input-border-width: 2px;
+
+            .item {
+                .link {
+                    @apply flex-col;
+                    @include button-size(0, 0, $font-size-12, $btn-line-height-sm, $round, null, null);
+                }
+
+                &.active .link {
+                    --btn-border: var(--color-success);
+                }
+            }
+
+            .badge {
+                @apply absolute;
+
+                @each $place, $t, $r, $b, $l in $placements {
+                    &.#{$place} {
+                        top: $t;
+                        right: $r;
+                        bottom: $b;
+                        left: $l;
+                    }
+                }
+            }
+
+            .badgeImage {
+                @apply relative block;
+                height: $spacer-16;
+                width: $spacer-16;
+            }
+
+            @each $size, $value in $icon-sizes {
+                &[data-icon-size="#{$size}"] {
+                    .link {
+                        @include size($value);
+                    }
+
+                    .icon {
+                        @include size(calc(#{$value} * 0.5));
+                    }
+
+                    .image {
+                        @include size(calc(#{$value}), calc(#{$value} * 0.5));
+                    }
+                }
+            }
+        }
+    }
+
+    .item {
+        @apply relative text-sm font-medium;
+    }
+
+    .link {
+        @apply cursor-pointer;
+        --btn-bg: var(--mono-000);
+    }
+
+    .image {
+        position: relative;
+    }
+
+    .isSticky {
+        @apply sticky;
+        top: var(--sticky-pos);
+    }
+}

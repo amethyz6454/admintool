@@ -1,0 +1,17 @@
+﻿@import "../cores/mixins";
+
+%extend-aria-hide {
+    @include aria-hide();
+}
+
+%extend-aria-show {
+    @include aria-show();
+}
+
+%extend-aria-show-flex {
+    @include aria-show(flex);
+}
+
+%extend-aria-show-inline-block {
+    @include aria-show(inline-block);
+}

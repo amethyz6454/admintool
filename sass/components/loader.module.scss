@@ -1,0 +1,181 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/aria-extend";
+
+@layer components {
+    $blob-size: 12, 16, 18, 24, 32;
+
+    .blobContainer {
+        width: 100%;
+        @extend %extend-loaders;
+
+        &::before {
+            margin-bottom: var(--loading-height);
+        }
+    }
+
+    .blob {
+        --loading-bg: #{$white};
+        --loading-contrast: 20;
+        --dot-bg: #{$black};
+        --dot-transition: 5s;
+        --blob-width: calc(var(--dot-size) * 9);
+        --blob-height: calc(var(--dot-size) * 4);
+        --loading-width: calc(var(--dot-size) * 7);
+        --loading-height: calc(var(--dot-size) * 2);
+        --loading-pos-y: 0;
+        --loading-left: calc(50% - (var(--loading-width) / 2));
+        --dot-blur: calc(var(--dot-size) / 4);
+
+        background-color: var(--loading-bg);
+        filter: contrast(var(--loading-contrast));
+        height: var(--loading-height);
+        width: var(--blob-width);
+        @extend %extend-loader-block;
+
+        .contain {
+            height: var(--loading-height);
+            left: var(--loading-left);
+            overflow: hidden;
+            position: absolute;
+            bottom: var(--loading-pos-y);
+            width: var(--loading-width);
+        }
+
+        .dot {
+            left: 0;
+            position: absolute;
+            top: calc(var(--dot-size) / 2);
+            transform: translateX(0);
+            animation: sway var(--dot-transition) infinite;
+            @extend %extend-dots;
+        }
+
+        .dots {
+            left: var(--dot-size);
+            position: absolute;
+            top: calc(var(--dot-size) / 2);
+            transform: translateX(0);
+            @extend %extend-dots-animation;
+
+            span {
+                display: block;
+                float: left;
+                margin-left: var(--dot-size);
+                @extend %extend-dots;
+                @extend %extend-dots-animation;
+
+                // &::before {
+                //     content: "";
+                //     height: 5px;
+                //     width: 200%;
+                //     position: absolute;
+                //     top: 50%;
+                //     left: 50%;
+                //     translate: -50% -50%;
+                //     background-color: black;
+                // }
+            }
+        }
+
+        @each $size in $blob-size {
+            &[data-size="#{$size}"] {
+                --dot-size: var(--spacer-#{$size});
+            }
+        }
+    }
+
+    .pill {
+        --pill-bar-bg: #{$white};
+        --pill-progress-bg: var(--color-primary);
+
+        width: 100%;
+        padding-bottom: $spacer-16;
+        @extend %extend-loaders;
+
+        .bar {
+            position: absolute;
+            overflow: hidden;
+            width: 75%;
+            left: 50%;
+            bottom: 0;
+            height: $spacer-8;
+            border: 2px solid var(--pill-bar-bg);
+            background-color: var(--pill-bar-bg);
+            box-shadow: 0 1px 7px -3px hsla(var(--mono-010-hsl), 0.75);
+            @extend %extend-progress-bar;
+        }
+
+        .progress {
+            height: 100%;
+            width: 100%;
+            left: -25%;
+            top: 50%;
+            position: absolute;
+            background-color: var(--pill-progress-bg);
+            animation: oscillate 2s infinite;
+            @extend %extend-progress-bar;
+        }
+    }
+
+    %extend-loader-block {
+        display: block;
+        margin: $spacer-16 auto;
+        position: relative;
+        max-width: $spacer-32 * 10;
+    }
+
+    %extend-loaders {
+        @extend %extend-loader-block;
+        margin-top: $spacer-40;
+
+        ~ * {
+            display: none !important;
+        }
+
+        &::before {
+            content: attr(data-label);
+            font-size: $font-size-12;
+            text-align: center;
+            display: block;
+            // margin-top: -#{$spacer-20};
+        }
+    }
+
+    %extend-dots {
+        background-color: var(--dot-bg);
+        border-radius: 999rem;
+        filter: blur(var(--dot-blur));
+        height: var(--dot-size);
+        width: var(--dot-size);
+    }
+
+    %extend-dots-animation {
+        animation: sway-alt var(--dot-transition) infinite;
+    }
+
+    %extend-progress-bar {
+        border-radius: 999rem;
+        translate: -50% -50%;
+    }
+
+    @keyframes sway {
+        50% {
+            transform: translateX(calc(var(--dot-size) * 6));
+        }
+    }
+
+    @keyframes sway-alt {
+        50% {
+            transform: translateX(calc(var(--dot-size) * -1));
+        }
+    }
+
+    @keyframes oscillate {
+        50% {
+            left: 125%;
+        }
+    }
+}

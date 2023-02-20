@@ -1,0 +1,148 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+
+@layer components {
+    %extend-docker-shared-styles {
+        @apply flex items-center justify-center;
+    }
+
+    .wrapper {
+        --docker-icon-size: #{$spacer-48};
+        @apply pointer-events-none sticky bottom-0 z-[2] shrink-0 grow-0 basis-auto pt-8 pb-4;
+        @extend %extend-docker-shared-styles;
+        @extend %extend-animate;
+
+        > * {
+            @apply pointer-events-auto;
+            @extend %extend-animate;
+        }
+    }
+
+    .docker,
+    .item,
+    .link {
+        @extend %extend-docker-shared-styles;
+        @extend %extend-animate;
+        color: var(--mono-010);
+    }
+
+    .docker {
+        @apply rounded-full px-8 py-2;
+        align-items: initial;
+        gap: var(--gap);
+        background-color: var(--mono-000);
+        box-shadow: var(--ui-box-shadow);
+    }
+
+    .item {
+        @apply rounded-lg bg-transparent;
+        align-items: initial;
+        @extend %extend-animate;
+
+        &.active,
+        &:hover {
+            background-color: hsla(var(--mono-004-hsl), 0.5);
+        }
+    }
+
+    .group > .item {
+        @apply hidden;
+    }
+
+    .group,
+    .itemList {
+        @apply flex-row;
+        @extend %extend-docker-shared-styles;
+        @extend %extend-animate;
+        gap: var(--gap);
+    }
+
+    @include media-breakpoint-down(sm) {
+        .group {
+            @apply relative;
+
+            > .item {
+                @apply flex;
+            }
+
+            .itemList {
+                @apply pointer-events-none invisible absolute bottom-full h-0 w-0 -translate-y-2 flex-wrap overflow-hidden rounded-xl p-2 opacity-0;
+                border: 2px solid var(--mono-010);
+                background-color: var(--mono-000);
+                box-shadow: var(--ui-box-shadow);
+
+                .item,
+                .item .link {
+                    @apply flex-1;
+                }
+
+                &.active {
+                    @apply pointer-events-auto visible h-auto w-auto overflow-visible opacity-100;
+                }
+
+                &::after {
+                    @apply absolute top-full left-1/2 h-4 w-4 -translate-x-1/2 border-solid;
+                    content: "";
+                    border-color: var(--mono-010) transparent transparent transparent;
+                    border-width: $spacer-8;
+                }
+            }
+        }
+    }
+
+    .divider {
+        width: 1px;
+        background-color: var(--mono-003);
+        margin: $spacer-12 0;
+        @extend %extend-animate;
+
+        &:last-child {
+            display: none;
+        }
+    }
+
+    .link {
+        @apply relative flex gap-0 bg-transparent px-2 text-xs font-medium;
+        min-height: var(--docker-icon-size);
+        min-width: var(--docker-icon-size);
+        @extend %extend-animate;
+
+        @include hover {
+            @apply cursor-pointer no-underline;
+            gap: var(--gap);
+
+            .icon + .text {
+                @apply scale-100 opacity-100;
+            }
+        }
+
+        .icon {
+            @apply relative z-[1] grid place-items-center rounded-full text-inherit;
+            @extend %extend-animate;
+
+            + .text {
+                @apply absolute bottom-full left-1/2 -translate-x-1/2 -translate-y-4 scale-0 rounded px-2 opacity-0;
+                background-color: var(--mono-010);
+                color: var(--mono-000);
+
+                &::before {
+                    @apply absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent bg-transparent;
+                    content: "";
+                    border-top-color: var(--mono-010);
+                }
+            }
+        }
+
+        .text {
+            @apply whitespace-nowrap;
+            @extend %extend-animate;
+        }
+
+        .badge {
+            @apply absolute top-1 right-1 z-[2];
+        }
+    }
+}

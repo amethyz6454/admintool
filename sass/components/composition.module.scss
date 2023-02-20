@@ -1,0 +1,66 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+
+@layer components {
+    $font-weights: ((lite, 300), (normal, 400), (medium, 500), (semibold, 600), (bold, 700), (black, 800));
+    $headings: (
+        (h1, $font-size-30),
+        (h2, $font-size-28),
+        (h3, $font-size-26),
+        (h4, $font-size-20),
+        (h5, $font-size-18),
+        (h6, $font-size-16)
+    );
+    $alignments: (left, right, center);
+
+    .pre,
+    .sub {
+        @apply block text-sm;
+        color: var(--mono-008);
+    }
+
+    @each $heading, $size in $headings {
+        .#{$heading} {
+            font-size: $size;
+        }
+    }
+
+    @each $weight, $value in $font-weights {
+        .#{$weight} {
+            font-weight: $value;
+        }
+    }
+
+    @each $variant, $color in $theme-colors {
+        @if $variant != "default" {
+            .#{$variant} {
+                color: var(--color-#{$variant});
+            }
+        } @else {
+            .#{$variant} {
+                color: var(--layout-text);
+            }
+        }
+    }
+
+    .inherit {
+        color: inherit;
+    }
+
+    @each $alignment in $alignments {
+        .#{$alignment} {
+            text-align: $alignment;
+        }
+    }
+
+    .gutterBottom {
+        margin-bottom: 0.5em;
+    }
+
+    .gutterTop {
+        margin-top: 0.5em;
+    }
+}

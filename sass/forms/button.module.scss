@@ -1,0 +1,147 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/button-extend";
+
+@layer components {
+    .btn {
+        @extend %extend-btn;
+        @extend %extend-btn-pseudo-active;
+        @extend %extend-btn-states;
+        @extend %extend-btn-icon-placements;
+
+        @include button-size(
+            $btn-padding-y,
+            $btn-padding-x,
+            $btn-font-size,
+            $btn-line-height,
+            $btn-border-radius,
+            $btn-height
+        );
+
+        &.outline {
+            --btn-bg: transparent;
+        }
+
+        @at-root a#{&} {
+            text-decoration: none;
+        }
+
+        > .loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            padding: 0;
+
+            > span {
+                bottom: auto;
+                top: 50%;
+            }
+        }
+    }
+
+    @each $variant, $color in $theme-colors {
+        .#{$variant} {
+            @include button-variant($color, $variant);
+        }
+    }
+
+    @each $variant, $color in $theme-colors {
+        .#{$variant} {
+            @include button-outline-variant($color, $variant);
+        }
+    }
+
+    a.btn.disabled,
+    fieldset:disabled a.btn {
+        pointer-events: none;
+    }
+
+    .wide {
+        min-width: $btn-wide-width;
+
+        &.sm {
+            min-width: $btn-wide-sm-width;
+        }
+
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+
+            & + .btn {
+                margin: $spacer-24 0 0;
+            }
+        }
+    }
+
+    .block {
+        display: flex;
+        width: 100%;
+
+        + .block {
+            margin-top: $btn-block-spacing-y;
+        }
+    }
+
+    .sm {
+        @include button-size(
+            $btn-padding-y-sm,
+            $btn-padding-x-sm,
+            $btn-font-size-sm,
+            $btn-line-height-sm,
+            $btn-border-radius-sm,
+            $btn-height-sm
+        );
+    }
+
+    .xs {
+        @include button-size(
+            $btn-padding-y-xs,
+            $btn-padding-x-xs,
+            $btn-font-size-xs,
+            $btn-line-height-xs,
+            $btn-border-radius-xs,
+            $btn-height-xs
+        );
+    }
+
+    .square {
+        padding: 0 $spacer-4;
+        min-height: $spacer-24;
+        min-width: $spacer-24;
+        font-size: $font-size-12;
+
+        > * {
+            margin: 0;
+        }
+    }
+
+    .circle {
+        padding: 0;
+        min-height: $spacer-32;
+        min-width: $spacer-32;
+        border-radius: 50%;
+
+        &.sm {
+            min-height: $spacer-24;
+            min-width: $spacer-24;
+        }
+    }
+
+    .link {
+        &,
+        &:hover,
+        &:not(:disabled):not(.disabled):active {
+            --btn-bg: var(--mono-000);
+            --btn-border: var(--mono-000);
+            box-shadow: none;
+        }
+
+        color: var(--color-primary);
+    }
+}

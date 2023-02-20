@@ -1,0 +1,81 @@
+﻿@import "./input";
+
+$btn-font-size: $input-font-size !default;
+$btn-padding-y: $input-padding-y !default;
+$btn-padding-x: $input-padding-x + $spacer-16 !default;
+$btn-font-family: null !default;
+$btn-line-height: $input-line-height !default;
+$btn-border-radius: $input-border-radius !default;
+$btn-shadow: 0 3px 5px -3px hsla(var(--mono-005-hsl), 0.5), inset 0 0 3px 0 hsla(var(--mono-005-hsl), 0.25) !default;
+$btn-shadow-active: 0 0 0 0 hsla(var(--mono-005-hsl), 0.5), inset 0 0 3px 0 hsla(var(--mono-005-hsl), 0.25) !default;
+$btn-text-transform: null !default;
+$btn-gap: var(--gap);
+$btn-letter-spacing: null !default;
+$btn-height: $input-height !default;
+
+$btn-padding-y-xs: $input-padding-y-xs !default;
+$btn-padding-x-xs: $input-padding-x-xs !default;
+$btn-font-size-xs: $btn-font-size !default;
+$btn-line-height-xs: $input-line-height-xs !default;
+$btn-height-xs: $input-height-xs !default;
+$btn-border-radius-xs: $btn-border-radius !default;
+
+$btn-padding-y-sm: $input-padding-y-sm !default;
+$btn-padding-x-sm: $input-padding-x-sm !default;
+$btn-font-size-sm: $btn-font-size !default;
+$btn-line-height-sm: $input-line-height-sm !default;
+$btn-height-sm: $input-height-sm !default;
+$btn-border-radius-sm: $btn-border-radius !default;
+
+$btn-padding-y-lg: $input-padding-y-lg !default;
+$btn-padding-x-lg: $input-padding-y-lg !default;
+$btn-font-size-lg: $btn-font-size !default;
+$btn-line-height-lg: $input-line-height-lg !default;
+$btn-height-lg: $input-height-lg !default;
+$btn-border-radius-lg: $btn-border-radius !default;
+
+$btn-font-weight: 500 !default;
+$btn-border-width: $input-border-width !default;
+$btn-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out !default;
+$btn-box-shadow: $input-shadow !default;
+
+$btn-disabled-opacity: $build-default-opacity !default;
+$btn-disabled-opacity: $build-default-opacity !default;
+$btn-block-spacing-y: $spacer-8 !default;
+$btn-link-disabled-color: var(--mono-005) !default;
+$btn-active-box-shadow: $build-input-inset-shadow !default;
+$btn-focus-shadow: $input-focus-shadow !default;
+
+$btn-process-color: hsla(var(--mono-000-hsl), 0);
+$btn-pseudo-size: 100%;
+$btn-pseudo-bg-image: radial-gradient(circle, var(--mono-010) 10%, transparent 10.01%);
+$btn-pseudo-bg-pos: 50%;
+$btn-pseudo-transition: opacity 1s, transform 0.5s, opacity 1s, -webkit-transform 0.5s;
+$btn-pseudo-active-opacity: $build-default-opacity;
+$btn-icon-mar-y: 2px;
+$btn-icon-mar-x: $spacer-10;
+$btn-graphics-icon-size: $spacer-40;
+$btn-graphics-icon-pos-x: 0;
+$btn-graphics-icon-pos-y: calc(50% - #{$btn-graphics-icon-size * 0.5});
+$btn-graphics-pad-x: $btn-graphics-icon-size;
+$btn-caret-pad-x: $input-height-inner-lg;
+$btn-caret-pos-y: 50%;
+$btn-caret-pos-x: $spacer-22;
+$btn-caret-border-point: $spacer-8;
+$btn-caret-border-point-color: var(--mono-008);
+$btn-caret-border-space: $btn-caret-border-point * 0.5;
+$btn-caret-mar-y: -#{$btn-caret-border-space};
+$btn-caret-border-up: 0 $btn-caret-border-space $btn-caret-border-point $btn-caret-border-space;
+$btn-caret-border-right: $btn-caret-border-space 0 $btn-caret-border-space $btn-caret-border-point;
+$btn-caret-border-down: $btn-caret-border-point $btn-caret-border-space 0 $btn-caret-border-space;
+$btn-caret-border-left: $btn-caret-border-space $btn-caret-border-point $btn-caret-border-space 0;
+$btn-caret-border-color-up: transparent transparent $btn-caret-border-point-color transparent;
+$btn-caret-border-color-right: transparent transparent transparent $btn-caret-border-point-color;
+$btn-caret-border-color-down: $btn-caret-border-point-color transparent transparent transparent;
+$btn-caret-border-color-left: transparent transparent transparent $btn-caret-border-point-color;
+
+$btn-wide-width: $spacer-24 * 10;
+$btn-wide-sm-width: $spacer-16 * 10;
+
+$btn-link-color: var(--mono-010);

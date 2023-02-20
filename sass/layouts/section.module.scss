@@ -1,0 +1,35 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+
+@layer components {
+    .group {
+        @apply basis-full;
+    }
+
+    .groupInner {
+        @apply flex;
+        gap: var(--grid-section-gap);
+
+        @each $i, $gap in $grid-gaps {
+            &[data-grid-gap="#{$i}"] {
+                --grid-section-gap: #{$gap};
+            }
+        }
+    }
+
+    .main {
+        @apply grid shrink grow basis-full gap-2;
+    }
+
+    .side {
+        @apply flex grow basis-80 flex-col gap-2;
+    }
+
+    .sideInner {
+        --card-pad: #{$spacer-24};
+        @apply w-80;
+    }
+}

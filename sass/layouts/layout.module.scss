@@ -1,0 +1,65 @@
+@tailwind components;
+
+@import "../cores/variables";
+@import "../cores/mixins";
+@import "../extend/animate";
+
+@layer components {
+    .layout {
+        @apply flex w-full shrink grow;
+    }
+
+    .main {
+        @apply flex flex-col;
+        width: calc(100% - var(--layout-drawer-width));
+        flex: 1 1 100%;
+        background-color: var(--mono-001);
+    }
+
+    .heading {
+        padding: $spacer-32;
+        padding-bottom: $spacer-12;
+        border-bottom: 1px solid var(--mono-004);
+    }
+
+    .headInner {
+        @apply flex shrink-0 grow-0 items-end justify-between;
+    }
+
+    .actions {
+        @apply flex;
+    }
+
+    .body {
+        @apply flex shrink grow flex-col;
+        gap: var(--gap);
+        padding-left: $spacer-32;
+        padding-right: $spacer-32;
+        padding-top: $spacer-16;
+    }
+
+    .bodyInner {
+        @apply flex flex-col;
+        gap: var(--gap-lg);
+    }
+
+    .headInner,
+    .bodyInner {
+        &.fill {
+            @apply shrink grow;
+        }
+
+        &.contain {
+            @apply shrink-0 grow-0;
+            margin-inline: auto;
+            width: min(100%, map-get($container-max-widths, md));
+        }
+    }
+
+    .foot {
+        @apply shrink-0 grow-0 text-center;
+        padding: $spacer-32;
+        font-size: $font-size-12;
+        color: var(--mono-005);
+    }
+}
