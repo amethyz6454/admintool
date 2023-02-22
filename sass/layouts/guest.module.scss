@@ -11,17 +11,40 @@
     }
 
     .panel {
-        @apply flex w-full max-w-5xl p-4;
-        border-radius: var(--global-radius);
+        @apply flex w-full max-w-5xl;
+        border-radius: var(--global-radius-lg);
         background-color: var(--mono-000);
         box-shadow: var(--ui-box-shadow);
     }
 
     .side {
-        @apply min-w-[33.333333%] basis-1/3;
+        @apply relative flex min-w-[33.333333%] basis-1/3 p-2 pr-0;
+    }
+
+    .logo {
+        @apply absolute top-6 left-6;
+    }
+
+    .slides {
+        @apply flex grow items-center justify-center;
+        border-radius: var(--global-radius);
+        background-color: var(--color-primary);
+        background-color: #0081c9;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23000' stroke-width='35.9' stroke-opacity='0.08' %3E%3Ccircle fill='%230081C9' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23007abe' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%230073b3' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23006da9' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%2300669e' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23005f94' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23005989' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%2300527f' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23004c75' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%2300466b' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23003f61' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23003958' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%2300334f' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23002d45' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%2300273c' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%23012134' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23011c2b' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23001623' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+        background-attachment: fixed;
+        background-size: contain;
+    }
+
+    .item {
+        @apply p-4;
+        color: var(--mono-000);
     }
 
     .form {
-        @apply min-w-[66.666666%] basis-2/3 p-12;
+        @apply flex min-w-[66.666666%] basis-2/3 flex-col gap-6 p-12;
+    }
+
+    .head {
+        @apply flex;
     }
 }

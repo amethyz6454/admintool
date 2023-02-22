@@ -5,7 +5,7 @@ import StyleBadge from "@/sass/components/badge.module.scss";
 
 interface BadgeProps {
     shape?: "pill" | "circle";
-    children: React.ReactNode;
+    entry?: string | number | null;
     className?: string;
     size?: TypeGaps;
     variant?: TypeVariantColors;
@@ -13,7 +13,7 @@ interface BadgeProps {
 
 const Badge: React.FC<BadgeProps> = ({
     shape = "pill",
-    children,
+    entry,
     className,
     size = 8,
     variant = "danger",
@@ -23,7 +23,7 @@ const Badge: React.FC<BadgeProps> = ({
             className={classNames(StyleBadge.badge, StyleBadge[variant], StyleBadge[shape], className)}
             data-badge-size={size}
         >
-            {children}
+            {entry && entry}
         </span>
     );
 };

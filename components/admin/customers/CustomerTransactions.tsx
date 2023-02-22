@@ -87,7 +87,7 @@ const CustomerTransactions: React.FC = (): JSX.Element => {
                                         {transaction.settledAt === "" ? <>&mdash;</> : transaction.settledAt}
                                     </TableCell>
                                     <TableCell highlight>
-                                        <a onClick={() => setViewEditModal(true)}>View / Edit</a>
+                                        <button onClick={() => setViewEditModal(true)}>View / Edit</button>
                                     </TableCell>
                                 </TableRow>
                             ))}

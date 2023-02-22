@@ -4,77 +4,44 @@ import Image from "next/image";
 import classNames from "classnames";
 import {
     TypeContentAlignments,
+    TypeGaps,
     TypeIconSizes,
     TypeItemAlignments,
     TypeOrientations,
     TypePlacements,
+    TypeVariantColors,
 } from "@/utils/Interfaces/UI";
 import Badge from "@/components/ui/Badge";
 import Icon, { TypeIconNames } from "@/components/ui/Icons";
 import StyleNav from "@/sass/components/navigation.module.scss";
 
-interface NavigationBaseProps {
+interface PositioningProps {
     alignItems?: TypeItemAlignments;
+    justifyContent?: TypeContentAlignments;
+}
+
+interface NavigationBaseProps extends PositioningProps {
+    alt?: string;
     badge?: React.ReactNode;
-    badgeImage?: string;
     badgePlacement?: TypePlacements;
+    badgeSize?: TypeGaps;
     badgeText?: string;
+    badgeVariant?: TypeVariantColors;
     children: React.ReactNode;
     className?: string;
     disabled?: boolean;
     icon?: TypeIconNames;
     iconSize?: TypeIconSizes;
     image?: string;
-    justifyContent?: TypeContentAlignments;
     orientation?: TypeOrientations;
-    alt?: string;
 }
 interface NavigationProps extends NavigationBaseProps {
-    appearance?: "line" | "button" | "icon";
+    appearance?: "line" | "button" | "graphics";
+    gap?: TypeGaps;
+    itemProps?: PositioningProps & { gap?: TypeGaps };
     sticky?: boolean;
-    wrapperProps?: {
-        wrapperAlignItems?: TypeItemAlignments;
-        wrapperJustifyContent?: TypeContentAlignments;
-    };
+    wrapperProps?: PositioningProps;
 }
-
-export const Navigation: React.FC<NavigationProps> = ({
-    alignItems,
-    justifyContent,
-    appearance = "line",
-    orientation = "horizontal",
-    children,
-    className,
-    disabled,
-    iconSize = 120,
-    sticky = false,
-    wrapperProps = { wrapperAlignItems: null, wrapperJustifyContent: null },
-}): JSX.Element => {
-    return (
-        <nav
-            className={classNames(
-                StyleNav.wrapper,
-                StyleNav["ai-" + wrapperProps.wrapperAlignItems],
-                StyleNav["jc-" + wrapperProps.wrapperJustifyContent],
-                className,
-                { disabled: disabled, [StyleNav.isSticky]: sticky }
-            )}
-        >
-            <ul
-                className={classNames(
-                    StyleNav.list,
-                    StyleNav[appearance],
-                    StyleNav[orientation],
-                    StyleNav["ai-" + alignItems],
-                    StyleNav["jc-" + justifyContent]
-                )}
-                data-icon-size={appearance === "icon" ? iconSize : null}
-            >
-                {children}
-            </ul>
-        </nav>
-    );
-};
 
 interface NavigationItemProps extends NavigationBaseProps {
     appearance?: "solid" | "transparent";
@@ -83,39 +50,83 @@ interface NavigationItemProps extends NavigationBaseProps {
     selected?: boolean;
 }
 
-const NavigationItemContainer: React.FC<NavigationItemProps> = ({
+const NavigationButtonLinkContainer: React.FC<NavigationItemProps> = ({
     children,
     className,
     href,
     onClick,
 }): JSX.Element => {
+    return href ? (
+        <Link href={href}>
+            <a className={classNames(StyleNav.link, className)} onClick={onClick}>
+                {children}
+            </a>
+        </Link>
+    ) : (
+        <button className={classNames(StyleNav.link, className)} type="button" onClick={onClick}>
+            {children}
+        </button>
+    );
+};
+
+export const Navigation: React.FC<NavigationProps> = ({
+    alignItems,
+    appearance = "line",
+    children,
+    className,
+    disabled,
+    gap = 0,
+    iconSize = 120,
+    justifyContent,
+    orientation = "horizontal",
+    sticky = false,
+    wrapperProps = { alignItems: null, justifyContent: null },
+    itemProps = { alignItems: null, justifyContent: null, gap: null },
+}): JSX.Element => {
     return (
-        <>
-            {href ? (
-                <Link href={href}>
-                    <a className={classNames(StyleNav.link, className)}>{children}</a>
-                </Link>
-            ) : (
-                <span className={classNames(StyleNav.link, className)} onClick={onClick}>
-                    {children}
-                </span>
+        <nav
+            className={classNames(
+                StyleNav.wrapper,
+                StyleNav["ai-" + wrapperProps.alignItems],
+                StyleNav["jc-" + wrapperProps.justifyContent],
+                { disabled: disabled, [StyleNav.isSticky]: sticky },
+                className
             )}
-        </>
+        >
+            <ul
+                className={classNames(
+                    StyleNav.list,
+                    StyleNav[appearance],
+                    StyleNav[orientation],
+                    StyleNav["ai-" + alignItems],
+                    StyleNav["jc-" + justifyContent],
+                    StyleNav["item-ai-" + itemProps.alignItems],
+                    StyleNav["item-jc-" + itemProps.justifyContent],
+                    StyleNav["item-gap-" + itemProps.gap]
+                )}
+                data-size={appearance === "graphics" ? iconSize : null}
+                data-gap={gap}
+            >
+                {children}
+            </ul>
+        </nav>
     );
 };
 
 export const NavigationItem: React.FC<NavigationItemProps> = ({
-    alt,
     alignItems,
+    alt,
     appearance = "solid",
     badge,
-    badgeImage,
     badgePlacement = "top-start",
+    badgeSize = 24,
     badgeText,
+    badgeVariant = "default",
     children,
     className,
     href,
     icon,
+    iconSize = 24,
     image,
     justifyContent,
     onClick,
@@ -127,12 +138,12 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
                 [StyleNav.active]: selected,
             })}
         >
-            <NavigationItemContainer
+            <NavigationButtonLinkContainer
                 href={href}
                 onClick={onClick}
                 className={classNames(StyleNav["ai-" + alignItems], StyleNav["jc-" + justifyContent])}
             >
-                {icon && <Icon name={icon} className={StyleNav.icon} />}
+                {icon && <Icon name={icon} size={iconSize} className={StyleNav.icon} />}
                 {image && (
                     <span className={StyleNav.image}>
                         <Image src={image} layout="fill" objectFit="contain" alt={alt} />
@@ -141,20 +152,14 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
                 {badge && (
                     <Badge
                         shape="circle"
-                        variant="default"
-                        size={24}
+                        variant={badgeVariant}
+                        size={badgeSize}
                         className={classNames(StyleNav.badge, StyleNav[badgePlacement])}
-                    >
-                        {badgeText && badgeText}
-                        {badgeImage && (
-                            <span className={StyleNav.badgeImage}>
-                                <Image src={badgeImage} layout="fill" objectFit="contain" alt={alt} />
-                            </span>
-                        )}
-                    </Badge>
+                        entry={badgeText && badgeText}
+                    />
                 )}
-                <span>{children}</span>
-            </NavigationItemContainer>
+                <span className={StyleNav.text}>{children}</span>
+            </NavigationButtonLinkContainer>
         </li>
     );
 };

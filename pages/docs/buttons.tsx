@@ -49,13 +49,13 @@ const DocumentationButtons: NextPage = (): JSX.Element => {
                         <Composition wrapper="h4" primary="Button Lengths" color="primary" fontWeight="medium" />
 
                         {ButtonLengths.map((l, k) => (
-                            <GridCol grid={3}>
+                            <GridCol key={k} grid={3}>
                                 <Composition
                                     key={k}
                                     primary={l === null ? "Default (null)" : uppercaseFirst(l)}
                                     gutterBottom
                                 />
-                                {l === null ? <Button>Button</Button> : <Button length={l}>Button</Button>}
+                                {l === null ? <Button>Button</Button> : <Button length="block">Button</Button>}
                             </GridCol>
                         ))}
 

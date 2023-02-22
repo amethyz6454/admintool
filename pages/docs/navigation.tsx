@@ -192,9 +192,9 @@ const DocumentationNavigation: NextPage = (): JSX.Element => {
                             </Navigation>
                         </GridCol>
 
-                        <Composition wrapper="h4" primary="Navigation | icon | horizontal" />
+                        <Composition wrapper="h4" primary="Navigation | graphics | horizontal" />
                         <GridCol>
-                            <Navigation appearance="icon">
+                            <Navigation appearance="graphics">
                                 <NavigationItem
                                     selected={assertEqual(selectedTab, AccountTabs.TAB_GENERAL)}
                                     onClick={() => setSelectedTab(AccountTabs.TAB_GENERAL)}
@@ -234,9 +234,9 @@ const DocumentationNavigation: NextPage = (): JSX.Element => {
                             </Navigation>
                         </GridCol>
 
-                        <Composition wrapper="h4" primary="Navigation | icon | vertical" />
+                        <Composition wrapper="h4" primary="Navigation | graphics | vertical" />
                         <GridCol>
-                            <Navigation appearance="icon" orientation="vertical">
+                            <Navigation appearance="graphics" orientation="vertical">
                                 <NavigationItem
                                     selected={assertEqual(selectedTab, AccountTabs.TAB_GENERAL)}
                                     onClick={() => setSelectedTab(AccountTabs.TAB_GENERAL)}
@@ -272,6 +272,9 @@ const DocumentationNavigation: NextPage = (): JSX.Element => {
                                 <NavigationItem
                                     selected={assertEqual(selectedTab, AccountTabs.TAB_FEES)}
                                     onClick={() => setSelectedTab(AccountTabs.TAB_FEES)}
+                                    badge
+                                    badgeVariant="danger"
+                                    badgeSize={8}
                                 >
                                     Fees
                                 </NavigationItem>

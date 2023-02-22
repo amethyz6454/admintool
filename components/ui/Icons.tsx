@@ -3,17 +3,18 @@ import classNames from "classnames";
 import { TypeIconSizes } from "@/utils/Interfaces/UI";
 import StyleIcon from "@/sass/components/icon.module.scss";
 
-interface IconProps {
+export interface IconProps {
     size?: TypeIconSizes;
     className?: string;
 }
-interface IconContainerProps extends IconProps {
+
+export interface IconContainerProps extends IconProps {
     children: React.ReactNode;
 }
 
-const IconColor = "#cc7f33";
-const IconForeOpacity = "0.15";
-const IconBackOpacity = "0.1";
+export const IconColor = "#cc7f33";
+export const IconForeOpacity = "0.15";
+export const IconBackOpacity = "0.1";
 
 const IconContainer: React.FC<IconContainerProps> = ({ children, className, size = 24, ...options }): JSX.Element => {
     return (

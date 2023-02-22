@@ -12,7 +12,8 @@ const Admin: NextPage = (): JSX.Element => {
 
     return (
         <Authenticated
-            title="Balances"
+            title="Expandable Table Row"
+            subTitle="Subtitle Here"
             actions={
                 <Button size="sm" color="secondary">
                     Export

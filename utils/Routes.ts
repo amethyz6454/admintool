@@ -44,7 +44,7 @@ export const adminRoutes = [
         ],
     },
     {
-        name: "Retrieval/Chargeback",
+        name: "Retrieval Chargeback",
         icon: "ChargeBack",
         sub: [
             {

@@ -88,8 +88,9 @@ const DocumentationInputFields: NextPage = (): JSX.Element => {
                         <OptionsField id="option_field_radio_2" name="option_field" label="Radio" type="radio" />
 
                         <FormFieldset title="In Fieldset (Checkbox)" content="options" grid={6}>
-                            {fieldCount.map((c) => (
+                            {fieldCount.map((c, k) => (
                                 <OptionsField
+                                    key={k}
                                     id={"option_field_a_" + c}
                                     name="option_field_a"
                                     label={"Checkbox " + c}
@@ -97,8 +98,9 @@ const DocumentationInputFields: NextPage = (): JSX.Element => {
                             ))}
                         </FormFieldset>
                         <FormFieldset title="In Fieldset (Radio Button)" content="options" grid={6}>
-                            {fieldCount.map((r) => (
+                            {fieldCount.map((r, k) => (
                                 <OptionsField
+                                    key={k}
                                     id={"option_field_b_" + r}
                                     name="option_field_b"
                                     label={"Radio " + r}
@@ -107,8 +109,13 @@ const DocumentationInputFields: NextPage = (): JSX.Element => {
                             ))}
                         </FormFieldset>
                         <FormFieldset title="In Fieldset (Button Options)" content="buttonOptions">
-                            {fieldCount.map((c) => (
-                                <OptionsField id={"option_field_c_" + c} name="option_field_c" label={"Option " + c} />
+                            {fieldCount.map((c, k) => (
+                                <OptionsField
+                                    key={k}
+                                    id={"option_field_c_" + c}
+                                    name="option_field_c"
+                                    label={"Option " + c}
+                                />
                             ))}
                         </FormFieldset>
                         <FormFieldset
@@ -116,8 +123,9 @@ const DocumentationInputFields: NextPage = (): JSX.Element => {
                             content="buttonOptions"
                             innerGrid={3}
                         >
-                            {fieldCount.map((r) => (
+                            {fieldCount.map((r, k) => (
                                 <OptionsField
+                                    key={k}
                                     id={"option_field_d_" + r}
                                     name="option_field_d"
                                     label={"Option " + r}

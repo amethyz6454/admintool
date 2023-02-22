@@ -8,13 +8,14 @@ import Tooltip from "@/components/ui/Tooltip";
 import { adminRoutes, merchantRoutes } from "@/utils/Routes";
 import { useDrawerNavToggle } from "contexts/DrawerToggleContext";
 import StyleSidebar from "@/sass/layouts/sidebar.module.scss";
+import { Navigation, NavigationItem } from "@/components/navigation/Navigation";
 
 interface SideMenuProps {
     isExpanded: boolean;
     setIsExpanded: (e: boolean) => void;
 }
 
-const SubMenu: React.FC<{
+const SubMenuButton: React.FC<{
     route?: { name: string; href: string; icon: TypeIconNames; sub?: Array<{ name: string; href: string }> };
     navId: string;
     setNavId: (_) => void;
@@ -23,7 +24,8 @@ const SubMenu: React.FC<{
 }> = ({ route, navId, setNavId, navSubId, setNavSubId }): JSX.Element => {
     return (
         <React.Fragment>
-            <span
+            <button
+                type="button"
                 className={classNames(StyleSidebar.link, { [StyleSidebar.active]: navId === route.name })}
                 onClick={() => setNavId(route.name)}
             >
@@ -31,13 +33,13 @@ const SubMenu: React.FC<{
                     <Icon name={route.icon} className={StyleSidebar.icon} />
                 </div>
                 <div className={StyleSidebar.text}>{route.name}</div>
-                {route.href ? null : (
+                {/* {route.href ? null : (
                     <div className={classNames(StyleSidebar.icon, StyleSidebar.subIcon)}>
                         <Icon name={navId === route.name ? "ChevronUp" : "ChevronDown"} />
                     </div>
-                )}
-            </span>
-            <div className={classNames(StyleSidebar.sub, { [StyleSidebar.active]: navId === route.name })}>
+                )} */}
+            </button>
+            {/* <div className={classNames(StyleSidebar.sub, { [StyleSidebar.active]: navId === route.name })}>
                 {route.sub.map((sub, a) => (
                     <div className={StyleSidebar.subItem} key={a}>
                         <Link href={sub.href}>
@@ -52,8 +54,30 @@ const SubMenu: React.FC<{
                         </Link>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </React.Fragment>
+    );
+};
+
+const SubMenuLink: React.FC<{
+    route?: { href: string; name: string; icon: TypeIconNames };
+    navId: string;
+    setNavId: (_) => void;
+}> = ({ route, navId, setNavId }): JSX.Element => {
+    return (
+        <Link href={route.href}>
+            <a
+                className={classNames(StyleSidebar.link, {
+                    [StyleSidebar.active]: navId === route.name,
+                })}
+                onClick={() => setNavId(route.name)}
+            >
+                <div className={StyleSidebar.icon}>
+                    <Icon name={route.icon} />
+                </div>
+                <div className={StyleSidebar.text}>{route.name}</div>
+            </a>
+        </Link>
     );
 };
 
@@ -66,30 +90,18 @@ const SideMenu: React.FC<SideMenuProps> = ({ isExpanded, setIsExpanded }): JSX.E
     return (
         <aside className={classNames(StyleSidebar.wrapper, StyleSidebar[renderToggleDrawer])}>
             <div className={StyleSidebar.drawer}>
-                <div className={StyleSidebar.head}>
-                    <ApplicationLogo href="/" iconOnly={isExpanded} className={StyleSidebar.logo} />
-                </div>
+                {/* <div className={StyleSidebar.head}>
+                    <ApplicationLogo href="/" iconOnly={!isExpanded} className={StyleSidebar.logo} />
+                </div> */}
                 <div className={StyleSidebar.body}>
-                    <nav className={StyleSidebar.content}>
+                    {/* <nav className={StyleSidebar.content}>
                         <div className={StyleSidebar.nav}>
                             {renderRoutes.map((route, k) => (
                                 <div className={StyleSidebar.item} key={k}>
                                     {route.href ? (
-                                        <Link href={route.href}>
-                                            <a
-                                                className={classNames(StyleSidebar.link, {
-                                                    [StyleSidebar.active]: navId === route.name,
-                                                })}
-                                                onClick={() => setNavId(route.name)}
-                                            >
-                                                <div className={StyleSidebar.icon}>
-                                                    <Icon name={route.icon} />
-                                                </div>
-                                                <div className={StyleSidebar.text}>{route.name}</div>
-                                            </a>
-                                        </Link>
+                                        <SubMenuLink route={route} navId={navId} setNavId={setNavId} />
                                     ) : (
-                                        <SubMenu
+                                        <SubMenuButton
                                             route={route}
                                             navId={navId}
                                             setNavId={setNavId}
@@ -100,21 +112,30 @@ const SideMenu: React.FC<SideMenuProps> = ({ isExpanded, setIsExpanded }): JSX.E
                                 </div>
                             ))}
                         </div>
-                    </nav>
+                    </nav> */}
+                    <Navigation
+                        orientation="vertical"
+                        appearance="graphics"
+                        iconSize={96}
+                        itemProps={{ alignItems: "center", justifyContent: "center", gap: 8 }}
+                    >
+                        {renderRoutes.map((route, k) => (
+                            <NavigationItem key={k} href={route.href} icon={route.icon}>
+                                {route.name}
+                            </NavigationItem>
+                        ))}
+                    </Navigation>
                 </div>
                 <div className={StyleSidebar.foot}>
-                    <div className={StyleSidebar.content}>Footer</div>
-                    <div className={StyleSidebar.action}>
-                        <Tooltip title={isExpanded ? "Collapse" : "Expand"}>
-                            <Button
-                                type="button"
-                                shape="circle"
-                                className={StyleSidebar.toggle}
-                                onClick={() => setIsExpanded(!isExpanded)}
-                            >
-                                <Icon name={isExpanded ? "ChevronLeft" : "Menu"} />
-                            </Button>
-                        </Tooltip>
+                    <div className={StyleSidebar.content}>
+                        <Button
+                            type="button"
+                            shape="circle"
+                            className={StyleSidebar.toggle}
+                            onClick={() => setIsExpanded(!isExpanded)}
+                        >
+                            <Icon name={isExpanded ? "ChevronLeft" : "Menu"} />
+                        </Button>
                     </div>
                 </div>
             </div>

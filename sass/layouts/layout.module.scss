@@ -6,7 +6,7 @@
 
 @layer components {
     .layout {
-        @apply flex w-full shrink grow;
+        @apply flex shrink grow;
     }
 
     .main {

@@ -15,13 +15,13 @@ const login: NextPage = (): JSX.Element => {
             slides={
                 <GuestSliderItem
                     title="Access to Diverse Markets"
-                    message="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    message="The wise man therefore always holds in these matters to this principle of selection."
                 />
             }
             enableGrid
         >
-            <InputField id="emailAddress" name="emailAddress" placeholder="Email Address" endIcon="User" />
-            <InputField type="password" id="password" name="password" placeholder="Password" />
+            <InputField type="email" id="emailAddress" name="emailAddress" placeholder="Email Address" endIcon="User" />
+            <InputField type="password" id="password" name="password" placeholder="Password" endIcon="Lock" />
             <Button length="block">Login</Button>
             <GridCol>
                 <Composition

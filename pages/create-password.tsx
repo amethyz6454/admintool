@@ -4,7 +4,7 @@ import Link from "next/link";
 import GuestLayout, { GuestSliderItem } from "@/components/layout/GuestLayout";
 import Button from "@/components/buttons/Button";
 import Emphasis from "@/components/ui/Emphasis";
-import { Grid, GridCol } from "@/components/ui/Grid";
+import { GridCol } from "@/components/ui/Grid";
 import { InputField } from "@/components/form/InputField";
 import { ListContainer, ListItem } from "@/components/ui/List";
 import Toast from "@/components/ui/Toast";

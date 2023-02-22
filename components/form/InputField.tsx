@@ -36,13 +36,16 @@ const FieldAddon: React.FC<{ size: TypeSizes; className: string; onClick?: () =>
     onClick,
     icon,
 }): JSX.Element => {
-    return (
-        <div
-            className={classNames(StyleInputField.icon, StyleInputField[size], className, {
-                "cursor-pointer": !!onClick,
-            })}
+    return onClick ? (
+        <button
+            type="button"
+            className={classNames(StyleInputField.icon, StyleInputField[size], className, "cursor-pointer")}
             onClick={onClick}
         >
+            <Icon name={icon} size={size === "sm" || size === "xs" ? 16 : 24} />
+        </button>
+    ) : (
+        <div className={classNames(StyleInputField.icon, StyleInputField[size], className)}>
             <Icon name={icon} size={size === "sm" || size === "xs" ? 16 : 24} />
         </div>
     );

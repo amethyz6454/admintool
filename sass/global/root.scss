@@ -175,7 +175,7 @@
     // layout drawer
     --layout-drawer-color: var(--mono-010);
     --layout-drawer-bg: var(--layout-header-bg);
-    --layout-drawer-width: 16rem;
+    --layout-drawer-width: var(--spacer-96);
 
     // drawer
     --drawer-nav-gap: var(--gap-sm);
@@ -198,7 +198,7 @@
     --backdrop: hsla(var(--mono-010-hsl), 0.75);
 
     // form
-    --form-input-bg: var(--mono-002);
+    --form-input-bg: hsl(var(--mono-001-hsl), 0.5);
     --form-input-border-width: 1px;
     --form-input-border: var(--mono-003);
     --form-input-text: var(--mono-010);
