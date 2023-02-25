@@ -12,7 +12,7 @@ export const ErrorLayout: React.FC<{ title: string; subtitle: string; image: str
         <div className={StyleError.fullErrorBox}>
             <div className={StyleError.ErrorCenteredBox}>
                 <div className={StyleError.ErrorTopImg}>
-                    <Image src={image} width={240} height={240} alt={`PayStage - ${title}`} />
+                    <Image src={image} width={240} height={240} alt={`Admintool - ${title}`} />
                 </div>
                 <h1 className={StyleError.title}>{title}</h1>
                 <h5 className={StyleError.subtitle}>{subtitle}</h5>

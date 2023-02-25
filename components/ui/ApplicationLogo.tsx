@@ -18,7 +18,7 @@ const ApplicationLogo: React.FC<{
                     src={`/images/app-logo-for-${theme}${iconOnly ? "-icon" : ""}.svg`}
                     width={iconOnly ? height : width}
                     height={height}
-                    alt="PayStage"
+                    alt="Admintool"
                 />
             </a>
         </Link>
@@ -27,7 +27,7 @@ const ApplicationLogo: React.FC<{
             src={`/images/app-logo-for-${theme}${iconOnly ? "-icon" : ""}.svg`}
             width={iconOnly ? height : width}
             height={height}
-            alt="PayStage"
+            alt="Admintool"
         />
     );
 };

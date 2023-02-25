@@ -47,9 +47,12 @@ const DockerItem: React.FC<DockerItemProps & { title: string }> = ({
         >
             <DockerItemContainer href={href}>
                 {notify && (
-                    <Badge shape="circle" size={notifyCount ? 16 : 8} className={StyleDocker.badge}>
-                        {notifyCount}
-                    </Badge>
+                    <Badge
+                        shape="circle"
+                        size={notifyCount ? 16 : 8}
+                        className={StyleDocker.badge}
+                        entry={notifyCount}
+                    />
                 )}
                 {icon && (
                     <div className={StyleDocker.icon}>
@@ -105,21 +108,20 @@ const DockerItemGroup: React.FC<DockerItemProps & DockerItemGroupProps> = ({
             />
             <div className={classNames(StyleDocker.itemList, { [StyleDocker.active]: openMenu })}>
                 {items.map((item, k) => (
-                    <React.Fragment key={k}>
-                        <DockerItem
-                            disabled={item.disabled}
-                            href={item.href}
-                            icon={item.icon}
-                            notify={item.notify}
-                            notifyCount={item.notifyCount}
-                            onClick={() => {
-                                item.onClick && item.onClick();
-                                setOpenMenu(false);
-                            }}
-                            selected={item.selected}
-                            title={item.title}
-                        />
-                    </React.Fragment>
+                    <DockerItem
+                        key={k}
+                        disabled={item.disabled}
+                        href={item.href}
+                        icon={item.icon}
+                        notify={item.notify}
+                        notifyCount={item.notifyCount}
+                        onClick={() => {
+                            item.onClick && item.onClick();
+                            setOpenMenu(false);
+                        }}
+                        selected={item.selected}
+                        title={item.title}
+                    />
                 ))}
             </div>
         </div>

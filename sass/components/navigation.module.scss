@@ -103,6 +103,10 @@
         --btn-bg: var(--mono-000);
     }
 
+    .text {
+        @apply px-1;
+    }
+
     .image {
         position: relative;
     }
@@ -149,6 +153,9 @@
     .button {
         .item {
             .link {
+                @extend %extend-btn;
+                @extend %extend-btn-pseudo-active;
+                @extend %extend-btn-states;
                 @include button-size(
                     null,
                     null,

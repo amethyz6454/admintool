@@ -10,7 +10,7 @@ const AccountSettingsWebhooks: React.FC = (): JSX.Element => {
             <Composition
                 wrapper="h4"
                 primary="Webhook URL"
-                sub="Specify the Webhook url of the account, PayStage will send notifications to this url."
+                sub="Specify the Webhook url of the account, Admintool will send notifications to this url."
             />
             <InputField type="url" id="webhooks" name="webhooks" grid={4} label="Set your webhook url" />
             <FormButtons grid="auto" align="end">

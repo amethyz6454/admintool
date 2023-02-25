@@ -10,7 +10,7 @@ import Composition from "@/components/ui/Composition";
 const login: NextPage = (): JSX.Element => {
     return (
         <GuestLayout
-            title="Sign in to your PayStage account"
+            title="Sign in to your Admintool account"
             subtext=""
             slides={
                 <GuestSliderItem

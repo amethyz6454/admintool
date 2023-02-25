@@ -19,7 +19,7 @@ const Authenticated: React.FC<{
     return (
         <div className={StyleLayout.layout}>
             <Head>
-                <title>{title} - PayStage</title>
+                <title>{title} - Admintool</title>
             </Head>
             <SideMenu isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
             <main className={StyleLayout.main}>
@@ -34,7 +34,7 @@ const Authenticated: React.FC<{
                     <div className={classNames(StyleLayout.bodyInner, StyleLayout[layout])}>{children}</div>
                 </div>
                 <footer className={StyleLayout.foot}>
-                    <p>&copy; PayStage {new Date().getFullYear()}</p>
+                    <p>&copy; Admintool {new Date().getFullYear()}</p>
                 </footer>
             </main>
         </div>

@@ -116,7 +116,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isExpanded, setIsExpanded }): JSX.E
                     <Navigation
                         orientation="vertical"
                         appearance="graphics"
-                        iconSize={96}
+                        itemSize={96}
                         itemProps={{ alignItems: "center", justifyContent: "center", gap: 8 }}
                     >
                         {renderRoutes.map((route, k) => (

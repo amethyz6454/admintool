@@ -18,7 +18,8 @@
     );
 
     .badge {
-        @apply rounded-full text-xs font-medium;
+        @apply flex rounded-full text-xs font-medium;
+        height: var(--badge-size);
         padding: $spacer-4 $spacer-8;
         color: var(--mono-000);
         box-shadow: 0 3px 6px 0 hsla(var(--mono-010-hsl), 0.05), inset 0 -2px 3px 0 hsla(var(--mono-010-hsl), 0.15);

@@ -9,7 +9,7 @@ import { Grid } from "@/components/ui/Grid";
 const register: NextPage = (): JSX.Element => {
     return (
         <GuestLayout
-            title="Sign up to your PayStage account"
+            title="Sign up to your Admintool account"
             subtext=""
             slides={
                 <GuestSliderItem
@@ -43,7 +43,7 @@ const register: NextPage = (): JSX.Element => {
                     <Link href="/login">Already registered?</Link>
                 </p>
                 <p>
-                    Back to <Link href="http://paystage.net">PayStage.net</Link>
+                    Back to <Link href="http://admintool.net">Admintool.net</Link>
                 </p>
             </div>
         </GuestLayout>

@@ -15,7 +15,6 @@ $table-gaps: map-merge(
 .table {
     width: 100%;
     vertical-align: middle;
-    color: var(--layout-text);
     font-size: $font-size-12;
     line-height: $spacer-16;
 
@@ -58,7 +57,7 @@ $table-gaps: map-merge(
     &.hover .body .row {
         @include hover {
             color: var(--layout-text);
-            background-color: hsla(var(--mono-002-hsl), 0.25);
+            background-color: hsla(var(--mono-002-hsl), 0.4);
         }
     }
 
@@ -88,7 +87,7 @@ $table-gaps: map-merge(
 
         &:last-child .cell {
             border-bottom-width: calc(var(--table-border-width) * 2);
-            border-bottom-color: var(--mono-004);
+            border-bottom-color: var(--mono-003);
         }
     }
 
@@ -325,6 +324,7 @@ $table-gaps: map-merge(
     padding-left: $spacer-24;
     background-color: var(--mono-001);
     border: 1px solid var(--mono-002);
+    @extend %extend-animate;
 
     &::before {
         content: "";
@@ -339,7 +339,7 @@ $table-gaps: map-merge(
     }
 
     &:hover {
-        background-color: var(--mono-002);
+        background-color: hsla(var(--mono-002-hsl), 0.35);
         border-color: var(--mono-003);
 
         &::before {

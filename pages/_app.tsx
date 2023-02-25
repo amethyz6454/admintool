@@ -1,5 +1,3 @@
-// import "@/styles/globals.css";
-
 import "@/sass/global/root.scss";
 import "@/sass/global/reset.scss";
 import "@/sass/global/global.scss";

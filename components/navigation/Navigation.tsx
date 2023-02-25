@@ -14,6 +14,7 @@ import {
 import Badge from "@/components/ui/Badge";
 import Icon, { TypeIconNames } from "@/components/ui/Icons";
 import StyleNav from "@/sass/components/navigation.module.scss";
+import styled from "styled-components";
 
 interface PositioningProps {
     alignItems?: TypeItemAlignments;
@@ -33,6 +34,10 @@ interface NavigationBaseProps extends PositioningProps {
     icon?: TypeIconNames;
     iconSize?: TypeIconSizes;
     image?: string;
+    // itemSize?: TypeIconSizes;
+    itemSize?: number;
+    itemWidth?: number;
+    itemHeight?: number;
     orientation?: TypeOrientations;
 }
 interface NavigationProps extends NavigationBaseProps {
@@ -69,6 +74,25 @@ const NavigationButtonLinkContainer: React.FC<NavigationItemProps> = ({
     );
 };
 
+interface BaseNavigationProps {
+    className?: string;
+    $size?: number;
+    $width?: number;
+    $height?: number;
+}
+
+const BaseItem = styled(NavigationButtonLinkContainer)(({ $size, $height, $width }: BaseNavigationProps) => ({
+    height: $size ? $size : $height ? $height : null,
+    width: $size ? $size : $width ? $width : null,
+}));
+
+const BaseNavigation = styled("ul")(({ $size, $height, $width }: BaseNavigationProps) => ({
+    "li a, li button": {
+        height: $size ? $size : $height ? $height : null,
+        width: $size ? $size : $width ? $width : null,
+    },
+}));
+
 export const Navigation: React.FC<NavigationProps> = ({
     alignItems,
     appearance = "line",
@@ -76,12 +100,14 @@ export const Navigation: React.FC<NavigationProps> = ({
     className,
     disabled,
     gap = 0,
-    iconSize = 120,
+    itemProps = { alignItems: null, justifyContent: null, gap: null },
+    itemSize,
+    itemWidth,
+    itemHeight,
     justifyContent,
     orientation = "horizontal",
     sticky = false,
     wrapperProps = { alignItems: null, justifyContent: null },
-    itemProps = { alignItems: null, justifyContent: null, gap: null },
 }): JSX.Element => {
     return (
         <nav
@@ -93,7 +119,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                 className
             )}
         >
-            <ul
+            <BaseNavigation
                 className={classNames(
                     StyleNav.list,
                     StyleNav[appearance],
@@ -104,11 +130,13 @@ export const Navigation: React.FC<NavigationProps> = ({
                     StyleNav["item-jc-" + itemProps.justifyContent],
                     StyleNav["item-gap-" + itemProps.gap]
                 )}
-                data-size={appearance === "graphics" ? iconSize : null}
+                $size={itemSize}
+                $width={itemWidth}
+                $height={itemHeight}
                 data-gap={gap}
             >
                 {children}
-            </ul>
+            </BaseNavigation>
         </nav>
     );
 };
@@ -126,7 +154,7 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
     className,
     href,
     icon,
-    iconSize = 24,
+    iconSize,
     image,
     justifyContent,
     onClick,

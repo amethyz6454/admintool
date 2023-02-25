@@ -23,7 +23,7 @@ const APIRequestsHistory: React.FC = (): JSX.Element => {
                     </TableHead>
                     <TableBody>
                         <TableRow>
-                            <TableCell>https://api-staging.paystage.net/deposit/intent</TableCell>
+                            <TableCell>https://api-staging.admintool.net/deposit/intent</TableCell>
                             <TableCell>136.158.48.100</TableCell>
                             <TableCell>PostmanRuntime/7.29.2</TableCell>
                             <TableCell>pk_OgxumUr87vGcqMeY94Lmnz6OxtHVRqzR</TableCell>
