@@ -26,11 +26,6 @@ const AccountDetails: NextPage = (): JSX.Element => {
     const [showFilterModal, setShowFilterModal] = React.useState<boolean>(false);
     const [showSearchModal, setShowSearchModal] = React.useState<boolean>(false);
 
-    // const handleCloseAll = () => {
-    //     setShowFilterModal(false);
-    //     setShowSearchModal(false);
-    // };
-
     const handleOpenSearch = () => {
         setShowSearchModal(true);
         setShowFilterModal(false);
@@ -122,10 +117,6 @@ const AccountDetails: NextPage = (): JSX.Element => {
             ],
         },
     ] as DockerItemGroupType;
-
-    // useKeyPress(["Shift", "Alt", "S"], handleOpenSearch);
-    // useKeyPress(["Shift", "Alt", "F"], handleOpenFilter);
-    // useKeyPress(["Shift", "Alt", "X"], handleCloseAll);
 
     return (
         <Authenticated title="John Doe - AC2252489794">
