@@ -26,7 +26,9 @@ const DockerItemContainer: React.FC<DockerItemProps & { children: React.ReactNod
             <a className={StyleDocker.link}>{children}</a>
         </Link>
     ) : (
-        <div className={StyleDocker.link}>{children}</div>
+        <button type="button" className={StyleDocker.link}>
+            {children}
+        </button>
     );
 };
 
@@ -71,7 +73,7 @@ interface DockerItemGroupProps {
     disabled?: boolean;
     href?: string;
     icon?: TypeIconNames;
-    items?: DockerItemTypes;
+    items: DockerItemTypes;
     notify?: React.ReactNode;
     notifyCount?: number;
     title?: string;
@@ -130,7 +132,7 @@ const DockerItemGroup: React.FC<DockerItemProps & DockerItemGroupProps> = ({
 
 DockerItemGroup.displayName = "DockerItemGroup";
 
-const Docker: React.FC<{ items?: DockerItemTypes; groupItems?: DockerItemGroupType }> = ({
+const Docker: React.FC<{ items: DockerItemTypes; groupItems?: DockerItemGroupType }> = ({
     items,
     groupItems,
 }): JSX.Element => {
