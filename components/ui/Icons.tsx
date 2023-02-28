@@ -12,7 +12,7 @@ export interface IconContainerProps extends IconProps {
     children: React.ReactNode;
 }
 
-export const IconColor = "#cc7f33";
+export const IconColor = "#0081c9";
 export const IconForeOpacity = "0.15";
 export const IconBackOpacity = "0.1";
 

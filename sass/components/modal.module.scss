@@ -143,14 +143,11 @@ $modal-sizes: map-merge(
 
         .icon {
             @apply absolute left-1/2 -top-8 grid h-16 w-16 -translate-x-1/2 place-items-center rounded-full;
-            background-color: var(--mono-002);
+            background-color: var(--alert-modal-foot-bg);
 
             &::before {
                 content: "";
                 @apply absolute top-0 left-0 h-full w-full rotate-45 rounded-full;
-                border: 1px solid var(--mono-003);
-                border-bottom-color: var(--mono-002);
-                border-right-color: var(--mono-002);
             }
         }
 
@@ -160,11 +157,13 @@ $modal-sizes: map-merge(
 
         .foot {
             @apply relative pt-12;
-            border: 1px solid var(--mono-003);
+            background-color: var(--alert-modal-foot-bg);
         }
 
         @each $variant, $color in $theme-colors {
             &.#{$variant} {
+                --alert-modal-foot-bg: #{lighten($color, 45)};
+
                 .icon {
                     color: var(--color-#{$variant});
                 }

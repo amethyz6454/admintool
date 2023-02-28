@@ -6,34 +6,34 @@ import { ButtonGroup } from "@/components/form/Form";
 const Pagination: React.FC = (): JSX.Element => {
     return (
         <ButtonGroup>
-            <Button color="secondary" shape="square">
+            <Button appearance="link" shape="square">
                 <Icon name="ChevronLeft" size={16} />
             </Button>
-            <Button color="secondary" shape="square">
+            <Button appearance="link" shape="square">
                 <Icon name="ChevronDoubleLeft" size={16} />
             </Button>
             <Button color="primary" shape="square">
                 {1}
             </Button>
-            <Button color="secondary" shape="square">
+            <Button appearance="link" shape="square">
                 {2}
             </Button>
-            <Button color="secondary" shape="square">
+            <Button appearance="link" shape="square">
                 {3}
             </Button>
-            <Button color="secondary" shape="square">
+            <Button appearance="link" shape="square">
                 {4}
             </Button>
-            <Button color="secondary" shape="square">
+            <Button appearance="link" shape="square">
                 {5}
             </Button>
-            <Button color="secondary" shape="square">
+            <Button appearance="link" shape="square">
                 {99999}
             </Button>
-            <Button color="secondary" shape="square">
+            <Button appearance="link" shape="square">
                 <Icon name="ChevronDoubleRight" size={16} />
             </Button>
-            <Button color="secondary" shape="square">
+            <Button appearance="link" shape="square">
                 <Icon name="ChevronRight" size={16} />
             </Button>
         </ButtonGroup>
