@@ -50,7 +50,7 @@ const AccountDetails: NextPage = (): JSX.Element => {
                         <TableHead>
                             <TableRow>
                                 <TableCell>Account Number</TableCell>
-                                <TableCell>Merchant Name</TableCell>
+                                <TableCell>Somebody</TableCell>
                                 <TableCell>Type</TableCell>
                                 <TableCell>Created At</TableCell>
                             </TableRow>

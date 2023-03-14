@@ -14,14 +14,14 @@ const MerchantDetailsSection: React.FC = (): JSX.Element => {
                 <ListContainer direction="column" itemBordered itemJustify="space-between" gap={12}>
                     <ListItem
                         direction="row"
-                        label="Merchant Number"
+                        label="Random Number"
                         value={
                             <Link href="/admin/accounts/2226791912">
                                 <a>2226791912</a>
                             </Link>
                         }
                     />
-                    <ListItem direction="row" label="Merchant Name" value="Merchant Aileen DEVQ" />
+                    <ListItem direction="row" label="Somebody" value="Merchant Aileen DEVQ" />
                 </ListContainer>
             </Card.Body>
         </Card.CardContainer>

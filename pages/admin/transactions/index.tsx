@@ -95,7 +95,7 @@ const Transactions: NextPage = (): JSX.Element => {
                                 <TableCell>Transaction Number</TableCell>
                                 <TableCell>Account Number</TableCell>
                                 <TableCell>Customer Name</TableCell>
-                                <TableCell>Merchant Name</TableCell>
+                                <TableCell>Somebody</TableCell>
                                 <TableCell>Type</TableCell>
                                 <TableCell>Method</TableCell>
                                 <TableCell>Solution</TableCell>
@@ -126,9 +126,10 @@ const Transactions: NextPage = (): JSX.Element => {
                                     <TableCell>{transaction.method}</TableCell>
                                     <TableCell>{transaction.solution}</TableCell>
                                     <TableCell>
-                                        <Badge variant={TRANSACTION_STATUS_STATE[transaction.status]}>
-                                            {transaction.status}
-                                        </Badge>
+                                        <Badge
+                                            variant={TRANSACTION_STATUS_STATE[transaction.status]}
+                                            entry={transaction.status}
+                                        />
                                     </TableCell>
                                     <TableCell>
                                         {transaction.currency} {transaction.fee}

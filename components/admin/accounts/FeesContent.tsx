@@ -7,22 +7,23 @@ import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@/com
 import { InputField, SelectField } from "@/components/form/InputField";
 import { FormButtons } from "@/components/form/Form";
 import { assertEqual } from "@/utils/GeneralUtil";
-import { SOLUTION_METHODS } from "@/utils/Constants";
+import { GAME_PLAYED } from "@/utils/Constants";
 import { Grid, GridCol } from "@/components/ui/Grid";
 import { Navigation, NavigationItem } from "@/components/navigation/Navigation";
 
 const AccountFees: React.FC = (): JSX.Element => {
-    const [selectedTab, setSelectedTab] = React.useState<string>(Object.keys(SOLUTION_METHODS)[0]);
+    const [selectedTab, setSelectedTab] = React.useState<string>(Object.keys(GAME_PLAYED)[0]);
+    const bankList = ["Bank Boy", "MP Bank", "Doritos Finance", "Somebank", "ABC", "Southwest", "Downtown bank"];
 
     return (
         <Card.CardContainer variant="tabs">
             <Card.Header>
-                {Object.keys(SOLUTION_METHODS).map((solution, k) => (
+                {GAME_PLAYED.map((game, k) => (
                     <Card.TabItem
-                        primary={solution}
+                        primary={game}
                         key={k}
-                        selected={assertEqual(selectedTab, solution)}
-                        onClick={() => setSelectedTab(solution)}
+                        selected={assertEqual(selectedTab, game)}
+                        onClick={() => setSelectedTab(game)}
                     />
                 ))}
             </Card.Header>
@@ -31,14 +32,11 @@ const AccountFees: React.FC = (): JSX.Element => {
                     {assertEqual(selectedTab, "Online Banking") && (
                         <GridCol grid="auto">
                             <Navigation appearance="line" orientation="vertical" sticky>
-                                <NavigationItem selected={true}>BPI</NavigationItem>
-                                <NavigationItem>BDO</NavigationItem>
-                                <NavigationItem>RCBC</NavigationItem>
-                                <NavigationItem>Security Bank</NavigationItem>
-                                <NavigationItem>Metrobank</NavigationItem>
-                                <NavigationItem>Eastwest</NavigationItem>
-                                <NavigationItem>PNP</NavigationItem>
-                                <NavigationItem>AUB</NavigationItem>
+                                {bankList.map((bank, k) => (
+                                    <NavigationItem selected={true} key={k}>
+                                        {bank}
+                                    </NavigationItem>
+                                ))}
                             </Navigation>
                         </GridCol>
                     )}

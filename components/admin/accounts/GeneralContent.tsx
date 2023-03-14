@@ -21,7 +21,7 @@ const AccountGeneral: React.FC<{ title: string }> = ({ title }): JSX.Element => 
                                 <Composition wrapper="h5" color="secondary" primary="Account Details" />
                                 <ListContainer direction="column" itemJustify="space-between" itemBordered>
                                     <ListItem label="Account Number" value="AC252452586398" />
-                                    <ListItem label="Merchant Name" value="Jimmy Merchant" />
+                                    <ListItem label="Somebody" value="Jimmy Merchant" />
                                 </ListContainer>
                             </Grid>
                         </GridCol>

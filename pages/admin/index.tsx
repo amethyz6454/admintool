@@ -27,7 +27,7 @@ const Admin: NextPage = (): JSX.Element => {
                             <TableRow>
                                 <TableCell>&nbsp;</TableCell>
                                 <TableCell>Account Number</TableCell>
-                                <TableCell>Merchant Name</TableCell>
+                                <TableCell>Somebody</TableCell>
                                 <TableCell>Type</TableCell>
                             </TableRow>
                         </TableHead>

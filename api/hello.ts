@@ -1,6 +1,6 @@
 import {
     CURRENCIES,
-    SOLUTION_METHODS,
+    GAME_PLAYED,
     TRANSACTION_METHODS,
     TRANSACTION_STATUS_STATE,
     TRANSACTION_TYPES,
@@ -14,7 +14,7 @@ export const GetAccountBalances = (count: number) => {
         Array.from({ length: count }, (_, k) => k).map((_) => ({
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
             merchantName: faker.name.fullName(),
-            type: faker.helpers.arrayElement(["Main Account", "Sub Account"]),
+            type: faker.helpers.arrayElement(["MAIN", "SUBTITUTE"]),
             createdAt: faker.date.past().toDateString(),
             balances: Array.from(
                 { length: faker.datatype.number({ min: 0, max: CURRENCIES.length - 1 }) },
@@ -27,12 +27,12 @@ export const GetAccountBalances = (count: number) => {
                 (_) => ({
                     merchantNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
                     merchantName: faker.name.fullName(),
-                    type: faker.helpers.arrayElement(["Main Account", "Sub Account"]),
+                    type: faker.helpers.arrayElement(["MAIN", "SUBTITUTE"]),
                     subAccounts: Array.from({ length: faker.datatype.number({ min: 0, max: count }) }, (_, y) => y).map(
                         (_) => ({
                             merchantNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
                             merchantName: faker.name.fullName(),
-                            type: faker.helpers.arrayElement(["Main Account", "Sub Account"]),
+                            type: faker.helpers.arrayElement(["MAIN", "SUBTITUTE"]),
                         })
                     ),
                 })
@@ -76,7 +76,7 @@ export const GetTransactionLimits = (count: number) => {
         Array.from({ length: count }, (_, k) => k).map((_) => ({
             type: faker.helpers.arrayElement(["Deposit", "Withdrawal"]),
             method: faker.helpers.arrayElement(Object.values(TRANSACTION_METHODS)),
-            solution: faker.helpers.arrayElement(Object.keys(SOLUTION_METHODS)),
+            solution: faker.helpers.arrayElement(Object.keys(GAME_PLAYED)),
             currency: faker.helpers.arrayElement(CURRENCIES),
         }));
 
@@ -117,7 +117,7 @@ export const GetCustomerTransactions = (count: number) => {
             customer: faker.name.fullName(),
             type: faker.helpers.arrayElement(Object.values(TRANSACTION_TYPES)),
             method: faker.helpers.arrayElement(Object.values(TRANSACTION_METHODS)),
-            solution: faker.helpers.arrayElement(Object.keys(SOLUTION_METHODS)),
+            solution: faker.helpers.arrayElement(Object.keys(GAME_PLAYED)),
             status: faker.helpers.arrayElement(Object.keys(TRANSACTION_STATUS_STATE)),
             currency: faker.helpers.arrayElement(CURRENCIES),
             amount: faker.datatype.number({ min: 0, max: 99999, precision: 0.01 }).toLocaleString(),
@@ -146,7 +146,7 @@ export const GetTransactionsList = (count: number) => {
             customerName: faker.name.fullName(),
             type: faker.helpers.arrayElement(Object.values(TRANSACTION_TYPES)),
             method: faker.helpers.arrayElement(Object.values(TRANSACTION_METHODS)),
-            solution: faker.helpers.arrayElement(Object.keys(SOLUTION_METHODS)),
+            solution: faker.helpers.arrayElement(Object.keys(GAME_PLAYED)),
             status: faker.helpers.arrayElement(Object.keys(TRANSACTION_STATUS_STATE)),
             currency: faker.helpers.arrayElement(CURRENCIES),
             fee: faker.datatype.number({ min: 0, max: 0.5, precision: 0.01 }),
@@ -168,7 +168,7 @@ export const GetTopUpsBalancesList = (count: number) => {
         Array.from({ length: count }, (_, k) => k).map((_) => ({
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
             merchantName: faker.name.fullName(),
-            type: faker.helpers.arrayElement(["Main Account", "Sub Account"]),
+            type: faker.helpers.arrayElement(["MAIN", "SUBTITUTE"]),
             currency: faker.helpers.arrayElement(CURRENCIES),
             totalWithdrawalAmount: faker.datatype.number({ min: 0, max: 0.5, precision: 0.01 }),
             totalTopUpAmount: faker.datatype.number({ min: 0, max: 20, precision: 0.01 }),
@@ -229,7 +229,7 @@ export const GetMerchantBalancesEntries = (count: number) => {
 
     const DataFaker = (count: number) =>
         Array.from({ length: count }, (_, k) => k).map((_) => ({
-            solution: faker.helpers.arrayElement(Object.keys(SOLUTION_METHODS)),
+            solution: faker.helpers.arrayElement(Object.keys(GAME_PLAYED)),
             currency: faker.helpers.arrayElement(CURRENCIES),
             balance: faker.datatype.number({ min: 0, max: 1, precision: 0.01 }),
         }));
@@ -310,7 +310,7 @@ export const GetAccountTransactionList = (count: number) => {
             customer: faker.name.fullName(),
             type: faker.helpers.arrayElement(Object.values(TRANSACTION_TYPES)),
             method: faker.helpers.arrayElement(Object.values(TRANSACTION_METHODS)),
-            solution: faker.helpers.arrayElement(Object.keys(SOLUTION_METHODS)),
+            solution: faker.helpers.arrayElement(Object.keys(GAME_PLAYED)),
             status: faker.helpers.arrayElement(Object.keys(TRANSACTION_STATUS_STATE)),
             currency: faker.helpers.arrayElement(CURRENCIES),
             amount: faker.datatype.number({ min: 0, max: 9999, precision: 0.01 }).toLocaleString(),

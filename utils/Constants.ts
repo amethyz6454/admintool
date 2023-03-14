@@ -1,8 +1,3 @@
-export const SETTLEMENT_TRANSACTION_TYPES = Object.freeze({
-    REGULAR: "REGULAR",
-    IRREGULAR: "IRREGULAR",
-});
-
 export const TRANSACTION_TYPES = Object.freeze({
     WITHDRAWAL: "withdrawal",
     DEPOSIT: "deposit",
@@ -22,42 +17,9 @@ export const ROLES = Object.freeze({
     CLIENT: "client",
 });
 
-export const FEE_BEARER = Object.freeze({
-    MERCHANT: "merchant",
-    CLIENT: "client",
-});
-
-export const ACCOUNT_TYPES = Object.freeze({
-    MAIN_ACCOUNT: "e_wallet",
-    SUPPLEMENTARY_ACCOUNT: "supplementary_account",
-    SUB_ACCOUNT: "sub_account",
-});
-
-export const DEFAULT_TYPE = Object.freeze({
-    TRANSACTION_FEE: "transaction_fee",
-    TRANSACTION_LIMIT: "transaction_limit",
-});
-
-export const PERMISSIONS = Object.freeze({
-    CAN_DELETE_TOP_UP: "can_delete_top_up",
-    CAN_VIEW_TOP_UP: "can_view_top_up",
-    CAN_CREATE_ADMIN: "can_create_admin",
-    CAN_VIEW_ADMIN: "can_view_admin",
-    CAN_VIEW_PENDING_REFUND_REQUESTS: "can_view_pending_refund_requests",
-    CAN_VIEW_REFUND_REQUEST_HISTORY: "can_view_refund_request_history",
-    CAN_VIEW_REFUND_REQUEST: "can_view_refund_request",
-    CAN_EDIT_REFUND_REQUEST: "can_edit_refund_request",
-    CAN_EXPORT_PENDING_REFUND_REQUESTS: "can_export_pending_refund_requests",
-    CAN_EXPORT_REFUND_REQUEST_HISTORY: "can_export_pending_refund_request_history",
-    CAN_ADD_SETTLEMENT_OTHER_FEE: "can_add_settlement_other_fee",
-    CAN_EDIT_SETTLEMENT_OTHER_FEE: "can_edit_settlement_other_fee",
-    CAN_DELETE_SETTLEMENT_OTHER_FEE: "can_delete_settlement_other_fee",
-    CAN_VIEW_API_DOCUMENTATION: "can_view_api_documentation",
-});
-
 export const TRANSACTION_STATUS_STATE = Object.freeze({ pending: "warning", expired: "danger", completed: "success" });
 export const TRANSACTION_TYPE_STATE = Object.freeze({ withdrawal: "primary", deposit: "success" });
-export const ACCOUNT_TYPE_STATE = Object.freeze({ "Main Account": "primary", "Sub Account": "warning" });
+export const ACCOUNT_TYPE_STATE = Object.freeze({ MAIN: "primary", SUBTITUTE: "warning" });
 
 export const SCREEN_BREAKPOINTS = {
     xs: { min: 0, max: 360 },
@@ -68,236 +30,34 @@ export const SCREEN_BREAKPOINTS = {
 
 export const CURRENCIES = ["EUR", "GBP", "HKD", "IDR", "JPY", "MYR", "PHP", "THB", "USD", "VND"];
 
-export const SOLUTION_METHODS = {
-    CCD: {
-        solutions: "dixonpay",
-        image: "images/solution-logos/logo-dixon.png",
-    },
-    CCP: {
-        solutions: "pearlpay",
-        image: "images/solution-logos/logo-dixon.png",
-    },
-    "Local Bank Indonesia": {
-        solutions: "local_bank_indonesia",
-    },
-    "Local Bank Malaysia": {
-        solutions: "local_bank_malaysia",
-    },
-    "Local Bank Thailand": {
-        solutions: "local_bank_thailand",
-    },
-    "Local Bank Vietnam": {
-        solutions: "local_bank_vietnam",
-    },
-    "Cash payments": {
-        solutions: "cash_payment",
-    },
-    "EC Cash": {
-        solutions: "ec_cash",
-    },
-    "Banks (Over the counter)": {
-        solutions: "bank",
-    },
-    EWallets: {
-        solutions: ["gcash", "paymaya"],
-    },
-    "Online Banking": {
-        solutions: [
-            "bpi_online_bank",
-            "bdo_online_bank",
-            "rcbc_online_bank",
-            "security_bank_online_bank",
-            "metro_bank_online_bank",
-            "eastwest_online_bank",
-            "pnb_online_bank",
-            "aub_online_bank",
-        ],
-    },
-    Kiosk: {
-        solutions: "kiosk",
-    },
-};
-
-export const SOLUTION_CURRENCIES = {
-    dixonpay: ["USD", "EUR", "GBP", "JPY"],
-    pearlpay: ["PHP"],
-    local_bank_indonesia: ["IDR"],
-    local_bank_malaysia: ["MYR"],
-    local_bank_thailand: ["THB"],
-    local_bank_vietnam: ["VND"],
-    gcash: ["PHP"],
-    paymaya: ["PHP"],
-    cash_payment: ["PHP"],
-    bpi_online_bank: ["PHP"],
-    bdo_online_bank: ["PHP"],
-    rcbc_online_bank: ["PHP"],
-    security_bank_online_bank: ["PHP"],
-    metro_bank_online_bank: ["PHP"],
-    eastwest_online_bank: ["PHP"],
-    pnb_online_bank: ["PHP"],
-    aub_online_bank: ["PHP"],
-};
-
-export const SOLUTIONS = [
-    {
-        name: "CCD",
-        solution: "dixonpay",
-        image: "images/solution-logos/logo-dixon.png",
-        currencies: ["USD", "EUR", "GBP", "JPY"],
-    },
-    {
-        name: "CCP",
-        solution: "pearlpay",
-        image: "images/solution-logos/logo-pearlpay.png",
-        currencies: ["PHP"],
-    },
-    {
-        name: "Local Bank Indonesia",
-        solution: "local_bank_indonesia",
-        currencies: ["IDR"],
-    },
-    {
-        name: "Local Bank Malaysia",
-        solution: "local_bank_malaysia",
-        currencies: ["MYR"],
-    },
-    {
-        name: "Local Bank Thailand",
-        solution: "local_bank_thailand",
-        currencies: ["THB"],
-    },
-    {
-        name: "Local Bank Vietnam",
-        solution: "local_bank_vietnam",
-        currencies: ["VND"],
-    },
-    {
-        name: "Paymaya",
-        solution: "paymaya",
-        currencies: ["PHP"],
-    },
-    {
-        name: "Cash Payments",
-        solution: "cash_payment",
-        currencies: ["PHP"],
-    },
-    {
-        name: "EC Cash",
-        solution: "ec_cash",
-    },
-    {
-        name: "Banks (Over the counter)",
-        solution: "bank",
-    },
-    {
-        name: "EWallets",
-        solution: "e_wallet",
-    },
-    {
-        name: "Online Banking",
-        solution: "online_bank",
-    },
-    {
-        name: "Kiosk",
-        solution: "kiosk",
-    },
-    {
-        name: "Oriental Wallet",
-        solution: "oriental_wallet",
-        image: "images/solution-logos/logo-oriental-wallet.png",
-    },
-    {
-        name: "J-Pay",
-        solution: "jpay",
-        image: "images/solution-logos/logo-j-pay.png",
-    },
+export const GAME_PLAYED = [
+    "Final Fantasy VII Remake",
+    "Elden Ring",
+    "Red Dead Redemption",
+    "Witcher 3",
+    "Final Fantasy XV",
+    "Final Fantasy XIII",
+    "Mario Cart",
+    "Spiderman Morales",
+    "Spiderman",
+    "Star Ocean",
+    "Tales of Arise",
+    "Curse of the Star",
 ];
 
-export const SETTLEMENT_TABLE_HEADERS = [
-    {
-        label: "All",
-        value: "all",
-    },
-    {
-        label: "Record Time",
-        value: "recordedAt",
-    },
-    {
-        label: "Settlement Cut-off",
-        value: "cutoffAt",
-    },
-    {
-        label: "Account Number",
-        value: "account.accountNumber",
-    },
-    {
-        label: "Merchant Name",
-        value: "account.merchantName",
-    },
-    {
-        label: "Settlement Tx. No.",
-        value: "transactionNumber",
-    },
-    {
-        label: "Settlement Amount",
-        value: "settledAmount",
-    },
-    {
-        label: "Refund Amount",
-        value: "refundAmount",
-    },
-    {
-        label: "Chargeback Amount",
-        value: "chargebackAmount",
-    },
-    {
-        label: "MDR Fee",
-        value: "totalMdrFee",
-    },
-    {
-        label: "Fixed Fee",
-        value: "totalFixedFee",
-    },
-    {
-        label: "Settlement Fee",
-        value: "settlementFee",
-    },
-    {
-        label: "Refund Fee",
-        value: "refundFee",
-    },
-    {
-        label: "Chargeback Fee",
-        value: "chargebackFee",
-    },
-    {
-        label: "Retrieval Fee",
-        value: "retrievalFee",
-    },
-    {
-        label: "Rolling Reserve",
-        value: "totalRollingReserve",
-    },
-    {
-        label: "RR Return",
-        value: "returnedRollingReserve",
-    },
-    {
-        label: "Other Fees",
-        value: "totalOtherFee",
-    },
-    {
-        label: "Total Settled Amount",
-        value: "totalSettledAmount",
-    },
-    {
-        label: "Settlement Status",
-        value: "status",
-    },
-    {
-        label: "Settled Date",
-        value: "settledAt",
-    },
+export const GAMES = [
+    "Final Fantasy VII Remake",
+    "Elden Ring",
+    "Red Dead Redemption",
+    "Witcher 3",
+    "Final Fantasy XV",
+    "Final Fantasy XIII",
+    "Mario Cart",
+    "Spiderman Morales",
+    "Spiderman",
+    "Star Ocean",
+    "Tales of Arise",
+    "Curse of the Star",
 ];
 
 export const COUNTRIES = [

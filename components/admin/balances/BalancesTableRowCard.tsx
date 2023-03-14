@@ -17,14 +17,14 @@ const BalancesTableRowCard: React.FC<any> = ({ subAccount }): JSX.Element => {
                 <TableCard key={v}>
                     <ListContainer>
                         <ListItem
-                            label="Merchant Number"
+                            label="Random Number"
                             value={
                                 <Link href={"accounts/" + sub.merchantNumber}>
                                     <a>{sub.merchantNumber}</a>
                                 </Link>
                             }
                         />
-                        <ListItem label="Merchant Name" value={sub.merchantName} />
+                        <ListItem label="Somebody" value={sub.merchantName} />
                         <ListItem label="Type" value={sub.type} valueSeverity={ACCOUNT_TYPE_STATE[sub.type]} />
                     </ListContainer>
                 </TableCard>
@@ -32,14 +32,14 @@ const BalancesTableRowCard: React.FC<any> = ({ subAccount }): JSX.Element => {
         >
             <ListContainer>
                 <ListItem
-                    label="Merchant Number"
+                    label="Random Number"
                     value={
                         <Link href={"accounts/" + subAccount.merchantNumber}>
                             <a>{subAccount.merchantNumber}</a>
                         </Link>
                     }
                 />
-                <ListItem label="Merchant Name" value={subAccount.merchantName} />
+                <ListItem label="Somebody" value={subAccount.merchantName} />
                 <ListItem label="Type" value={subAccount.type} valueSeverity={ACCOUNT_TYPE_STATE[subAccount.type]} />
             </ListContainer>
         </TableCard>

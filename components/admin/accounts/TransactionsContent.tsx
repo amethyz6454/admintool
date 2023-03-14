@@ -37,7 +37,7 @@ const AccountTransactions = React.forwardRef<HTMLInputElement, AccountTransactio
                             <TableRow>
                                 <TableCell>Transaction Number</TableCell>
                                 <TableCell>Account Number</TableCell>
-                                <TableCell>Merchant Name</TableCell>
+                                <TableCell>Somebody</TableCell>
                                 <TableCell>Customer</TableCell>
                                 <TableCell>Type</TableCell>
                                 <TableCell>Method</TableCell>
@@ -73,9 +73,10 @@ const AccountTransactions = React.forwardRef<HTMLInputElement, AccountTransactio
                                     <TableCell>{transaction.method}</TableCell>
                                     <TableCell>{transaction.solution}</TableCell>
                                     <TableCell highlight>
-                                        <Badge variant={TRANSACTION_STATUS_STATE[transaction.status]}>
-                                            {transaction.status}
-                                        </Badge>
+                                        <Badge
+                                            variant={TRANSACTION_STATUS_STATE[transaction.status]}
+                                            entry={transaction.status}
+                                        />
                                     </TableCell>
                                     <TableCell>
                                         {transaction.currency} {transaction.amount}

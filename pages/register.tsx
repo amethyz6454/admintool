@@ -15,7 +15,6 @@ const register: NextPage = (): JSX.Element => {
                 <GuestSliderItem
                     title="Access to Diverse Markets"
                     message="Sed ut perspiciatis unde omnis iste natus error sit."
-                    image="/images/login-photo.png"
                 />
             }
         >

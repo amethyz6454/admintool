@@ -31,7 +31,7 @@ const Home: NextPage = (): JSX.Element => {
                                 <TableCell as="th" sort="descending">
                                     Account Number
                                 </TableCell>
-                                <TableCell as="th">Merchant Name</TableCell>
+                                <TableCell as="th">Somebody</TableCell>
                                 <TableCell as="th">Type</TableCell>
                             </TableRow>
                         </TableHead>

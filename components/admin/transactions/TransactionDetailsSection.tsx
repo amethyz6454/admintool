@@ -13,7 +13,7 @@ const TransactionDetailsSection: React.FC = (): JSX.Element => {
             <Card.Body>
                 <ListContainer direction="column" itemBordered itemJustify="space-between" gap={12}>
                     <ListItem direction="row" label="Merchant Reference Number" value="AITESTdixon002" />
-                    <ListItem direction="row" label="Status" value={<Badge variant="success">Completed</Badge>} />
+                    <ListItem direction="row" label="Status" value={<Badge variant="success" entry="Completed" />} />
                     <ListItem direction="row" label="Type" value="Withdrawal" valueSeverity="primary" />
                     <ListItem direction="row" label="Method" value="Credit/Debit Card" />
                     <ListItem direction="row" label="Solution" value="DixonPay" />

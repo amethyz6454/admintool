@@ -6,6 +6,8 @@ import TransactionsContentCard from "./TransactionsContentCard";
 import { GetTransactionLimits } from "@/api/hello";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@/components/table/Table";
 import Composition from "@/components/ui/Composition";
+import { GAMES, TRANSACTION_METHODS } from "@/utils/Constants";
+import { formatId } from "@/utils/GeneralUtil";
 
 const AccountSettingsTransactions: React.FC = (): JSX.Element => {
     const TransactionLimits = GetTransactionLimits(10);
@@ -30,26 +32,20 @@ const AccountSettingsTransactions: React.FC = (): JSX.Element => {
                     title="Methods"
                     subTitle="Remove or add transaction methods allowed to do when using the API"
                 >
-                    <OptionsField name="methods" id="credit_debit_card" label="Credit Debit Card" />
-                    <OptionsField name="methods" id="e_wallet" label="E-Wallet" />
-                    <OptionsField name="methods" id="local_bank_transfer" label="Local Bank Transfer" />
-                    <OptionsField name="methods" id="manual" label="Manual" />
-                    <OptionsField name="methods" id="top_up" label="Top-Up" />
+                    {Object.keys(TRANSACTION_METHODS).map((method, k) => (
+                        <OptionsField name="methods" id={formatId(method) + "-" + k} key={k} label={method} />
+                    ))}
                 </FormFieldset>
                 <FormFieldset
                     content="buttonOptions"
                     grid={6}
                     innerGrid={2}
-                    title="Solutions"
-                    subTitle="Remove or add transaction solutions allowed to do when using the API"
+                    title="Games"
+                    subTitle="Remove or add games allowed to do when using the API"
                 >
-                    <OptionsField name="solutions" id="dixonpay" label="Credit Debit Card" />
-                    <OptionsField name="solutions" id="jpay" label="E-Wallet" />
-                    <OptionsField name="solutions" id="local_bank_indonesia" label="Local Bank Indonesia" />
-                    <OptionsField name="solutions" id="local_bank_thailand" label="Local Bank Thailand" />
-                    <OptionsField name="solutions" id="local_bank_vietnam" label="Local Bank Vietnam" />
-                    <OptionsField name="solutions" id="oriental_wallet" label="Oriental Wallet" />
-                    <OptionsField name="solutions" id="pearlpay" label="PearlPay" />
+                    {GAMES.map((game, k) => (
+                        <OptionsField name="games" id={formatId(game) + "-" + k} key={k} label={game} />
+                    ))}
                 </FormFieldset>
                 <FormFieldset
                     title="Transaction Limits"

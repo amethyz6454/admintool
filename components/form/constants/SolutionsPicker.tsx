@@ -1,5 +1,5 @@
 import React from "react";
-import { SOLUTIONS } from "@/utils/Constants";
+import { GAMES } from "@/utils/Constants";
 import { InputField, InputFieldProps } from "@/components/form/InputField";
 
 const SolutionsPicker: React.FC<InputFieldProps> = (props) => {
@@ -9,9 +9,9 @@ const SolutionsPicker: React.FC<InputFieldProps> = (props) => {
         <>
             <InputField {...props} />
             <datalist id={id + "-list"}>
-                {SOLUTIONS.map((solution, k) => (
-                    <option value={solution.name} key={k}>
-                        {solution.name}
+                {GAMES.map((game, k) => (
+                    <option value={game} key={k}>
+                        {game}
                     </option>
                 ))}
             </datalist>
