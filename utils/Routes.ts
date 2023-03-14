@@ -5,89 +5,39 @@ export const adminRoutes = [
         icon: "Dashboard",
     },
     {
-        name: "Merchants",
-        href: "/admin/merchants",
+        name: "Buttons",
+        href: "/docs/buttons",
         icon: "Merchant",
     },
     {
-        name: "Accounts",
-        href: "/admin/accounts",
+        name: "icons",
+        href: "/docs/icons",
         icon: "Accounts",
     },
     {
-        name: "Customers",
-        href: "/admin/customers",
+        name: "Input Fields",
+        href: "/docs/input-fields",
         icon: "Customers",
     },
     {
-        name: "Transactions",
-        href: "/admin/transactions",
+        name: "Modals",
+        href: "/docs/modals",
         icon: "Transactions",
     },
     {
-        name: "Top-Up",
-        href: "/admin/top-ups",
+        name: "Navigation",
+        href: "/docs/navigation",
         icon: "TopUp",
     },
     {
-        name: "Refunds Requests",
-        icon: "Refund",
-        sub: [
-            {
-                name: "Pending Refund Request",
-                href: "/admin/refund-requests/pending-refund-request",
-            },
-            {
-                name: "Refund Request History",
-                href: "/admin/refund-requests/refund-request-history",
-            },
-        ],
-    },
-    {
-        name: "Retrieval Chargeback",
-        icon: "ChargeBack",
-        sub: [
-            {
-                name: "Retrieval",
-                href: "/admin/retrieval-chargeback/retrieval",
-            },
-            {
-                name: "Chargeback",
-                href: "/admin/retrieval-chargeback/chargeback",
-            },
-            {
-                name: "Retrieval/Chargeback",
-                href: "/admin/retrieval-chargeback",
-            },
-        ],
-    },
-    {
-        name: "Exchange Rates",
-        href: "/admin/exchange-rates",
+        name: "Preloader",
+        href: "/docs/preloader",
         icon: "ExchangeRate",
     },
     {
-        name: "Settlements",
-        href: "/admin/settlements",
+        name: "Tooltips",
+        href: "/docs/tooltips",
         icon: "Settlements",
-    },
-    {
-        name: "Admins",
-        icon: "Admin",
-        sub: [
-            {
-                name: "Roles and Permission",
-                href: "/admin/roles-and-permission",
-            },
-            {
-                name: "Default Fee Settings",
-                href: "/admin/default-fee-settings",
-            },
-            {
-                name: "Default Transaction Limits",
-                href: "/admin/default-transaction-limits",
-            },
-        ],
     },
 ];
 
