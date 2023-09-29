@@ -1,17 +1,19 @@
 import React from "react";
 import type { NextPage } from "next";
 import Authenticated from "@/components/layout/Authenticated";
-import Button from "@/components/buttons/Button";
+import Button, { ButtonBaseProps } from "@/components/buttons/Button";
 import Card from "@/components/card/Card";
 import Icon from "@/components/ui/Icons";
 import { Grid, GridCol } from "@/components/ui/Grid";
 import Composition from "@/components/ui/Composition";
-import { TypeVariantColors } from "@/utils/Interfaces/UI";
 
 const DocumentationButtons: NextPage = (): JSX.Element => {
+    type ButtonLength = ButtonBaseProps["length"];
+    type ButtonColors = ButtonBaseProps["color"];
+
     const uppercaseFirst = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
-    const ButtonVariants = ["primary", "secondary", "danger", "success", "info", "warning", "default"];
-    const ButtonLengths = [null, "wide", "block"];
+    const ButtonVariants: ButtonColors[] = ["primary", "secondary", "danger", "success", "info", "warning", "default"];
+    const ButtonLengths: (ButtonLength | null)[] = ["wide", "block"];
 
     return (
         <Authenticated title="Documentation Buttons">
@@ -23,6 +25,10 @@ const DocumentationButtons: NextPage = (): JSX.Element => {
                         <GridCol grid={3}>
                             <p>Solid (default)</p>
                             <Button>Button Solid</Button>
+                        </GridCol>
+                        <GridCol grid={3}>
+                            <p>Solid (anchor)</p>
+                            <Button href="/docs/buttons">Button Solid</Button>
                         </GridCol>
                         <GridCol grid={3}>
                             <p>Outline</p>
@@ -42,20 +48,20 @@ const DocumentationButtons: NextPage = (): JSX.Element => {
                                     }`}
                                     gutterBottom
                                 />
-                                <Button color={variant as TypeVariantColors}>Button {uppercaseFirst(variant)}</Button>
+                                <Button color={variant}>Button {uppercaseFirst(variant)}</Button>
                             </GridCol>
                         ))}
 
                         <Composition wrapper="h4" primary="Button Lengths" color="primary" fontWeight="medium" />
 
                         {ButtonLengths.map((l, k) => (
-                            <GridCol key={k} grid={3}>
+                            <GridCol key={k} grid="flex">
                                 <Composition
                                     key={k}
                                     primary={l === null ? "Default (null)" : uppercaseFirst(l)}
                                     gutterBottom
                                 />
-                                {l === null ? <Button>Button</Button> : <Button length="block">Button</Button>}
+                                {l === null ? <Button>Button</Button> : <Button length={l}>Button</Button>}
                             </GridCol>
                         ))}
 

@@ -247,8 +247,8 @@ const AccountFees: React.FC = (): JSX.Element => {
                                 </TableBody>
                             </TableContainer>
                             <FormButtons>
-                                <Button>Save</Button>
-                                <Button appearance="outline" color="secondary">
+                                <Button size="sm">Save</Button>
+                                <Button appearance="link" color="secondary" startIcon="Refresh" size="sm">
                                     Reset
                                 </Button>
                             </FormButtons>
@@ -750,8 +750,8 @@ const AccountFees: React.FC = (): JSX.Element => {
                                 </TableBody>
                             </TableContainer>
                             <FormButtons>
-                                <Button>Save</Button>
-                                <Button appearance="outline" color="secondary">
+                                <Button size="sm">Save</Button>
+                                <Button appearance="link" color="secondary" startIcon="Refresh" size="sm">
                                     Reset
                                 </Button>
                             </FormButtons>

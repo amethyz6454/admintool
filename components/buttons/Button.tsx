@@ -14,12 +14,12 @@ export interface ButtonBaseProps {
     color?: TypeVariantColors;
     disabled?: boolean;
     href?: string;
-    length?: "wide" | "block";
+    length?: "wide" | "block" | null;
     onClick?: () => void;
     process?: boolean;
-    shape?: "square" | "circle";
+    shape?: "square" | "circle" | null;
     size?: TypeSizes;
-    type?: "button" | "submit" | "reset" | null;
+    type?: "button" | "submit" | "reset";
 }
 
 type ButtonProps = JSX.IntrinsicElements["button"] & {
@@ -73,7 +73,7 @@ const Button = React.forwardRef(
             length,
             process = false,
             shape,
-            size,
+            size = null,
             startIcon,
             type = "button",
             ...options
@@ -85,9 +85,9 @@ const Button = React.forwardRef(
                 href={href}
                 className={classNames(StyleButton.btn, StyleButton[color], StyleButton[appearance], className, {
                     disabled: process || disabled,
-                    [StyleButton[size!]]: !!size,
-                    [StyleButton[length!]]: !!length,
-                    [StyleButton[shape!]]: !!shape,
+                    [StyleButton[size]]: !!size,
+                    [StyleButton[length]]: !!length,
+                    [StyleButton[shape]]: !!shape,
                     [StyleButton.process]: process,
                     [StyleButton.startIcon]: !!startIcon,
                     [StyleButton.endIcon]: !!endIcon,

@@ -8,7 +8,7 @@ const AccountSettingsGeneral: React.FC = (): JSX.Element => {
         <GridCol grid="flex">
             <Grid>
                 <Composition wrapper="h4" primary="Account Status" />
-                <FormFieldset title="Enable or disable account" content="buttonOptions" grid={4}>
+                <FormFieldset title="Enable or disable account" content="buttonOptions" grid="flex">
                     <OptionsField
                         appearance="switch-word"
                         id="enable_account"

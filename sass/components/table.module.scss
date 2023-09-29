@@ -150,11 +150,11 @@ $table-gaps: map-merge(
 }
 
 .cell {
-    padding-top: $spacer-20;
-    padding-bottom: $spacer-20;
+    padding: $spacer-16 $spacer-12;
     text-align: left;
     vertical-align: middle;
     border-top: 0;
+    white-space: nowrap;
 
     > *:not(.cellInner) {
         margin: 0;
