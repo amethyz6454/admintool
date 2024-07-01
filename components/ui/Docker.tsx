@@ -17,13 +17,10 @@ interface DockerItemProps {
 }
 export type DockerItemTypes = Array<DockerItemProps & { title: string; divider?: boolean }>;
 
-const DockerItemContainer: React.FC<DockerItemProps & { children: React.ReactNode }> = ({
-    children,
-    href,
-}): JSX.Element => {
+const DockerItemContainer: React.FC<DockerItemProps & { children: React.ReactNode }> = ({ children, href }): JSX.Element => {
     return href ? (
-        <Link href={href}>
-            <a className={StyleDocker.link}>{children}</a>
+        <Link href={href} className={StyleDocker.link}>
+            {children}
         </Link>
     ) : (
         <button type="button" className={StyleDocker.link}>
@@ -43,19 +40,9 @@ const DockerItem: React.FC<DockerItemProps & { title: string }> = ({
     title,
 }): JSX.Element => {
     return (
-        <div
-            className={classNames(StyleDocker.item, { [StyleDocker.active]: selected, disabled: disabled })}
-            onClick={onClick}
-        >
+        <div className={classNames(StyleDocker.item, { [StyleDocker.active]: selected, disabled: disabled })} onClick={onClick}>
             <DockerItemContainer href={href}>
-                {notify && (
-                    <Badge
-                        shape="circle"
-                        size={notifyCount ? 16 : 8}
-                        className={StyleDocker.badge}
-                        entry={notifyCount}
-                    />
-                )}
+                {notify && <Badge shape="circle" size={notifyCount ? 16 : 8} className={StyleDocker.badge} entry={notifyCount} />}
                 {icon && (
                     <div className={StyleDocker.icon}>
                         <Icon name={icon} />
@@ -132,10 +119,7 @@ const DockerItemGroup: React.FC<DockerItemProps & DockerItemGroupProps> = ({
 
 DockerItemGroup.displayName = "DockerItemGroup";
 
-const Docker: React.FC<{ items: DockerItemTypes; groupItems?: DockerItemGroupType }> = ({
-    items,
-    groupItems,
-}): JSX.Element => {
+const Docker: React.FC<{ items: DockerItemTypes; groupItems?: DockerItemGroupType }> = ({ items, groupItems }): JSX.Element => {
     return (
         <div className={StyleDocker.wrapper}>
             <div className={StyleDocker.docker}>

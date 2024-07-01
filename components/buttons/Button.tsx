@@ -41,80 +41,60 @@ const isAnchor = (props: PolymorphicProps): props is AnchorProps => {
     return props.href !== undefined;
 };
 
-const ButtonContainer = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, PolymorphicProps>(
-    (props, ref): JSX.Element => {
-        if (isAnchor(props)) {
-            const { href, as, replace, scroll, shallow, passHref, prefetch, locale, ...rest } = props;
-            const linkProps = { href, as, replace, scroll, shallow, passHref, prefetch, locale };
+const ButtonContainer = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, PolymorphicProps>((props, ref): JSX.Element => {
+    if (isAnchor(props)) {
+        const { href, as, replace, scroll, shallow, passHref, prefetch, locale, ...rest } = props;
+        const linkProps = { href, as, replace, scroll, shallow, passHref, prefetch, locale };
 
-            return (
-                <Link {...linkProps}>
-                    <a {...rest} ref={ref as React.ForwardedRef<HTMLAnchorElement>} />
-                </Link>
-            );
-        }
-
-        return <button type={props.type ?? "button"} ref={ref as React.ForwardedRef<HTMLButtonElement>} {...props} />;
+        return <Link {...linkProps} {...rest} ref={ref as React.ForwardedRef<HTMLAnchorElement>} />;
     }
-) as PolymorphicButton;
+
+    return <button type={props.type ?? "button"} ref={ref as React.ForwardedRef<HTMLButtonElement>} {...props} />;
+}) as PolymorphicButton;
 
 ButtonContainer.displayName = "ButtonContainer";
 
-const Button = React.forwardRef(
-    <C extends React.ElementType>(props: ButtonBaseProps & TypePlaceIcons, ref: ElementReference<C>): JSX.Element => {
-        const {
-            appearance = "solid",
-            children,
-            className,
-            color = "primary",
-            disabled,
-            endIcon,
-            href,
-            length,
-            process = false,
-            shape,
-            size = null,
-            startIcon,
-            type = "button",
-            ...options
-        } = props;
+const Button = React.forwardRef(<C extends React.ElementType>(props: ButtonBaseProps & TypePlaceIcons, ref: ElementReference<C>): JSX.Element => {
+    const {
+        appearance = "solid",
+        children,
+        className,
+        color = "primary",
+        disabled,
+        endIcon,
+        href,
+        length,
+        process = false,
+        shape,
+        size = null,
+        startIcon,
+        type = "button",
+        ...options
+    } = props;
 
-        return (
-            <ButtonContainer
-                type={href ? null : type}
-                href={href}
-                className={classNames(StyleButton.btn, StyleButton[color], StyleButton[appearance], className, {
-                    disabled: process || disabled,
-                    [StyleButton[size]]: !!size,
-                    [StyleButton[length]]: !!length,
-                    [StyleButton[shape]]: !!shape,
-                    [StyleButton.process]: process,
-                    [StyleButton.startIcon]: !!startIcon,
-                    [StyleButton.endIcon]: !!endIcon,
-                })}
-                ref={ref}
-                {...options}
-            >
-                {process && <PillLoader className={StyleButton.loader} />}
-                {startIcon && (
-                    <Icon
-                        name={startIcon}
-                        className={StyleButton.icon}
-                        size={size === "sm" ? 16 : size === "xs" ? 16 : 24}
-                    />
-                )}
-                {children}
-                {endIcon && (
-                    <Icon
-                        name={endIcon}
-                        className={StyleButton.icon}
-                        size={size === "sm" ? 16 : size === "xs" ? 16 : 24}
-                    />
-                )}
-            </ButtonContainer>
-        );
-    }
-);
+    return (
+        <ButtonContainer
+            type={href ? null : type}
+            href={href}
+            className={classNames(StyleButton.btn, StyleButton[color], StyleButton[appearance], className, {
+                disabled: process || disabled,
+                [StyleButton[size]]: !!size,
+                [StyleButton[length]]: !!length,
+                [StyleButton[shape]]: !!shape,
+                [StyleButton.process]: process,
+                [StyleButton.startIcon]: !!startIcon,
+                [StyleButton.endIcon]: !!endIcon,
+            })}
+            ref={ref}
+            {...options}
+        >
+            {process && <PillLoader className={StyleButton.loader} />}
+            {startIcon && <Icon name={startIcon} className={StyleButton.icon} size={size === "sm" ? 16 : size === "xs" ? 16 : 24} />}
+            {children}
+            {endIcon && <Icon name={endIcon} className={StyleButton.icon} size={size === "sm" ? 16 : size === "xs" ? 16 : 24} />}
+        </ButtonContainer>
+    );
+});
 
 Button.displayName = "Button";
 

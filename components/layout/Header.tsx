@@ -15,30 +15,24 @@ const Header: React.FC = (): JSX.Element => {
                 <nav className="flex">
                     <ul className="flex">
                         <li className={StyleHeader.navItem}>
-                            <Link href="/">
-                                <a className={StyleHeader.navLink}>
-                                    <span className={StyleHeader.chip}>
-                                        <IconUser size={24} />
-                                    </span>
-                                    <span>Firstname Lastname</span>
-                                </a>
+                            <Link href="/" className={StyleHeader.navLink}>
+                                <span className={StyleHeader.chip}>
+                                    <IconUser size={24} />
+                                </span>
+                                <span>Firstname Lastname</span>
                             </Link>
                         </li>
                         <Tooltip title="API Docs" placement="bottom">
                             <li className={StyleHeader.navItem}>
-                                <Link href="/">
-                                    <a className={StyleHeader.navLink}>
-                                        <IconDocument size={24} />
-                                    </a>
+                                <Link href="/" className={StyleHeader.navLink}>
+                                    <IconDocument size={24} />
                                 </Link>
                             </li>
                         </Tooltip>
                         <Tooltip title="Logout" placement="bottom">
                             <li className={StyleHeader.navItem}>
-                                <Link href="/">
-                                    <a className={StyleHeader.navLink}>
-                                        <IconLogout size={24} />
-                                    </a>
+                                <Link href="/" className={StyleHeader.navLink}>
+                                    <IconLogout size={24} />
                                 </Link>
                             </li>
                         </Tooltip>

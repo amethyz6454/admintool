@@ -18,9 +18,7 @@ const AccountDetails: NextPage = (): JSX.Element => {
     const AccountBalances = GetAccountBalances(10);
     const searchFieldRef = React.useRef(null);
     const [showSearchModal, setShowSearchModal] = React.useState<boolean>(false);
-    const accountsTabs = [
-        { title: "Search", icon: "Search", onClick: () => setShowSearchModal(true), notify: true },
-    ] as DockerItemTypes;
+    const accountsTabs = [{ title: "Search", icon: "Search", onClick: () => setShowSearchModal(true), notify: true }] as DockerItemTypes;
 
     // const handleOpenSearch = () => {
     //     setShowSearchModal(true);
@@ -59,9 +57,7 @@ const AccountDetails: NextPage = (): JSX.Element => {
                             {AccountBalances.map((account, k) => (
                                 <TableRow key={k}>
                                     <TableCell highlight>
-                                        <Link href={"/admin/accounts/" + account.accountNumber}>
-                                            <a>{account.accountNumber}</a>
-                                        </Link>
+                                        <Link href={"/admin/accounts/" + account.accountNumber}>{account.accountNumber}</Link>
                                     </TableCell>
                                     <TableCell>{account.merchantName}</TableCell>
                                     <TableCell highlight severity={ACCOUNT_TYPE_STATE[account.type]}>
@@ -78,12 +74,7 @@ const AccountDetails: NextPage = (): JSX.Element => {
                 </Card.Footer>
             </Card.CardContainer>
 
-            <Modal
-                title="Search Account Number"
-                size="sm"
-                onClose={() => setShowSearchModal(false)}
-                show={showSearchModal}
-            >
+            <Modal title="Search Account Number" size="sm" onClose={() => setShowSearchModal(false)} show={showSearchModal}>
                 <ModalBody>
                     <InputField
                         endIcon="Search"

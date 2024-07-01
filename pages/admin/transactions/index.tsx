@@ -109,14 +109,10 @@ const Transactions: NextPage = (): JSX.Element => {
                             {TransactionsList.map((transaction, k) => (
                                 <TableRow key={k}>
                                     <TableCell highlight>
-                                        <Link href={"/admin/transactions/" + transaction.transactionNumber}>
-                                            <a>{transaction.transactionNumber}</a>
-                                        </Link>
+                                        <Link href={"/admin/transactions/" + transaction.transactionNumber}>{transaction.transactionNumber}</Link>
                                     </TableCell>
                                     <TableCell highlight>
-                                        <Link href={"/admin/accounts/" + transaction.accountNumber}>
-                                            <a>{transaction.accountNumber}</a>
-                                        </Link>
+                                        <Link href={"/admin/accounts/" + transaction.accountNumber}>{transaction.accountNumber}</Link>
                                     </TableCell>
                                     <TableCell>{transaction.customerName}</TableCell>
                                     <TableCell>{transaction.merchantName}</TableCell>
@@ -126,10 +122,7 @@ const Transactions: NextPage = (): JSX.Element => {
                                     <TableCell>{transaction.method}</TableCell>
                                     <TableCell>{transaction.solution}</TableCell>
                                     <TableCell>
-                                        <Badge
-                                            variant={TRANSACTION_STATUS_STATE[transaction.status]}
-                                            entry={transaction.status}
-                                        />
+                                        <Badge variant={TRANSACTION_STATUS_STATE[transaction.status]} entry={transaction.status} />
                                     </TableCell>
                                     <TableCell>
                                         {transaction.currency} {transaction.fee}

@@ -43,12 +43,12 @@ const AccountCustomers = React.forwardRef<HTMLInputElement, AccountCustomersProp
                                 <TableRow key={k}>
                                     <TableCell>
                                         <Link href={"accounts/" + customer.accountNumber}>
-                                            <a>{customer.accountNumber}</a>
+                                            {customer.accountNumber}
                                         </Link>
                                     </TableCell>
                                     <TableCell>
                                         <Link href={"customer/" + customer.customerNumber}>
-                                            <a>{customer.customerNumber}</a>
+                                            {customer.customerNumber}
                                         </Link>
                                     </TableCell>
                                     <TableCell>{customer.customer}</TableCell>

@@ -12,23 +12,11 @@ const ApplicationLogo: React.FC<{
     height?: number;
 }> = ({ theme = "light", className, href, iconOnly = false, width = 120, height = 29 }): JSX.Element => {
     return href ? (
-        <Link href={href}>
-            <a className={className}>
-                <Image
-                    src={`/images/app-logo-for-${theme}${iconOnly ? "-icon" : ""}.svg`}
-                    width={iconOnly ? height : width}
-                    height={height}
-                    alt="Admintool"
-                />
-            </a>
+        <Link href={href} className={className}>
+            <Image src={`/images/app-logo-for-${theme}${iconOnly ? "-icon" : ""}.svg`} width={iconOnly ? height : width} height={height} alt="Admintool" />
         </Link>
     ) : (
-        <Image
-            src={`/images/app-logo-for-${theme}${iconOnly ? "-icon" : ""}.svg`}
-            width={iconOnly ? height : width}
-            height={height}
-            alt="Admintool"
-        />
+        <Image src={`/images/app-logo-for-${theme}${iconOnly ? "-icon" : ""}.svg`} width={iconOnly ? height : width} height={height} alt="Admintool" />
     );
 };
 

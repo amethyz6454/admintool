@@ -35,9 +35,7 @@ const AdminList: NextPage = (): JSX.Element => {
                                 <TableCell>Admin</TableCell>
                                 <TableCell>&mdash;</TableCell>
                                 <TableCell>
-                                    <Link href="/admin/create">
-                                        <a>Edit</a>
-                                    </Link>
+                                    <Link href="/admin/create">Edit</Link>
                                 </TableCell>
                             </TableRow>
                             <TableRow>
@@ -46,9 +44,7 @@ const AdminList: NextPage = (): JSX.Element => {
                                 <TableCell>Admin</TableCell>
                                 <TableCell>&mdash;</TableCell>
                                 <TableCell>
-                                    <Link href="/admin/create">
-                                        <a>Edit</a>
-                                    </Link>
+                                    <Link href="/admin/create">Edit</Link>
                                 </TableCell>
                             </TableRow>
                             <TableRow>
@@ -57,9 +53,7 @@ const AdminList: NextPage = (): JSX.Element => {
                                 <TableCell>Admin</TableCell>
                                 <TableCell>&mdash;</TableCell>
                                 <TableCell>
-                                    <Link href="/admin/create">
-                                        <a>Edit</a>
-                                    </Link>
+                                    <Link href="/admin/create">Edit</Link>
                                 </TableCell>
                             </TableRow>
                             <TableRow>
@@ -68,9 +62,7 @@ const AdminList: NextPage = (): JSX.Element => {
                                 <TableCell>Admin</TableCell>
                                 <TableCell>&mdash;</TableCell>
                                 <TableCell>
-                                    <Link href="/admin/create">
-                                        <a>Edit</a>
-                                    </Link>
+                                    <Link href="/admin/create">Edit</Link>
                                 </TableCell>
                             </TableRow>
                             <TableRow>
@@ -79,9 +71,7 @@ const AdminList: NextPage = (): JSX.Element => {
                                 <TableCell>Admin</TableCell>
                                 <TableCell>&mdash;</TableCell>
                                 <TableCell>
-                                    <Link href="/admin/create">
-                                        <a>Edit</a>
-                                    </Link>
+                                    <Link href="/admin/create">Edit</Link>
                                 </TableCell>
                             </TableRow>
                             <TableRow>
@@ -90,9 +80,7 @@ const AdminList: NextPage = (): JSX.Element => {
                                 <TableCell>Admin</TableCell>
                                 <TableCell>&mdash;</TableCell>
                                 <TableCell>
-                                    <Link href="/admin/create">
-                                        <a>Edit</a>
-                                    </Link>
+                                    <Link href="/admin/create">Edit</Link>
                                 </TableCell>
                             </TableRow>
                         </TableBody>

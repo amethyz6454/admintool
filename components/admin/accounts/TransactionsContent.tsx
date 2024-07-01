@@ -56,14 +56,10 @@ const AccountTransactions = React.forwardRef<HTMLInputElement, AccountTransactio
                             {accountTransactionList.map((transaction, k) => (
                                 <TableRow key={k}>
                                     <TableCell>
-                                        <Link href={"/admin/transactions/" + transaction.transactionNumber}>
-                                            <a>{transaction.transactionNumber}</a>
-                                        </Link>
+                                        <Link href={"/admin/transactions/" + transaction.transactionNumber}>{transaction.transactionNumber}</Link>
                                     </TableCell>
                                     <TableCell>
-                                        <Link href={"/admin/transactions/" + transaction.accountNumber}>
-                                            <a>{transaction.accountNumber}</a>
-                                        </Link>
+                                        <Link href={"/admin/transactions/" + transaction.accountNumber}>{transaction.accountNumber}</Link>
                                     </TableCell>
                                     <TableCell>{transaction.merchantName}</TableCell>
                                     <TableCell>{transaction.customer}</TableCell>
@@ -73,10 +69,7 @@ const AccountTransactions = React.forwardRef<HTMLInputElement, AccountTransactio
                                     <TableCell>{transaction.method}</TableCell>
                                     <TableCell>{transaction.solution}</TableCell>
                                     <TableCell highlight>
-                                        <Badge
-                                            variant={TRANSACTION_STATUS_STATE[transaction.status]}
-                                            entry={transaction.status}
-                                        />
+                                        <Badge variant={TRANSACTION_STATUS_STATE[transaction.status]} entry={transaction.status} />
                                     </TableCell>
                                     <TableCell>
                                         {transaction.currency} {transaction.amount}
@@ -91,9 +84,7 @@ const AccountTransactions = React.forwardRef<HTMLInputElement, AccountTransactio
                                         {transaction.currency} {transaction.netAmount}
                                     </TableCell>
                                     <TableCell>{transaction.transactionDate}</TableCell>
-                                    <TableCell>
-                                        {transaction.settledAt === null ? <>&mdash;</> : transaction.transactionDate}
-                                    </TableCell>
+                                    <TableCell>{transaction.settledAt === null ? <>&mdash;</> : transaction.transactionDate}</TableCell>
                                     <TableCell>
                                         <a onClick={() => setViewEditModal(true)}>View / Edit</a>
                                     </TableCell>
@@ -151,13 +142,7 @@ const AccountTransactions = React.forwardRef<HTMLInputElement, AccountTransactio
                         <option>USD</option>
                         <option>VND</option>
                     </SelectField>
-                    <InputField
-                        type="date"
-                        label="Settled At"
-                        id="settled_at"
-                        name="settled_at"
-                        placeholder="Enter settled date."
-                    />
+                    <InputField type="date" label="Settled At" id="settled_at" name="settled_at" placeholder="Enter settled date." />
                 </ModalBody>
                 <ModalFooter>
                     <Button>Apply</Button>
@@ -181,11 +166,7 @@ const AccountTransactions = React.forwardRef<HTMLInputElement, AccountTransactio
                 </ModalFooter>
             </Modal>
 
-            <ViewAndEditTransactionModal
-                viewEditModal={viewEditModal}
-                setViewEditModal={setViewEditModal}
-                activityEntries={GetTimelineEntries(5)}
-            />
+            <ViewAndEditTransactionModal viewEditModal={viewEditModal} setViewEditModal={setViewEditModal} activityEntries={GetTimelineEntries(5)} />
         </React.Fragment>
     );
 });

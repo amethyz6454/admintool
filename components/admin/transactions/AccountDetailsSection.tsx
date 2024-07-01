@@ -12,15 +12,7 @@ const AccountDetailsSection: React.FC = (): JSX.Element => {
             </Card.Header>
             <Card.Body>
                 <ListContainer direction="column" itemBordered itemJustify="space-between" gap={12}>
-                    <ListItem
-                        direction="row"
-                        label="Account Number"
-                        value={
-                            <Link href="/admin/accounts/AC2257150713">
-                                <a>AC2257150713</a>
-                            </Link>
-                        }
-                    />
+                    <ListItem direction="row" label="Account Number" value={<Link href="/admin/accounts/AC2257150713">AC2257150713</Link>} />
                     <ListItem direction="row" label="Account Name" value="Merchant Aileen DEVQ" />
                 </ListContainer>
             </Card.Body>

@@ -20,7 +20,7 @@ const Tooltip: React.FC<{
     const [mouseLeaveDelayTimer, setMouseLeaveDelayTimer] = React.useState(null);
 
     // const [isVisible, setIsVisible] = React.useState(false);
-    const [isVisible, setIsVisible] = React.useState(true);
+    // const [isVisible, setIsVisible] = React.useState(true);
     const [childRect, setChildRect] = React.useState(null);
 
     const newChild = React.Children.map(children, (child, index) =>

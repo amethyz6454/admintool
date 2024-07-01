@@ -20,16 +20,10 @@ const BalancesTableRow: React.FC<any> = ({ account }): JSX.Element => {
                     })}
                     onClick={() => (account.balances || account.subAccounts) && setShowExtension(!showExtension)}
                 >
-                    {!showExtension ? (
-                        <IconRoundPlus className={StyleTable.icon} />
-                    ) : (
-                        <IconRoundMinus className={StyleTable.icon} />
-                    )}
+                    {!showExtension ? <IconRoundPlus className={StyleTable.icon} /> : <IconRoundMinus className={StyleTable.icon} />}
                 </TableCell>
                 <TableCell highlight>
-                    <Link href={"/admin/accounts/" + account.accountNumber}>
-                        <a>{account.accountNumber}</a>
-                    </Link>
+                    <Link href={"/admin/accounts/" + account.accountNumber}>{account.accountNumber}</Link>
                 </TableCell>
                 <TableCell>{account.merchantName}</TableCell>
                 <TableCell severity={ACCOUNT_TYPE_STATE[account.type]} className={classNames("font-bold")}>
@@ -53,9 +47,7 @@ const BalancesTableRow: React.FC<any> = ({ account }): JSX.Element => {
                             </TableCard>
                         )}
                         {account.subAccounts.length !== 0 &&
-                            account.subAccounts.map((subAccount, c) => (
-                                <BalancesTableRowCard subAccount={subAccount} key={c} />
-                            ))}
+                            account.subAccounts.map((subAccount, c) => <BalancesTableRowCard subAccount={subAccount} key={c} />)}
                     </React.Fragment>
                 )}
             </TableRowExpandable>

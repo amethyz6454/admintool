@@ -16,14 +16,7 @@ const BalancesTableRowCard: React.FC<any> = ({ subAccount }): JSX.Element => {
             expandedContent={subAccount.subAccounts?.map((sub, v) => (
                 <TableCard key={v}>
                     <ListContainer>
-                        <ListItem
-                            label="Random Number"
-                            value={
-                                <Link href={"accounts/" + sub.merchantNumber}>
-                                    <a>{sub.merchantNumber}</a>
-                                </Link>
-                            }
-                        />
+                        <ListItem label="Random Number" value={<Link href={"accounts/" + sub.merchantNumber}>{sub.merchantNumber}</Link>} />
                         <ListItem label="Somebody" value={sub.merchantName} />
                         <ListItem label="Type" value={sub.type} valueSeverity={ACCOUNT_TYPE_STATE[sub.type]} />
                     </ListContainer>
@@ -31,14 +24,7 @@ const BalancesTableRowCard: React.FC<any> = ({ subAccount }): JSX.Element => {
             ))}
         >
             <ListContainer>
-                <ListItem
-                    label="Random Number"
-                    value={
-                        <Link href={"accounts/" + subAccount.merchantNumber}>
-                            <a>{subAccount.merchantNumber}</a>
-                        </Link>
-                    }
-                />
+                <ListItem label="Random Number" value={<Link href={"accounts/" + subAccount.merchantNumber}>{subAccount.merchantNumber}</Link>} />
                 <ListItem label="Somebody" value={subAccount.merchantName} />
                 <ListItem label="Type" value={subAccount.type} valueSeverity={ACCOUNT_TYPE_STATE[subAccount.type]} />
             </ListContainer>
