@@ -1,79 +1,67 @@
-import {
-    CURRENCIES,
-    GAME_PLAYED,
-    TRANSACTION_METHODS,
-    TRANSACTION_STATUS_STATE,
-    TRANSACTION_TYPES,
-} from "@/utils/Constants";
+import { CURRENCIES, GAME_PLAYED, TRANSACTION_METHODS, TRANSACTION_STATUS_STATE, TRANSACTION_TYPES } from "@/utils/Constants";
 import { faker } from "@faker-js/faker";
 import React from "react";
 
 export const GetAccountBalances = (count: number) => {
     const [accountBalances, setAccountBalances] = React.useState([]);
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+
+    const DataFaker = (numAccounts: number) =>
+        Array.from({ length: numAccounts }, (_, k) => k).map(() => ({
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
             merchantName: faker.name.fullName(),
-            type: faker.helpers.arrayElement(["MAIN", "SUBTITUTE"]),
+            type: faker.helpers.arrayElement(["MAIN", "SUBSTITUTE"]),
             createdAt: faker.date.past().toDateString(),
-            balances: Array.from(
-                { length: faker.datatype.number({ min: 0, max: CURRENCIES.length - 1 }) },
-                (_, c) => c
-            ).map((_) => ({
+            balances: Array.from({ length: faker.datatype.number({ min: 0, max: CURRENCIES.length - 1 }) }, (_, c) => c).map(() => ({
                 currency: faker.helpers.arrayElement(CURRENCIES),
                 balance: faker.datatype.number({ min: 10, max: 100, precision: 0.01 }),
             })),
-            subAccounts: Array.from({ length: faker.datatype.number({ min: 0, max: count }) }, (_, x) => x).map(
-                (_) => ({
+            subAccounts: Array.from({ length: faker.datatype.number({ min: 0, max: numAccounts }) }, (_, x) => x).map(() => ({
+                merchantNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
+                merchantName: faker.name.fullName(),
+                type: faker.helpers.arrayElement(["MAIN", "SUBSTITUTE"]),
+                subAccounts: Array.from({ length: faker.datatype.number({ min: 0, max: numAccounts }) }, (_, y) => y).map(() => ({
                     merchantNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
                     merchantName: faker.name.fullName(),
-                    type: faker.helpers.arrayElement(["MAIN", "SUBTITUTE"]),
-                    subAccounts: Array.from({ length: faker.datatype.number({ min: 0, max: count }) }, (_, y) => y).map(
-                        (_) => ({
-                            merchantNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
-                            merchantName: faker.name.fullName(),
-                            type: faker.helpers.arrayElement(["MAIN", "SUBTITUTE"]),
-                        })
-                    ),
-                })
-            ),
+                    type: faker.helpers.arrayElement(["MAIN", "SUBSTITUTE"]),
+                })),
+            })),
         }));
 
     React.useEffect(() => {
         setAccountBalances(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return accountBalances;
 };
 
 export const GetMerchantsList = (count: number) => {
     const [merchantsList, setMerchantsList] = React.useState([]);
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+
+    const DataFaker = (numMerchants: number) =>
+        Array.from({ length: numMerchants }, (_, k) => k).map(() => ({
             merchantNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
             merchantName: faker.name.fullName(),
             email: faker.internet.email(),
             companyName: faker.company.name(),
-            subMerchants: Array.from({ length: faker.datatype.number({ min: 0, max: count }) }, (_, x) => x).map(
-                (_) => ({
-                    merchantNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
-                    merchantName: faker.name.fullName(),
-                    createdAt: faker.date.past().toDateString(),
-                })
-            ),
+            subMerchants: Array.from({ length: faker.datatype.number({ min: 0, max: numMerchants }) }, (_, x) => x).map(() => ({
+                merchantNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
+                merchantName: faker.name.fullName(),
+                createdAt: faker.date.past().toDateString(),
+            })),
         }));
 
     React.useEffect(() => {
         setMerchantsList(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return merchantsList;
 };
 
 export const GetTransactionLimits = (count: number) => {
     const [transactionLimits, setTransactionLimits] = React.useState([]);
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+
+    const DataFaker = (numLimits: number) =>
+        Array.from({ length: numLimits }, (_, k) => k).map(() => ({
             type: faker.helpers.arrayElement(["Deposit", "Withdrawal"]),
             method: faker.helpers.arrayElement(Object.values(TRANSACTION_METHODS)),
             solution: faker.helpers.arrayElement(Object.keys(GAME_PLAYED)),
@@ -82,15 +70,16 @@ export const GetTransactionLimits = (count: number) => {
 
     React.useEffect(() => {
         setTransactionLimits(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return transactionLimits;
 };
 
 export const GetCustomersList = (count: number) => {
     const [customersList, setCustomersList] = React.useState([]);
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+
+    const DataFaker = (numCustomers: number) =>
+        Array.from({ length: numCustomers }, (_, k) => k).map(() => ({
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
             customerNumber: faker.datatype.number({ min: 22000000000 }),
             customerName: faker.name.fullName(),
@@ -102,15 +91,16 @@ export const GetCustomersList = (count: number) => {
 
     React.useEffect(() => {
         setCustomersList(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return customersList;
 };
 
 export const GetCustomerTransactions = (count: number) => {
     const [customerTransactions, setCustomerTransactions] = React.useState([]);
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+
+    const DataFaker = (numTransactions: number) =>
+        Array.from({ length: numTransactions }, (_, k) => k).map(() => ({
             transactionNumber: faker.datatype.number({ min: 22000000000 }),
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
             merchantName: faker.company.name(),
@@ -130,7 +120,7 @@ export const GetCustomerTransactions = (count: number) => {
 
     React.useEffect(() => {
         setCustomerTransactions(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return customerTransactions;
 };
@@ -138,8 +128,8 @@ export const GetCustomerTransactions = (count: number) => {
 export const GetTransactionsList = (count: number) => {
     const [transactionsList, setTransactionsList] = React.useState([]);
 
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+    const DataFaker = (numTransactions: number) =>
+        Array.from({ length: numTransactions }, (_, k) => k).map(() => ({
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
             transactionNumber: faker.datatype.number({ min: 22000000000 }),
             merchantName: faker.name.fullName(),
@@ -156,7 +146,7 @@ export const GetTransactionsList = (count: number) => {
 
     React.useEffect(() => {
         setTransactionsList(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return transactionsList;
 };
@@ -164,11 +154,11 @@ export const GetTransactionsList = (count: number) => {
 export const GetTopUpsBalancesList = (count: number) => {
     const [topUpsBalancesList, setTopUpsBalancesList] = React.useState([]);
 
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+    const DataFaker = (numTopUps: number) =>
+        Array.from({ length: numTopUps }, (_, k) => k).map(() => ({
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
             merchantName: faker.name.fullName(),
-            type: faker.helpers.arrayElement(["MAIN", "SUBTITUTE"]),
+            type: faker.helpers.arrayElement(["MAIN", "SUBSTITUTE"]),
             currency: faker.helpers.arrayElement(CURRENCIES),
             totalWithdrawalAmount: faker.datatype.number({ min: 0, max: 0.5, precision: 0.01 }),
             totalTopUpAmount: faker.datatype.number({ min: 0, max: 20, precision: 0.01 }),
@@ -177,7 +167,7 @@ export const GetTopUpsBalancesList = (count: number) => {
 
     React.useEffect(() => {
         setTopUpsBalancesList(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return topUpsBalancesList;
 };
@@ -185,8 +175,8 @@ export const GetTopUpsBalancesList = (count: number) => {
 export const GetTopUpsHistoryList = (count: number) => {
     const [topUpsHistoryList, setTopUpsHistoryList] = React.useState([]);
 
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+    const DataFaker = (numTopUpsHistory: number) =>
+        Array.from({ length: numTopUpsHistory }, (_, k) => k).map((_) => ({
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
             merchantName: faker.name.fullName(),
             transactionNumber: faker.datatype.number({ min: 22000000000 }),
@@ -200,7 +190,7 @@ export const GetTopUpsHistoryList = (count: number) => {
 
     React.useEffect(() => {
         setTopUpsHistoryList(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return topUpsHistoryList;
 };
@@ -208,8 +198,8 @@ export const GetTopUpsHistoryList = (count: number) => {
 export const GetExchangeRatesList = (count: number) => {
     const [exchangeRatesList, setExchangeRatesList] = React.useState([]);
 
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+    const DataFaker = (numExchangeRate: number) =>
+        Array.from({ length: numExchangeRate }, (_, k) => k).map((_) => ({
             baseCurrency: faker.helpers.arrayElement(CURRENCIES),
             exchangeCurrency: faker.helpers.arrayElement(CURRENCIES),
             rate: faker.datatype.number({ min: 0, max: 1, precision: 0.01 }),
@@ -219,7 +209,7 @@ export const GetExchangeRatesList = (count: number) => {
 
     React.useEffect(() => {
         setExchangeRatesList(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return exchangeRatesList;
 };
@@ -227,8 +217,8 @@ export const GetExchangeRatesList = (count: number) => {
 export const GetMerchantBalancesEntries = (count: number) => {
     const [merchantBalancesEntries, setMerchantBalancesEntries] = React.useState([]);
 
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+    const DataFaker = (numMerchantBalance: number) =>
+        Array.from({ length: numMerchantBalance }, (_, k) => k).map((_) => ({
             solution: faker.helpers.arrayElement(Object.keys(GAME_PLAYED)),
             currency: faker.helpers.arrayElement(CURRENCIES),
             balance: faker.datatype.number({ min: 0, max: 1, precision: 0.01 }),
@@ -236,7 +226,7 @@ export const GetMerchantBalancesEntries = (count: number) => {
 
     React.useEffect(() => {
         setMerchantBalancesEntries(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return merchantBalancesEntries;
 };
@@ -244,8 +234,8 @@ export const GetMerchantBalancesEntries = (count: number) => {
 export const GetSettlementsEntries = (count: number) => {
     const [settlementsEntries, setSettlementsEntries] = React.useState([]);
 
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+    const DataFaker = (numSettlement: number) =>
+        Array.from({ length: numSettlement }, (_, k) => k).map((_) => ({
             recordedTime: faker.date.recent(1).toDateString(),
             settlementCutOff: faker.helpers.arrayElement(["", faker.date.recent(1).toDateString()]),
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
@@ -265,7 +255,7 @@ export const GetSettlementsEntries = (count: number) => {
 
     React.useEffect(() => {
         setSettlementsEntries(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return settlementsEntries;
 };
@@ -273,8 +263,8 @@ export const GetSettlementsEntries = (count: number) => {
 export const GetSettlementsTransactionDetailsList = (count: number) => {
     const [settlementsTransactionDetailsList, setSettlementsTransactionDetailsList] = React.useState([]);
 
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+    const DataFaker = (numSettlementsTransaction: number) =>
+        Array.from({ length: numSettlementsTransaction }, (_, k) => k).map((_) => ({
             recordedTime: faker.date.recent(1).toDateString(),
             settlementCutOff: faker.helpers.arrayElement([null, faker.date.recent(1).toDateString()]),
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
@@ -294,7 +284,7 @@ export const GetSettlementsTransactionDetailsList = (count: number) => {
 
     React.useEffect(() => {
         setSettlementsTransactionDetailsList(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return settlementsTransactionDetailsList;
 };
@@ -302,8 +292,8 @@ export const GetSettlementsTransactionDetailsList = (count: number) => {
 export const GetAccountTransactionList = (count: number) => {
     const [accountTransactionList, setAccountTransactionList] = React.useState([]);
 
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+    const DataFaker = (numAccountTransaction: number) =>
+        Array.from({ length: numAccountTransaction }, (_, k) => k).map((_) => ({
             transactionNumber: faker.datatype.number({ min: 22000000000 }),
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
             merchantName: faker.company.name(),
@@ -323,7 +313,7 @@ export const GetAccountTransactionList = (count: number) => {
 
     React.useEffect(() => {
         setAccountTransactionList(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return accountTransactionList;
 };
@@ -331,8 +321,8 @@ export const GetAccountTransactionList = (count: number) => {
 export const GetAccountCustomers = (count: number) => {
     const [accountCustomers, setAccountCustomers] = React.useState([]);
 
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+    const DataFaker = (numAccountCustomer: number) =>
+        Array.from({ length: numAccountCustomer }, (_, k) => k).map((_) => ({
             accountNumber: "AC" + faker.datatype.number({ min: 22000000000 }),
             customerNumber: faker.datatype.number({ min: 22000000000 }),
             customer: faker.name.fullName(),
@@ -344,7 +334,7 @@ export const GetAccountCustomers = (count: number) => {
 
     React.useEffect(() => {
         setAccountCustomers(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return accountCustomers;
 };
@@ -352,15 +342,15 @@ export const GetAccountCustomers = (count: number) => {
 export const GetTimelineEntries = (count: number) => {
     const [timelineEntries, setTimelineEntries] = React.useState([]);
 
-    const DataFaker = (count: number) =>
-        Array.from({ length: count }, (_, k) => k).map((_) => ({
+    const DataFaker = (numTimelineEntry: number) =>
+        Array.from({ length: numTimelineEntry }, (_, k) => k).map((_) => ({
             date: faker.date.recent(1).toDateString(),
             note: faker.lorem.sentence(),
         }));
 
     React.useEffect(() => {
         setTimelineEntries(DataFaker(count));
-    }, []);
+    }, [count]);
 
     return timelineEntries;
 };

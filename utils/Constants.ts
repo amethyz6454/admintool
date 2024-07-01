@@ -19,7 +19,7 @@ export const ROLES = Object.freeze({
 
 export const TRANSACTION_STATUS_STATE = Object.freeze({ pending: "warning", expired: "danger", completed: "success" });
 export const TRANSACTION_TYPE_STATE = Object.freeze({ withdrawal: "primary", deposit: "success" });
-export const ACCOUNT_TYPE_STATE = Object.freeze({ MAIN: "primary", SUBTITUTE: "warning" });
+export const ACCOUNT_TYPE_STATE = Object.freeze({ MAIN: "primary", SUBSTITUTE: "warning" });
 
 export const SCREEN_BREAKPOINTS = {
     xs: { min: 0, max: 360 },
@@ -32,14 +32,17 @@ export const CURRENCIES = ["EUR", "GBP", "HKD", "IDR", "JPY", "MYR", "PHP", "THB
 
 export const GAME_PLAYED = [
     "Final Fantasy VII Remake",
+    "Final Fantasy VII Rebirth",
     "Elden Ring",
     "Red Dead Redemption",
     "Witcher 3",
-    "Final Fantasy XV",
     "Final Fantasy XIII",
+    "Final Fantasy XIV",
+    "Final Fantasy XV",
+    "Final Fantasy XVI",
     "Mario Cart",
-    "Spiderman Morales",
-    "Spiderman",
+    "Spider-Man Morales",
+    "Spider-Man",
     "Star Ocean",
     "Tales of Arise",
     "Curse of the Star",
@@ -47,14 +50,17 @@ export const GAME_PLAYED = [
 
 export const GAMES = [
     "Final Fantasy VII Remake",
+    "Final Fantasy VII Rebirth",
     "Elden Ring",
     "Red Dead Redemption",
     "Witcher 3",
-    "Final Fantasy XV",
     "Final Fantasy XIII",
+    "Final Fantasy XIV",
+    "Final Fantasy XV",
+    "Final Fantasy XVI",
     "Mario Cart",
-    "Spiderman Morales",
-    "Spiderman",
+    "Spider-Man Morales",
+    "Spider-Man",
     "Star Ocean",
     "Tales of Arise",
     "Curse of the Star",
@@ -62,7 +68,7 @@ export const GAMES = [
 
 export const COUNTRIES = [
     { name: "Afghanistan", code: "AF" },
-    { name: "Åland Islands", code: "AX" },
+    { name: "Åland", code: "AX" },
     { name: "Albania", code: "AL" },
     { name: "Algeria", code: "DZ" },
     { name: "American Samoa", code: "AS" },
@@ -114,7 +120,7 @@ export const COUNTRIES = [
     { name: "Congo, The Democratic Republic of the", code: "CD" },
     { name: "Cook Islands", code: "CK" },
     { name: "Costa Rica", code: "CR" },
-    { name: 'Cote D"Ivoire', code: "CI" },
+    { name: "Cote D'Ivoire", code: "CI" },
     { name: "Croatia", code: "HR" },
     { name: "Cuba", code: "CU" },
     { name: "Cyprus", code: "CY" },
@@ -176,11 +182,11 @@ export const COUNTRIES = [
     { name: "Kazakhstan", code: "KZ" },
     { name: "Kenya", code: "KE" },
     { name: "Kiribati", code: "KI" },
-    { name: 'Korea, Democratic People"S Republic of', code: "KP" },
+    { name: "Korea, Democratic People'S Republic of", code: "KP" },
     { name: "Korea, Republic of", code: "KR" },
     { name: "Kuwait", code: "KW" },
     { name: "Kyrgyzstan", code: "KG" },
-    { name: 'Lao People"S Democratic Republic', code: "LA" },
+    { name: "Lao People'S Democratic Republic", code: "LA" },
     { name: "Latvia", code: "LV" },
     { name: "Lebanon", code: "LB" },
     { name: "Lesotho", code: "LS" },
