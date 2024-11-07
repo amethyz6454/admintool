@@ -179,7 +179,7 @@
         .item {
             .link {
                 @apply flex-col;
-                @include button-size(null, null, $font-size-12, $btn-line-height-sm, $round, null, null);
+                @include button-size(null, null, $font-size-10, $btn-line-height-sm, $round, null, null);
             }
 
             &.active .link {

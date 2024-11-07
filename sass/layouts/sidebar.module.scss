@@ -74,7 +74,7 @@
     // }
 
     .body {
-        @apply flex grow justify-center overflow-y-auto overflow-x-visible;
+        @apply flex grow justify-center overflow-y-auto overflow-x-hidden;
         scrollbar-color: var(--mono-010) transparent;
         @extend %extend-scrollbar-thin;
     }

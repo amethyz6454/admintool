@@ -2,7 +2,15 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import classNames from "classnames";
-import { TypeContentAlignments, TypeGaps, TypeIconSizes, TypeItemAlignments, TypeOrientations, TypePlacements, TypeVariantColors } from "@/utils/Interfaces/UI";
+import {
+    TypeContentAlignments,
+    TypeGaps,
+    TypeIconSizes,
+    TypeItemAlignments,
+    TypeOrientations,
+    TypePlacements,
+    TypeVariantColors,
+} from "@/utils/Interfaces/UI";
 import Badge from "@/components/ui/Badge";
 import Icon, { TypeIconNames } from "@/components/ui/Icons";
 import StyleNav from "@/sass/components/navigation.module.scss";
@@ -47,7 +55,12 @@ interface NavigationItemProps extends NavigationBaseProps {
     selected?: boolean;
 }
 
-const NavigationButtonLinkContainer: React.FC<NavigationItemProps> = ({ children, className, href, onClick }): JSX.Element => {
+const NavigationButtonLinkContainer: React.FC<NavigationItemProps> = ({
+    children,
+    className,
+    href,
+    onClick,
+}): JSX.Element => {
     return href ? (
         <Link href={href} className={classNames(StyleNav.link, className)} onClick={onClick}>
             {children}
@@ -151,7 +164,11 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
                 [StyleNav.active]: selected,
             })}
         >
-            <NavigationButtonLinkContainer href={href} onClick={onClick} className={classNames(StyleNav["ai-" + alignItems], StyleNav["jc-" + justifyContent])}>
+            <NavigationButtonLinkContainer
+                href={href}
+                onClick={onClick}
+                className={classNames(StyleNav["ai-" + alignItems], StyleNav["jc-" + justifyContent])}
+            >
                 {icon && <Icon name={icon} size={iconSize} className={StyleNav.icon} />}
                 {image && (
                     <span className={StyleNav.image}>
